@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+     Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <link rel="alternate" type="application/rss+xml" href="/feed/" title="RSS" />
+    <title>{% block title %}david durost{% endblock %}</title>
+    <meta name="description" content="personal portfolio, blog, misc site">
+    <meta name="author" content="david durost">
+<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+<!-- CSS : implied media="all" -->
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('/css/style.css.php') }}" />
+    {% endblock %}
+<!-- CSS : custom styles -->
+</head>
+    <body>     
+    {% block body %}
+        <header>
+        {% block header %}
+            {% block logo %}
+            <h1>
+                <a href="{{ path('homepage') }}">david<span>durost</span></a>
+                <span>freelance web application development</span>
+            </h1>
+            {% endblock %}
+            {% block navbar %}
+            <ul class="navbar">
+                <li id="portfolio-link"><a href="{{ path('portfolio') }}">portfolio</a></li>
+                <li id="blog-link"><a href="{{ path('blog') }}">blog</a></li>
+                <li id="profile-link"><a href="{{ path('profile') }}">profile</a></li>
+                <li id="contact-link"><a href="{{ path('contact') }}">contact</a></li>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  <li id="logout-link"><a href="{{ path('fos_user_security_logout') }}">sign out</a></li>
+                {% else %}
+                  <li id="login-link"><a href="{{ path('fos_user_security_login') }}">sign in</a></li>
+                {% endif %}
+            </ul>
+            {% endblock %}
+            {% block submenu %}{% endblock %}
+        {% endblock %}    
+        </header>
+        <div id="content" class="{% block page_class %}portfolio{% endblock %}">
+        {% block content %} {% endblock %}
+        </div>
+        <footer>
+        {% block footer %}
+            <div class="copyright">
+            {% block copyright %}
+                <a href="{{ path('homepage') }}">&copy; 2011, 2012 daviddurost.net</a>
+            {% endblock %}  
+            </div>
+            <hr />
+            {% block sitemap %}
+            <ul class="links">
+                <li><a href="{{ path('portfolio') }}">portfolio</a></li>
+                <li><a href="{{ path('blog') }}">blog</a></li>
+                <li><a href="{{ path('profile') }}">profile</a></li>
+                <li><a href="{{ path('contact') }}">contact</a></li>
+            </ul>
+            {% endblock %}
+        {% endblock %}
+        </footer>
+      {% block javascripts %}
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="{{ asset('/js/jquery.lightbox.latest.js') }}" type="text/javascript" ></script>
+      {% endblock %}
+<!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+<![endif]-->
+    {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{# src/Ddnet/BillingBundle/Resources/views/Client/new.html.twig #}
+
+{% extends '::base.html.twig' %}
+{% block content %}
+<form action="{{ path('client_new') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+{% endblock %}

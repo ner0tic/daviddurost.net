@@ -1,0 +1,35 @@
+{#  src/DdnetUtilityBundle/Resources/views/Default/contact.html.twig #}
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="Stylesheet" href="{{ asset('/css/contact.css.php') }}" />
+  <link rel="Stylesheet" href="{{ asset('/css/form.css.php') }}" />
+  <link rel="Stylesheet" href="{{ asset('/css/4sq.css.php') }}" />
+{% endblock %}
+{% block content %}
+<div>
+  <h1>contact</h1>
+  <div class="contact-social-wrapper form-wrapper" id="contact-social-pane">
+  {% block contact_form %}
+    <div class="main-column" id="contact">
+      <form action="{{ path('contact') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        <p>{{ form_row(form.name) }}</p>
+        <p>{{ form_row(form.email_address) }}</p>
+        <p>{{ form_row(form.url) }}</p>          
+        <p>{{ form_row(form.topic) }}</p>
+        <p>{{ form_row(form.message) }}</p>
+        {{ form_rest(form) }}
+        <input type="submit" class="submit" id="contactSubmit" value="" />
+    </form>
+</div>
+    {% endblock %}
+    {% include 'DdnetUtilityBundle:Default:socialbar.html.twig' with { 'page' : page } %}
+  </div>
+  <div class="contact-social-wrapper foursquare-wrapper" id="contact-4sq-pane">
+    {% block foursquare %}  
+    {% include 'DdnetUtilityBundle:Default:4sq.html.twig' with { 'foursquare' : foursquare, 'mapUrl' : mapUrl } %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

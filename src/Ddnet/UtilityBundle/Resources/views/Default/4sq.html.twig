@@ -1,0 +1,10 @@
+<h2>Where Is David ?<span><a href="http://www.foursquare.com">img src="{{ asset('/images/icons/powered-by/foursquare.png') }}" /></a></span></h2>
+<div class="gmap"><img src="{{ mapUrl }}" /></div>
+<div class="checkin-wrapper recent-checkin">
+  <a href="https://foursquare.com/ner0tic" />{{ foursquare.venueName }}</a>&nbsp;-&nbsp;{{ foursquare.venueType }}<br />
+  <span>{{ foursquare.venueAddress }}, {{ foursquare.venueCity }}, {{ foursquare.venueState }}, {{ foursquare.venueCountry }}</span>
+  <div class="checkin-details">
+    <h3>Last Checked In At:</h3>
+    <span>{{ foursquare.date }}</span>
+  </div>
+</div>

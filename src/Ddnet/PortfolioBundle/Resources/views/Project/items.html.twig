@@ -1,0 +1,6 @@
+{# src/Ddnet/PortfolioBundle/Resources/View/items.html.twig #}
+{% for portfolio in portfolios %}
+  {% include 'DdnetPortfolioBundle:Default:item.html.twig' with { 'portfolio': portfolio } %}   
+{% else %} 
+  <em>no items found.</em>
+{% endfor %}

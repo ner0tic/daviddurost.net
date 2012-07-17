@@ -1,0 +1,64 @@
+{# src/Ddnet/PortfolioBundle/Resources/View/Project/index.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+  <link href="{{ asset('/css/portfolio.css.php') }}" rel="stylesheet" />
+  {{ parent() }}
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('/js/portfolio.js.php?status='~status) }}" type="text/javascript" />  
+{% endblock %}
+
+{% block submenu %}
+  <div id="filters-wrapper">
+    <ul class="filters">
+    {% block filters %}
+      <li class="filter-label">filter by:</li>
+      <li class="filter-type" id="status">
+        status
+      </li>
+      <li class="filter-type" id="category">
+        category
+      </li>
+    {% endblock %}
+    </ul>
+    <ul class="filter-sub-menu" id="status-sub-menu">
+    {% block status_submenu %}
+      {% for project_status in statuses %}
+      <li class="{% if filter == 'status-'~project_status.slug %}active{% endif %} filter">
+        <a href="{{ path('portfolio_by_status', { 'status': project_status.slug }) }}">{{ project_status.name }}</a>
+      </li>
+      {% endfor %}
+      <li class="status-default filter">
+        <a href="{{ path('portfolio') }}">all</a>
+      </li>
+    {% endblock %}
+    </ul>
+    <ul class="filter-sub-menu" id="category-sub-menu">
+      <li class="category-default filter"><a href="{{ path('portfolio') }}">all</a></li> 
+    </ul>
+  </div>
+{% endblock %}
+  
+{% block content %}
+  <div id="portfolio-content">
+  {% for portfolio in portfolios %}
+    <div class="portfolio-entry">
+      <a class="lightbox" href="{{ path('project_show', {'slug':portfolio.slug}) }}?lightbox[width]=800&lightbox[height]=500">
+        <img src="{{ asset('/images/portfolio/thumbnails/' ~ portfolio.slug ~ '.png') }}" alt="{{ portfolio.name|capitalize }}" />
+        <img src="{{ asset('/images/status/' ~ portfolio.Status.slug ~ '.png') }}" class="status" alt="{{ portfolio.Status.name }}" />
+        <h3>{{ portfolio.name|capitalize }}</h3>
+        <div class="details">
+          <p>
+            {{ portfolio.description [0:130]| trim ~ '...' }}
+            <a href="{{ path('project_popup', { 'id':portfolio.id }) }}?lightbox[width]=800&lightbox[height]=500&lightbox[modal]=false" class='more-info lightbox'>more info&nbsp;&raquo;</a>
+          </p>
+        </div> 
+      </a>
+    </div>
+  {% else %} 
+    <em>no items found.</em>
+  {% endfor %}
+  </div>
+{% endblock %}

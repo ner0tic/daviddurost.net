@@ -30,7 +30,8 @@
         "kriswallsmith/buzz":                                     "dev-master",
         "sensio/buzz-bundle":                                     "*",
         "willdurand/geocoder":                                    "*",
-        "egeloen/google-map-bundle":                              "*"   
+        "egeloen/google-map-bundle":                              "*",
+        "knplabs/knp-last-tweets-bundle":                         "dev-master"
     },
 
     "autoload": {

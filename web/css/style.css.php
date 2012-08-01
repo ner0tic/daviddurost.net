@@ -16,7 +16,8 @@ h3 { font-size : 18px; color : <?php echo $offBlack?>; font-weight : normal; lin
 @font-face { font-family: Alexa; src: url('AlexaStd.otf'); }
 @font-face { font-family: Comfortaa; src: url('Comfotraa-Regular.ttf'); }
 @font-face { font-family: Nadis; src: url('nadis.ttf'); }
-@font-face { font-family: Social; src: url('Social Logos.ttf'); }
+@font-face { font-family: Social; src: url('Social-Logos.ttf'); }
+@font-face { font-family: Picto; src: url('modernpics.otf'); }
 body { background: <?php echo $offWhite ?>; /*url(/images/body-bg.png) repeat-x fixed center top;*/ font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; }
 #container { min-width: 920px; margin-right: auto; margin-left: auto; }
 /************************************************

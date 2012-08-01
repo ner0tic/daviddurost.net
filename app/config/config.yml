@@ -176,3 +176,7 @@ ivory_google_map:
         locale: en
       # adapter class
       adapter: "Geocoder\HttpAdapter\BuzzHttpAdapter"    
+      
+knp_last_tweets:
+    fetcher:
+        driver: api      

@@ -16,6 +16,7 @@ h3 { font-size : 18px; color : <?php echo $offBlack?>; font-weight : normal; lin
 @font-face { font-family: Alexa; src: url('AlexaStd.otf'); }
 @font-face { font-family: Comfortaa; src: url('Comfotraa-Regular.ttf'); }
 @font-face { font-family: Nadis; src: url('nadis.ttf'); }
+@font-face { font-family: Social; src: url('Social Logos.ttf'); }
 body { background: <?php echo $offWhite ?>; /*url(/images/body-bg.png) repeat-x fixed center top;*/ font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; }
 #container { min-width: 920px; margin-right: auto; margin-left: auto; }
 /************************************************
@@ -33,7 +34,9 @@ header ul li.active a { border-bottom: 2px solid <?php echo $red ?>; }
 /************************************************
 **                Content                      **
 ************************************************/
-
+h2 { color: <?php echo $red ?>; font-weight: bold; font-size: 2em !important; font-variant: small-caps; font-family: Alexa, arial; }
+h2 span { position: relative; top: -16px; display: block; text-align: right; width: 50%; font-size: 0.7em !important; color: <?php echo $gray ?>;}
+h2 span img { height: 0.7 em; }
 /************************************************
 **                Footer                       **
 ************************************************/

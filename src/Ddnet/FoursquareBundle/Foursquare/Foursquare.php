@@ -82,7 +82,7 @@ class Foursquare extends ContainerAware {
     
     if($this->token)
       $params['oauth_token'] = $this->token;
-    else  throw new FoursquareNotFoundException('no oauth token found.');
+    else  throw new \ErrorException(/*FoursquareNotFoundException(*/'no oauth token found.');
     
     if($method === 'GET')
       $url .= is_null($params) ? '' : '?'.http_build_query($params, '', '&');
@@ -106,7 +106,7 @@ class Foursquare extends ContainerAware {
     $data = curl_exec($ch);
     $meta = json_decode($data,true);
     if($meta['meta']["code"] != 200)
-      throw new FoursquareException('error encountered getting data.');
+      throw new \ErrorException(/*FoursquareException(*/"error encountered getting data.<br />code: ".$meta['meta']["code"]."<br />url: ".$url);
       
     return $data;
   }

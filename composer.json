@@ -25,7 +25,12 @@
         "doctrine/doctrine-fixtures-bundle":                      "*",   
         "gedmo/doctrine-extensions":                              "master-dev",
         
-        "friendsofsymfony/user-bundle":                           "*"
+        "friendsofsymfony/user-bundle":                           "*",
+        
+        "kriswallsmith/buzz":                                     "dev-master",
+        "sensio/buzz-bundle":                                     "*",
+        "willdurand/geocoder":                                    "*",
+        "egeloen/google-map-bundle":                              "*"   
     },
 
     "autoload": {

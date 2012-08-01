@@ -30,11 +30,13 @@
 /***************************************************************
     contact form
 ***************************************************************/
-div.contact-social-wrapper.form-wrapper { min-height: 500px; border-right: 1px solid <?php echo $ltGray ?>; }
-#contact form { /*background: <?php echo $ltGreen ?>; border-top: 1px solid #cccccc;*/ display: block; margin: 0 auto; padding: 20px; width: 450px; overflow: hidden; }
-#contact h2 { color: #444; font-size: 62px; font-weight: bold; left: 5px; margin: 0 auto; margin-bottom: 25px; position: relative; font-family: Alexa, Veranda; }
-#contact-form label { font-weight: normal !important; color: <?php echo $black ?>; position: absolute; top: 16px !important; left: 14px !important; }
-#contact-form .greenButton, #contact .orangeButton, #contact input[type=submit] { float: right; }
+div.contact-social-wrapper.form-wrapper { min-height: 500px; border-right: 2px dashed <?php echo $ltGray ?>; }
+div.main-column#contact { top -64px; position: relative; }
+form { /*background: <?php echo $ltGreen ?>; border-top: 1px solid #cccccc;*/ display: block; margin: 0 auto; padding: 20px; width: 450px; overflow: hidden; }
+#contact h2 { color: <?php echo $red ?>; font-weight: bold; font-size: 2em !important; font-variant: small-caps; font-family: Alexa, arial; max-width: 490px; margin: 0 auto;  } 
+#contact-form div:last-child { margin: 0 auto; text-align: center; }
+#contact-form input[type=submit] { margin: 0 auto; }
+
 
 .no-label { display: none; }
 form p { position:relative; padding: 10px; }

@@ -113,3 +113,66 @@ jms_aop:
 
 ddnet_foursquare:
     api_key: WS4AWDPS5JYDZ3YLZMDBNNUJGTF2BADQD3PYMDXZSNWGLTQ5
+    user_id: 421286
+    
+ivory_google_map:
+    map:
+      # map js prefix
+      prefix_javascript_variable: "map_"
+      # map contianer id
+      html_container: "map"
+      # async?
+      async: false
+      # auto zoom
+      auto_zoom: false
+      # map center - ignored if auto_zoom is enabled
+      center:
+          longitude:  0
+          latitude:   0
+          no_wrap:    true
+      # default zoom - ignored if auto_zoom is enabled
+      zoom: 3
+      # map bounds - ignored if auto_zoom is disabled
+      ## if bound extends overlays, coords of overlays are extended instead
+      ## default: no bound
+      bound:
+          south_west:
+              latitude:   -2.1
+              longitude:  1.4
+              no_wrap:    true
+          north_east:
+              latitude:   2.6
+              longitude:  1.4
+              no_wrap:    true
+      # map type - hybrid, roadmap, satellite, terrain
+      type: "roadmap" 
+      # map width
+      width:  "100%"
+      # map height
+      height: "100%"
+      # map options
+      map_options:
+          disableDefaultUI:       true
+          disableDoubleClickZoom: true
+      # map stylesheet options
+      stylesheet_options: 
+          position: "absolute"
+          top:      "32px"
+          left:     "0px"
+          z-index:  "-100"
+      # google maps API language, default: en
+      language: en
+    geocoder:
+      # geocoder class
+      class: "Ivory\GoogleMapBundle\Model\Services\Geocoding\Geocoder"
+      provider:
+        # replaces REMOTE_ADDR value
+        #fake_ip: "64.233.160.0"
+        # provider class
+        class: "Ivory\GoogleMapBundle\Model\Services\Geocoding\\Provider"
+        # api key, deafult: no key
+        api_key: ~
+        # locale, default: no locale
+        locale: en
+      # adapter class
+      adapter: "Geocoder\HttpAdapter\BuzzHttpAdapter"    

@@ -1,0 +1,53 @@
+{# src/Ddnet/UserBundle/Resources/View/Profile/index.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}  
+<link href="{{ asset('/css/profile.css.php') }}" rel="stylesheet" />  
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('/js/profile.js.php') }}" type="text/javascript" ></script>  
+{% endblock %}
+{% block content %}
+<div>
+  <div id="profile-content" class="profile-wrapper">
+  {% block profile_content %}
+    <div id="avatar-wrapper" class="container">
+    {% block avatar %}
+      <img src="{{ avatar.path_to ~ avatar.image }}" />
+      <span>{{ avatar.caption | capitalize }}</span>
+    {% endblock %}
+      <div id="tweet-wrapper">
+      {% block tweet %}
+        <p>t</p>
+        <span><a href="http://www.twitter.com/ner0tic">@ner0tic</a></span>
+        <div id="tweet">
+        {% block tweet_text %}{% endblock %}  
+        </div>
+        <div id="tweet-timestamp">
+        {% block tweet_timestamp %}{% endblock %}  
+        </div>
+      {% endblock %}
+      </div>
+    </div>
+    <div id="about-me">
+      <h2>{{ 'about me' | title }}</h2>
+    {% block about_me %}
+      <p>blah blah blah</p>
+      <ul id="skills">
+        <li>skill 1</li>
+        <li>skill 2</li>
+        <li>skill 3</li>
+        <li>skill 4</li>
+        <li>skill 5</li>
+      </ul>
+      <hr />
+      <h2>{{ 'my interests' | title }}</h2>
+      <p>blah blah blah....</p>
+    {% endblock %}
+    </div>
+  {% endblock %}
+  </div>
+</div>    
+{% endblock %}

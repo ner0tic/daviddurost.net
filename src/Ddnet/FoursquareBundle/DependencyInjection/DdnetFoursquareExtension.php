@@ -23,6 +23,7 @@ class DdnetFoursquareExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         
         $container->setParameter('foursquare.api_key', $config['api_key']);
+        $container->setParameter('foursquare.user_id', $config['user_id']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');

@@ -1,5 +1,5 @@
 <?php
-namespace Ddnet\FoursquareBundle\Foursquare\Exception;
+namespace Ddnet\FoursquareBundle\Foursquare\FoursquareException;
 use \Exception;
 
 class FoursquareException extends Exception {

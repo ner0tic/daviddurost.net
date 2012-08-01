@@ -19,7 +19,8 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ddnet_foursquare')->children()
-          ->variableNode('api_key')->defaultValue("XXX")->end();
+          ->variableNode('api_key')->defaultValue("XXX")->end()
+          ->variableNode('user_id')->defaultValue("123456")->end();
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

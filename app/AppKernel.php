@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Ddnet\GithubBundle\DdnetGithubBundle(),
             new Ddnet\FoursquareBundle\DdnetFoursquareBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

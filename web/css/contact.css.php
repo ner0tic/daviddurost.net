@@ -2,7 +2,7 @@
     header("Content-Type: text/css");
     require('scheme.css.php');
 ?>
-.contact-wrapper { max-width: 990px; margin: 0 auto; display: block !-important; }
+.contact-wrapper { max-width: 990px; margin: 0 auto; display: block !important; }
 .contact-wrapper > div { border-top: 1px solid <?php echo $ltGray ?>; }
 .contact-wrapper div h1 { vertical-align: baseline; position: relative; left: 0px; top: -1px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: <?php echo $ltGray ?>; text-shadow: <?php echo $offWhite ?> 1px 1px 1px; }
 .contact-wrapper > div > p { padding-left: 15px; padding-right: 15px; }
@@ -16,8 +16,8 @@ input.contact-button {line-height: normal !important;}
 @-moz-document url-prefix() { input.contact-button {padding-bottom: 2px;} }
 
 .contact-form-wrapper { /*max-width: 195px;*/ float: left; display: none; }
-textarea#message { width: 185px; }
-label { font-weight: bold; color: <?php echo $offBlack ?> }
+textarea#contact_message { width: 180px; height: 105px; }
+label { font-weight: bold; color: <?php echo $offBlack ?>; display: block; }
 
 .contact-twitter,
 .contact-email,
@@ -33,10 +33,12 @@ label { font-weight: bold; color: <?php echo $offBlack ?> }
 .contact-item-link{ width: 70px; height: 80px; }
 .contact-item span { display: none; }
 
-input[type=text], textarea, select { border-radius: 5px; width: 400px !important;}
+input[type=text], input[type=url], textarea, select { width: 400px !important; border: 1px solid <?php echo $black ?>; }
 select { width: 410px !important; }
 .contact-social-wrapper { width: 49%; }
+.social-bar-wrapper { max-width: 49%; }
 input[type=submit] {}
 
-div.social-bar-wrapper { position: relative; width: 200px; top: -50px; left: 50px;   }
+div.social-bar-wrapper { position: relative; margin: 0 auto; top: -20px; position: relative; }
+ul.social-links { max-width: 400px; margin: 0 auto;}
 ul.social-links,li.social-link { display: inline; }

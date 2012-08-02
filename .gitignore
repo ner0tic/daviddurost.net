@@ -14,7 +14,7 @@ app/config/parameters.yml
 
 # Composer
 composer.phar
-composer.json
+composer.lock
 
 # Misc
 *~

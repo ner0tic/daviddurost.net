@@ -7,7 +7,7 @@
 {% endblock %}
 {% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset('/js/portfolio.js.php?status='~status) }}" type="text/javascript" />  
+  <script src="{{ asset('/js/portfolio.js.php?status='~status) }}" type="text/javascript" ></script>  
 {% endblock %}
 
 {% block submenu %}
@@ -45,7 +45,7 @@
   <div id="portfolio-content">
   {% for portfolio in portfolios %}
     <div class="portfolio-entry">
-      <a class="lightbox" href="{{ path('project_show', {'slug':portfolio.slug}) }}?lightbox[width]=800&lightbox[height]=500">
+      <a href="{{ path('project_show', {'slug':portfolio.slug}) }}">
         <img src="{{ asset('/images/portfolio/thumbnails/' ~ portfolio.slug ~ '.png') }}" alt="{{ portfolio.name|capitalize }}" />
         <img src="{{ asset('/images/status/' ~ portfolio.Status.slug ~ '.png') }}" class="status" alt="{{ portfolio.Status.name }}" />
         <h3>{{ portfolio.name|capitalize }}</h3>

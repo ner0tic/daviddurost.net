@@ -56,8 +56,6 @@ hr.small { width: 238px !important; }
 .debug_y { border 2px solid yellow ?>; }
 .debug_b { border 2px solid blue ?>; }
 .margin-top-10 { margin-top: 10px; }
-/***************Forms***************************/
-<?php     include_once('form.css.php'); ?>
 /************************************************
 **              Buttons                        **
 ************************************************/

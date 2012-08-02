@@ -47,3 +47,5 @@ td.misc-cell { width: 310px; }
 td.details-cell { vertical-align: top; }
 .misc-container { margin-top: 4px; }
 #social-links { display: block !important; }
+
+li#portfolio-link a { border-bottom: 2px solid <?php echo $red ?>; }

@@ -39,7 +39,6 @@
             {% block navbar %}
             <ul class="navbar">
                 <li id="portfolio-link"><a href="{{ path('portfolio') }}">portfolio</a></li>
-                <li id="blog-link"><a href="{{ path('blog') }}">blog</a></li>
                 <li id="profile-link"><a href="{{ path('profile') }}">profile</a></li>
                 <li id="contact-link"><a href="{{ path('contact') }}">contact</a></li>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -59,16 +58,16 @@
         {% block footer %}
             <div class="copyright">
             {% block copyright %}
-                <a href="{{ path('homepage') }}">&copy; 2011, 2012 daviddurost.net</a>
+                <a href="{{ path('homepage') }}">&copy; 2012 daviddurost.net</a>
             {% endblock %}  
             </div>
             <hr />
             {% block sitemap %}
             <ul class="links">
                 <li><a href="{{ path('portfolio') }}">portfolio</a></li>
-                <li><a href="{{ path('blog') }}">blog</a></li>
                 <li><a href="{{ path('profile') }}">profile</a></li>
                 <li><a href="{{ path('contact') }}">contact</a></li>
+                <li><a href="{{ path('fos_user_security_login') }}">sign in</a></li>
             </ul>
             {% endblock %}
         {% endblock %}

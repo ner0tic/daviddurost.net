@@ -1,0 +1,17 @@
+{# app/Resources/KnpBundleLastTweetsBundle/views/Tweet/lastTweets.html.twig #}
+          {% for tweet in tweets %}
+          <div class="tweet">
+            <div class="container">
+              <div class="tweet-avatar-wrapper">
+                <a href="https://www.twitter.com/{{ tweet.username }}"><span>T</span>{{ '@' ~ tweet.username }}</a>
+              </div>
+              <ul class="tweet-timestamp">
+                <li class="month">{{ tweet.createdAt | date("M") }}</li>
+                <li class="day">{{ tweet.createdAt | date("d") }}</li>
+                <li class="year">{{ tweet.createdAt | date("Y") }}</li>
+                <li class="time">{{ tweet.createdAt | date("h:i A") }}</li>
+              </ul>
+            </div>
+            <div class="tweet-text">{{ tweet.text | knp_tweet_urlize }}</div>
+          </div>
+          {% endfor %}

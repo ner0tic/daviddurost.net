@@ -17,5 +17,6 @@
     $white              =   '#FFFFFF';
 
     $alertGreen         =   '#00bf5f';
+    $twitterBlue        =   '#4099ff';
 
 ?>

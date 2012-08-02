@@ -18,15 +18,13 @@
       <img src="{{ avatar.path_to ~ avatar.image }}" />
       <span>{{ avatar.caption | capitalize }}</span>
     {% endblock %}
-      <div id="tweet-wrapper">
-      {% block tweet %}
-        <p>t</p>
-        <span><a href="http://www.twitter.com/ner0tic">@ner0tic</a></span>
-        <div id="tweet">
-        {% block tweet_text %}{% endblock %}  
-        </div>
-        <div id="tweet-timestamp">
-        {% block tweet_timestamp %}{% endblock %}  
+      <div id="tweets-wrapper">
+      {% block tweets_wrapper %}
+        <h2>{{ 'twitterverse' | title }}</h2>
+        <div id="tweets">
+        {% block tweets %}
+          {% render "KnpLastTweetsBundle:Twitter:lastTweets" with {'username': 'ner0tic', 'limit': 1} %}
+        {% endblock %}  
         </div>
       {% endblock %}
       </div>
@@ -34,17 +32,18 @@
     <div id="about-me">
       <h2>{{ 'about me' | title }}</h2>
     {% block about_me %}
-      <p>blah blah blah</p>
+      <p>My name is David Durost and I am a web developer currently residing in Portland, Maine.  I live with my dog, Moxie, who puts up with me so the least I can do is attempt to return the favor.  I have been freelancing off and on for the last 10+ years. <br /> I'm an analytical thinker who enjoys solving problems and discovering new solutions to existing senerios.  If you're in need of any development work, please get in touch.  <b>I'm currrently accepting development projects</b>.</p>
       <ul id="skills">
-        <li>skill 1</li>
-        <li>skill 2</li>
-        <li>skill 3</li>
-        <li>skill 4</li>
-        <li>skill 5</li>
+        <li><a href="http://www.php.net">php 5.3</a></li>
+        <li><a href="http://www.symfony.com">symfony 2.1</a></li>
+        <li><a href="http://www.doctrine-project.org">doctrine 2.1</a></li>
+        <li><a href="http://www.mysql.net">mySQL</a></li>
+        <li><a href="http://www.w3.org">css3</a></li>
+        <li><a href="http://www.w3.org">html5</a></li>
       </ul>
       <hr />
       <h2>{{ 'my interests' | title }}</h2>
-      <p>blah blah blah....</p>
+      <p>I love music, the outdoors and technology and enjoying spending my (fleeting) free time backpacking in the wilderness or performing with my bands.</p>
     {% endblock %}
     </div>
   {% endblock %}

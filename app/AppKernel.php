@@ -29,6 +29,8 @@ class AppKernel extends Kernel
             new Ddnet\GithubBundle\DdnetGithubBundle(),
             new Ddnet\FoursquareBundle\DdnetFoursquareBundle(),
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            
+            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

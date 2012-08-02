@@ -14,6 +14,7 @@
         "sensio/distribution-bundle":                             "dev-master",
         "jms/aop-bundle":                                         "1.0.0.0",
         "jms/security-extra-bundle":                              "dev-master",
+        "jms/di-extra-bundle":                                    "dev-master",
         
         "symfony/security-bundle":                                ">=2.0.13",
         "symfony/swiftmailer-bundle":                             "*",
@@ -25,7 +26,7 @@
         "doctrine/doctrine-fixtures-bundle":                      "*",   
         "gedmo/doctrine-extensions":                              "master-dev",
         
-        "friendsofsymfony/user-bundle":                           "*",
+        "friendsofsymfony/user-bundle":                           "dev-master",
         
         "kriswallsmith/buzz":                                     "dev-master",
         "sensio/buzz-bundle":                                     "*",

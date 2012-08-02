@@ -36,9 +36,11 @@ label { font-weight: bold; color: <?php echo $offBlack ?>; display: block; }
 input[type=text], input[type=url], textarea, select { width: 400px !important; border: 1px solid <?php echo $black ?>; }
 select { width: 410px !important; }
 .contact-social-wrapper { width: 49%; }
-.social-bar-wrapper { max-width: 49%; }
+.social-bar-wrapper { max-width: 49%; margin-top: 10px !important; }
 input[type=submit] {}
 
 div.social-bar-wrapper { position: relative; margin: 0 auto; top: -20px; position: relative; }
 ul.social-links { max-width: 400px; margin: 0 auto;}
 ul.social-links,li.social-link { display: inline; }
+
+li#contact-link a { border-bottom: 2px solid <?php echo $red ?>; }

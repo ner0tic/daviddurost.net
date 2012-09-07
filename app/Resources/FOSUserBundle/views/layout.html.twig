@@ -7,10 +7,12 @@
 {% endblock %}
 {% block page_class %}{% endblock %}
 {% block content %}
+<div>
   {% for key, message in app.session.getFlashes() %}
   <div class="{{ key }}">
       {{ message|trans({}, 'FOSUserBundle') }}
   </div>
   {% endfor %}
   {%block fos_user_content %}{% endblock %}
+</div>
 {% endblock %}

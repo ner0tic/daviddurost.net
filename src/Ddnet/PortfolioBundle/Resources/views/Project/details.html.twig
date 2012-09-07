@@ -53,22 +53,27 @@
           <div class="fb-comments" data-href="{{ path('project_show',{ 'slug' : portfolio.slug } ) }}" data-num-posts="5" data-width="210"></div>
         {% endblock %}
         </div>
-{#      
-          <?php  if(is_object($repo)): ?>    
-    <div id="git-commit-wrapper" class="sidebar-widget">
-      <h3>github commit history</h3>      
-      <ul class="git-commits">
-      <?php foreach($git->getCommitApi()->getBranchCommits('ner0tic',$repo->getRepoName(),'master') as $x => $commit): ?>
-        <?php if($x >= sfConfig::get('app_ddgithub_max_commit_per_page')) break; ?>
-        <li class="git-commit" id="commit-<?php echo $commit['id'] ?>">
-          <?php echo image_tag('/images/icons/retro/github_gs.png', array('height'=>'30px', 'width'=>"30px", 'class'=>'git-commit-icon')) ?>
-            <h2><?php echo link_to(dd_truncate($commit['message']),$repo->getCommitUrl($commit['id'])) ?></h2>
-            <span class="git-commit-stats">committed on <?php $date = explode('T', $commit['committed_date']); echo date('m/d/Y',  strtotime($date[0])) ?> by <?php $e = $git->getUserApi()->show($commit['committer']['login']); echo mail_to($e['email'],$commit['committer']['name']) ?></span>
-        </li>
-      <?php endforeach; ?>
-      </ul>
-    </div>
-#} 
+        <div id="git-commit-wrapper" class="sidebar-widget">
+        {% block github %}
+          <h3>github commit history</h3>      
+          <ul class="git-commits">
+          {% block commits %}
+            {% for k, commit in commits if k < 5 %}
+             {% for key, value in commit %}
+              {{ key }} :: {{ value }}<br/>{#
+            <li class="git-commit" >
+              <img src="{{ asset('/images/icons/retro/github_gs.png') }}" height='30px' width="30px" class='git-commit-icon' />
+              <h2><a href="{{ commit.url }}">{{ commit.message | truncate(30) }}</a></h2>
+              <span class="git-commit-stats">committed on {{ commit.author.date | date("m/d/Y \\a\\t g:ia") }} by <a href="mailto:{{ commit.committer.email }}">{{ commit.committer.name }}</a></span>
+            </li>
+            {% else %}
+            <li class="git-commit">no commits found.</li>
+            {% endfor %} #}
+              {% endfor %} {% endfor %}
+          {% endblock %}
+          </ul>
+        {% endblock %}
+        </div>
       {% endblock %}
       </div>
       <div class="content-pane" id="{{ portfolio.slug }}">

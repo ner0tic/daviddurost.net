@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block fos_user_content %}
+<div class="signin-form-wrapper form-wrapper" id="signin-form">
 {% if error %}
     <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
 {% endif %}
@@ -31,4 +32,5 @@
     <input type="submit" id="_submit" name="_submit" value="sign in &raquo;" class="greenButton" />
   </p>
 </form>
+</div>
 {% endblock fos_user_content %}

@@ -15,7 +15,7 @@
         "jms/aop-bundle":                                         "1.0.0.0",
         "jms/security-extra-bundle":                              "dev-master",
         "jms/di-extra-bundle":                                    "dev-master",
-        
+
         "symfony/security-bundle":                                ">=2.0.13",
         "symfony/swiftmailer-bundle":                             "*",
         "symfony/monolog-bundle":                                 "*",
@@ -23,16 +23,17 @@
         "sensio/framework-extra-bundle":                          "*",
 
         "doctrine/data-fixtures":                                 "1.0.*",
-        "doctrine/doctrine-fixtures-bundle":                      "*",   
+        "doctrine/doctrine-fixtures-bundle":                      "*",
         "gedmo/doctrine-extensions":                              "master-dev",
-        
+
         "friendsofsymfony/user-bundle":                           "dev-master",
-        
+
         "kriswallsmith/buzz":                                     "dev-master",
         "sensio/buzz-bundle":                                     "*",
         "willdurand/geocoder":                                    "*",
         "egeloen/google-map-bundle":                              "*",
-        "knplabs/knp-last-tweets-bundle":                         "dev-master"
+        "knplabs/knp-last-tweets-bundle":                         "dev-master",
+        "ner0tic/github-api":                                     "dev-master"
     },
 
     "autoload": {

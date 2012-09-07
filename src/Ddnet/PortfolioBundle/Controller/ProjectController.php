@@ -47,7 +47,9 @@ class ProjectController extends Controller
       $q = "SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.slug = :slug";
       $q = $em->createQuery($q)->setParameter('slug',$slug);
       $r = $q->getSingleResult();
-      return $this->render('DdnetPortfolioBundle:Project:show.html.twig', array('portfolio' => $r));
+      $gh = new \Github\Client();
+      $commits = $gh->api('repo')->commits()->all($r->getGithubUser(), $r->getGithubRepo(), array('sha' => $r->getGithubBranch()));
+      return $this->render('DdnetPortfolioBundle:Project:show.html.twig', array('portfolio' => $r, 'commits' => $commits));
     }
 
     public function popupAction($id) {

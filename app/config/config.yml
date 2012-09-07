@@ -178,3 +178,8 @@ ivory_google_map:
 knp_last_tweets:
     fetcher:
         driver: api      
+services:
+ twig.extension.text:
+     class: Twig_Extensions_Extension_Text
+     tags:
+         - { name: twig.extension }        

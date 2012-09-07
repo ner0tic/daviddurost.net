@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new \Ddnet\UtilityBundle\DdnetUtilityBundle(),
             
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Ddnet\GithubBundle\DdnetGithubBundle(),
             new Ddnet\FoursquareBundle\DdnetFoursquareBundle(),
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             

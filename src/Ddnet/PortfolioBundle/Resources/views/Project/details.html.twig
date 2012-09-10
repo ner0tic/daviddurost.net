@@ -33,7 +33,7 @@
             </li>
           </ul>
         {% endblock %}
-        </div>          
+        </div>
         <div class="sidebar-widget" id="technologies-widget">
         {% block technologies %}
           <h3>technologies used</h3>
@@ -42,7 +42,7 @@
           {% else %}
 #}
             no skills listed.
-{#            
+{#
           {% endfor %}
 #}        {% endblock %}
         </div>
@@ -55,21 +55,18 @@
         </div>
         <div id="git-commit-wrapper" class="sidebar-widget">
         {% block github %}
-          <h3>github commit history</h3>      
+          <h3>github commit history</h3>
           <ul class="git-commits">
           {% block commits %}
             {% for k, commit in commits if k < 5 %}
-             {% for key, value in commit %}
-              {{ key }} :: {{ value }}<br/>{#
             <li class="git-commit" >
               <img src="{{ asset('/images/icons/retro/github_gs.png') }}" height='30px' width="30px" class='git-commit-icon' />
-              <h2><a href="{{ commit.url }}">{{ commit.message | truncate(30) }}</a></h2>
-              <span class="git-commit-stats">committed on {{ commit.author.date | date("m/d/Y \\a\\t g:ia") }} by <a href="mailto:{{ commit.committer.email }}">{{ commit.committer.name }}</a></span>
+              <h2><a href="{{ commit.url }}">{{ commit.commit.message | truncate(30) }}</a></h2>
+              <span class="git-commit-stats">committed on {{ commit.commit.author.date | date("m/d/Y \\a\\t g:ia") }} by <a href="mailto:{{ commit.committer.email }}">{{ commit.committer.name }}</a></span>
             </li>
             {% else %}
             <li class="git-commit">no commits found.</li>
-            {% endfor %} #}
-              {% endfor %} {% endfor %}
+            {% endfor %} 
           {% endblock %}
           </ul>
         {% endblock %}

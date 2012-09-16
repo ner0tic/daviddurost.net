@@ -34,18 +34,18 @@
           </ul>
         {% endblock %}
         </div>
+{#
         <div class="sidebar-widget" id="technologies-widget">
         {% block technologies %}
           <h3>technologies used</h3>
-{#          {% for skill in portfolio.skills %}
+          {% for skill in portfolio.skills %}
             {{ skill.name }}&nbsp;
           {% else %}
-#}
             no skills listed.
-{#
-          {% endfor %}
-#}        {% endblock %}
+          {% endfor %}        
+        {% endblock %}
         </div>
+#}
         <div id="project-comment-wrapper" class="sidebar-widget">
         {% block comments %}
           <h3>comments</h3>
@@ -53,6 +53,7 @@
           <div class="fb-comments" data-href="{{ path('project_show',{ 'slug' : portfolio.slug } ) }}" data-num-posts="5" data-width="210"></div>
         {% endblock %}
         </div>
+        {% if portfolio.githubRepo %}
         <div id="git-commit-wrapper" class="sidebar-widget">
         {% block github %}
           <h3>github commit history</h3>
@@ -71,6 +72,7 @@
           </ul>
         {% endblock %}
         </div>
+        {% endif %}
       {% endblock %}
       </div>
       <div class="content-pane" id="{{ portfolio.slug }}">

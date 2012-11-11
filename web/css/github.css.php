@@ -8,9 +8,10 @@
 #git-commit-wrapper h2 {
 
 }
-ul.git-commits {}
+ul.git-commits { margin-left: -30px; }
 li.git-commit {
   border-bottom: 2px dashed <?php echo $gray ?>;
+  list-style: none;
 }
 li.git-commit:hover {
   background: <?php echo $gray ?>;
@@ -20,10 +21,11 @@ li.git-commit img {
 }
 li.git-commit h2 {
   color: <?php echo $gray ?>;
-  font-weight: none;
+  font-weight: normal;
   display: inline-block;
   vertical-align: 8px;
   line-height: 15px;
+  font-size: 1.2em !important;
 }
 li.git-commit hr {
   border: none !important;

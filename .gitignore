@@ -18,3 +18,5 @@ composer.lock
 
 # Misc
 *~
+nbproject/*
+/app/config/config.yml

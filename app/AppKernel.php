@@ -10,29 +10,34 @@ class AppKernel extends Kernel
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(), 
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            
             new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             
-            new FOS\UserBundle\FOSUserBundle(),
-            new \Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
-            new \Ddnet\BillingBundle\DdnetBillingBundle(),
-            new \Ddnet\UserBundle\DdnetUserBundle(),
-            new \Ddnet\UtilityBundle\DdnetUtilityBundle(),
+            new Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
+            new Ddnet\UtilityBundle\DdnetUtilityBundle(),
             
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            new Ddnet\FoursquareBundle\DdnetFoursquareBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            
+            new FOS\UserBundle\FOSUserBundle(),
+            
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
+            new Ddnet\UserBundle\DdnetUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

@@ -3,90 +3,84 @@
 namespace Ddnet\PortfolioBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Ddnet\PortfolioBundle\Entity\Project;
-use Ddnet\PortfolioBundle\Entity\Status;
-use Ddnet\PortfolioBundle\Entity\Category;
+use \Github\Client as Github;
 
 class ProjectController extends Controller
 {
-    /**
-     * @Route("/portfolio")
-     * @Template()
-     */
-    public function indexAction($status=null)
+    public function indexAction()
     {
-      if(!is_null($status)) {
-        $status = $this->getDoctrine()
-                           ->getEntityManager()
-                           ->createQuery("SELECT s FROM DdnetPortfolioBundle:Status s WHERE s.slug = :status")
-                           ->setParameter('status', $status)
-                           ->getSingleResult();
-        $portfolios = $this->getDoctrine()
-                           ->getEntityManager()
-                           ->createQuery('SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.status = :status')
-                           ->setParameter('status', $status)
-                           ->getResult();
-      } else
-        $portfolios = $this->getDoctrine()
-                           ->getEntityManager()
-                           ->createQuery('SELECT p FROM DdnetPortfolioBundle:Project p ORDER BY p.name ASC')
-                           ->getResult();
-      $statuses = $this->getDoctrine()
-                       ->getEntityManager()
-                       ->createQuery('SELECT s FROM DdnetPortfolioBundle:Status s ORDER BY s.name ASC')
-                       ->getResult();
-      return $this->render('DdnetPortfolioBundle:Project:index.html.twig', array('portfolios'=>$portfolios, 'status' => $status, 'statuses' => $statuses, 'filter' => null));
+      $repo = $this->getDoctrine()->getRepository('DdnetPortfolioBundle:Project');
+      $query = $repo->createQueryBuilder('p')->orderBy('p.updated, p.name', 'ASC');
+      
+      switch($this->Container->get('request')->get('_route')) 
+      {
+        case 'portfolio-by-category':
+          $query->leftJoin('DdnetPortfolioBundle:ProjectCategory c')
+                ->where('c.slug = :slug')
+                ->setParameter('slug', $slug);
+          break;
+        case 'portfolio-by-tag':
+          /** @todo add this delimiting by tags funcitonality **/
+        default:
+          break;
+      }
+      
+      $pager = new Pagerfanta(new DoctrineORMAdapter($query));
+      $pager->setMaxPerPage($this->getRequest()->get('pageMax', 8));
+      $pager->setCurrentPage($this->getRequest()->get('page', 1));
+      
+      $results = $pager->getCurrentPageResults();
+      
+      return $this->render('DdnetPortfolioBundle:Project:index.html.twig', array('results' => $results, 'pager' => $pager));
     }
-
-    public function showAction($slug) {
+    
+    public function showAction($slug)
+    {
       $em = $this->getDoctrine()->getEntityManager();
       $q = "SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.slug = :slug";
-      $q = $em->createQuery($q)->setParameter('slug',$slug);
-      $r = $q->getSingleResult();
-      $gh = new \Github\Client();
-      $commits = $gh->api('repo')->commits()->all($r->getGithubUser(), $r->getGithubRepo(), array('sha' => $r->getGithubBranch()));
-      return $this->render('DdnetPortfolioBundle:Project:show.html.twig', array('portfolio' => $r, 'commits' => $commits));
+      $query = $em->createQuery($q)->setParameter('slug', $slug);
+      $result = $query->getSingleResult();
+      
+      $gh = new Github();
+      $commits = $gh->api('repo')
+              ->commits()
+              ->all($result->getGithubUser(), 
+                    $result->getGithubRepo(),  
+                    array(
+                      'sha' => $result->getGithubBranch()
+                    )
+              );
+    
+      return $this->render('DdnetPortfolioBundle:Project:show.html.twig', array('portfolio' => $result, 'commits' => $commits));
     }
-
-    public function popupAction($id) {
-      $em = $this->getDoctrine()->getEntityManager();
-      $q = "SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.id = :id";
-      $q = $em->createQuery($q)->setParameter('id',$id);
-      $r = $q->getSingleResult();
-      return $this->render('DdnetPortfolioBundle:Project:popup.html.twig', array('portfolio' => $r, 'no_layout' => true));
-    }
-
-    public function newAction(Request $request) {
+    
+    public function newAction(Request $request)
+    {
       $project = new Project();
       $form = $this->createFormBuilder($project)
               ->add('name')
               ->add('category')
               ->add('status')
-              ->add('skills')
-              /*->add('created')
-              ->add('updated')
-              ->add('slug')*/
               ->add('description')
               ->add('dev_url')
               ->add('prod_url')
               ->add('client')
               ->add('version')
               ->getForm();
-
-      if($request->getMethod() == 'POST') {
+      
+      if($request->getMethod() == 'POST')
+      {
         $form->bindRequest($this->getRequest());
-        if($form->isValid()) {
-          $em = $this->getDoctrine()->getEntityManager();
-          $em->persist($project);
-          $em->flush();
-
+        if($form->isValid())
+        {
+          $this->getDoctrine()->getEntityManager()->persist($project)->flush(); 
+        
           return $this->redirect($this->generateUrl('portfolio'));
         }
       }
-      return $this->render('DdnetPortfolioBundle:Project:new.html.twig', array('form' => $form->createView()));
+      
+      return $this->render('DdnetPortfolioBundle:Project:new.html.twig', array ('form' => $form->createView()));
     }
 }

@@ -3,8 +3,6 @@
 namespace Ddnet\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkextraBundle\Configuration\Template;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Config\FileLocator;
 

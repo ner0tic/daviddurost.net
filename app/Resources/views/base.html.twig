@@ -21,9 +21,9 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 <!-- CSS : implied media="all" -->
-    {% block stylesheets %}
-      <link rel="stylesheet" href="{{ asset('/css/style.css.php') }}" />
-    {% endblock %}
+    {% stylesheets '@DdnetUtilityBundle/Resources/public/css/*' output='css/daviddurost.css' %}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 <!-- CSS : custom styles -->
 </head>
     <body>     
@@ -72,15 +72,13 @@
             {% endblock %}
         {% endblock %}
         </footer>
-      {% block javascripts %}
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript" ></script>
-        <script src="{{ asset('/js/jquery.lightbox.latest.js') }}" type="text/javascript" ></script>
-      {% endblock %}
+      {% javascripts '@DdnetUtilityBundle/Resources/public/js/*' output='js/daviddurost.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
 <!--[if lt IE 7 ]>
     <script src="js/libs/dd_belatedpng.js"></script>
     <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
 <![endif]-->
+      {% endjavascripts %}
     {% endblock %}
     </body>
 </html>

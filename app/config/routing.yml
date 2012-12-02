@@ -1,74 +1,163 @@
-DdnetFoursquareBundle:
-    resource: "@DdnetFoursquareBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-DdnetUserBundle:
-    resource: "@DdnetUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-# Internal routing configuration to handle ESI
-#_internal:
-#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#   prefix:   /_internal
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
-
-#fos_user_profile:
-#    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-#    prefix: /profile
-
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
-
-fos_user_resetting:
-    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
-
-fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
-    
-portfolio_by_status:
-    pattern:  /portfolio/status/{status}
-    defaults: { _controller: DdnetPortfolioBundle:Project:index }
-    requirements: 
-      status:  "[\w-]+"
-project_show:
-    pattern:  /portfolio/{slug}
-    defaults: { _controller: DdnetPortfolioBundle:Project:show }
-    requirements: 
-        slug:   "[\w-]+"      
 homepage:
     pattern: /
     defaults: { _controller: DdnetPortfolioBundle:Project:index }
 portfolio:
     pattern:  /portfolio
     defaults: { _controller: DdnetPortfolioBundle:Project:index }
-
-blog:
-    pattern: /blog
-    defaults: { _controller: DdnetBlogBundle:Default:index }
+portfolio_new:
+    pattern: /project/new
+    defaults: { _controller: DdnetPortfolioBundle:Project:new }
+portfolio_show:
+    pattern:  /portfolio/{slug}
+    defaults: { _controller: DdnetPortfolioBundle:Project:show }
+    requirements: 
+        slug:   "[\w-]+"  
+portfolio_edit:
+    pattern: /portfolio/{slug}/edit
+    defaults: { _controller: DdnetPortfolioBundle:Project:edit }
+    requirements:
+        slug: "[\w-]+"
+portfolio_remove:
+    pattern: /portfolio/{slug}/remove
+    defaults: { _controller: DdnetPortfolioBundle:Project:remove }
+    requirements:
+        slug: "[\w-]+"
+portfolio_remove_confirmed:
+    pattern: /portfolio/{slug}/remove/confirmed
+    defaults: { _controller: DdnetPortfolioBundle:Project:removeConfirmed }
+    requirements:
+        slug: "[\w-]+"
+portfolio_by_category:
+    pattern: /portfolio/categories/{slug}
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:index }
+    requirements:
+        slug: "[\w-]+"  
+portfolio_by_tag:
+    pattern: /portfolio/tags/{slug}
+    defaults: { _controller: DdnetPortfolioBundle:Project:index }
+    requirements:
+        slug: "[\w-]+"  
+portfolio_by_status:
+    pattern:  /portfolio/status/{status}
+    defaults: { _controller: DdnetPortfolioBundle:Project:index }
+    requirements: 
+        status:  "[\w-]+"
+categories:
+    pattern: /categories
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:index }
+category_show:
+    pattern: /categories/{slug}
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:show }
+    requirements:
+        slug: "[\w-]+"  
+category_new:
+    pattern: /categories/new
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:new }
+category_edit:
+    pattern: /categories/{slug}/edit
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:edit }
+    requirements:
+        slug: "[\w-]+"  
+category_remove:
+    pattern: /categories/{slug}/remove
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:remove }
+    requirements:
+        slug: "[\w-]+"  
+category_remove_confirmed:
+    pattern: /categories/{slug}/remove/confirmed
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:removeConfirmed }
+    requirements:
+        slug: "[\w-]+"
+tags:
+    pattern: /tags
+    defaults: { _controller: DdnetPortfolioBundle:ProjectTags:index }
+tag_show:
+    pattern: /tags/{slug}
+    defaults: { _controller: DdnetPortfolioBundle:ProjectTags:show }
+    requirements:
+        slug: "[\w-]+"  
+tag_new:
+    pattern: /tags/new
+    defaults: { _controller: DdnetPortfolioBundle:ProjectTags:new }
+tag_edit:
+    pattern: /tags/{slug}/edit
+    defaults: { _controller: DdnetPortfolioBundle:ProjectTags:edit }
+    requirements:
+        slug: "[\w-]+"  
+tag_remove:
+    pattern: /tags/{slug}/remove
+    defaults: { _controller: DdnetPortfolioBundle:ProjectTags:remove }
+    requirements:
+        slug: "[\w-]+"  
+tag_remove_confirmed:
+    pattern: /tags/{slug}/remove/confirmed
+    defaults: { _controller: DdnetPortfolioBundle:ProjectTags:removeConfirmed }
+    requirements:
+        slug: "[\w-]+"
+status:
+    pattern: /status
+    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:index }
+status_show:
+    pattern: /status/{slug}
+    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:show }
+    requirements:
+        slug: "[\w-]+"  
+status_new:
+    pattern: /status/new
+    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:new }
+status_edit:
+    pattern: /status/{slug}/edit
+    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:edit }
+    requirements:
+        slug: "[\w-]+"  
+status_remove:
+    pattern: /status/{slug}/remove
+    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:remove }
+    requirements:
+        slug: "[\w-]+"  
+status_remove_confirmed:
+    pattern: /status/{slug}/remove/confirmed
+    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:removeConfirmed }
+    requirements:
+        slug: "[\w-]+"
+client_show:
+    pattern: /client/{slug}
+    defaults: { _controller: DdnetBillingBundle:Client:show }
+    requirements:
+        slug: "[\w-]+"  
+client_new:
+    pattern:  /clients/new
+    defaults: { _controller: DdnetBillingBundle:Client:new }
+client_edit:
+    pattern: /client/{slug}/edit
+    defaults: { _controller: DdnetBillingBundle:Client:edit }
+    requirements:
+        slug: "[\w-]+"
+client_remove:
+    pattern: /client/{slug}/remove
+    defaults: { _controller: DdnetBillingBundle:Client:remove }
+    requirements:
+        slug: "[\w-]+"
+client_remove_confirmed:
+    pattern: /client/{slug}
+    defaults: { _controller: DdnetBillingBundle:Client:show }
+    requirements:
+        slug: "[\w-]+"
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
 profile:
     pattern: /profile
     defaults: { _controller: DdnetUserBundle:Profile:index }
 contact:
     pattern: /contact
-    defaults: { _controller: DdnetUtilityBundle:Default:contact }
+    defaults: { _controller: DdnetUtilityBundle:Contact:index }
     requirements: { _method: GET }
-
-project_popup:
-    pattern:  /portfolio/{id}
-    defaults: { _controller: DdnetPortfolioBundle:Project:popup }
-    requirements: 
-        id:     \d+
-project_new:
-    pattern: /project/new
-    defaults: { _controller: DdnetPortfolioBundle:Project:new }
-
-        
-client_new:
-    pattern:  /clients/new
-    defaults: { _controller: DdnetBillingBundle:Client:new }

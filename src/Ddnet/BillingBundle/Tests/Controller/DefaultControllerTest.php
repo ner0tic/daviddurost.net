@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddnet\PortfolioBundle\Tests\Controller;
+namespace Ddnet\BillingBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

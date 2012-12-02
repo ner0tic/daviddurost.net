@@ -1,0 +1,33 @@
+{# src/Ddnet/PortfolioBundle/Resources/View/ProjectStatus/index.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
+  <link href="{{ asset_url }}" rel="stylesheet" />
+  {{ parent() }}
+{% endstylesheets %}
+{% javascripts '@DdnetPortfolioBundle/Resources/public/*' %}
+  {{ parent() }}
+  <script src="{{ asset_url }}" type="text/javascript" ></script>  
+{% endjavascripts %}
+
+{% block content %}
+  <div id="status-content">
+  {% for status in results %}
+    <div class="status-entry">
+      <a href="{{ path('status_show', {'slug':status.slug}) }}">
+        <img src="{{ asset('/images/status/thumbnails/' ~ status.slug ~ '.png') }}" alt="{{ status.name|capitalize }}" />
+        <img src="{{ asset('/images/status/' ~ status.Status.slug ~ '.png') }}" class="status" alt="{{ status.Status.name }}" />
+        <h3>{{ status.name|capitalize }}</h3>
+        <div class="details">
+          <p>
+            {{ status.description [0:130]| trim ~ '...' }}
+            <a href="{{ path('status_show', { 'slug':status.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
+          </p>
+        </div> 
+      </a>
+    </div>
+  {% else %} 
+    <em>no items found.</em>
+  {% endfor %}
+  </div>
+{% endblock %}

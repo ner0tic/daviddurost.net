@@ -1,0 +1,33 @@
+{# src/Ddnet/PortfolioBundle/Resources/View/Project/index.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
+  <link href="{{ asset_url }}" rel="stylesheet" />
+  {{ parent() }}
+{% endstylesheets %}
+{% javascripts '@DdnetPortfolioBundle/Resources/public/*' %}
+  {{ parent() }}
+  <script src="{{ asset_url }}" type="text/javascript" ></script>  
+{% endjavascripts %}
+
+{% block content %}
+  <div id="portfolio-content">
+  {% for portfolio in results %}
+    <div class="portfolio-entry">
+      <a href="{{ path('portfolio_show', {'slug':portfolio.slug}) }}">
+        <img src="{{ asset('/images/portfolio/thumbnails/' ~ portfolio.slug ~ '.png') }}" alt="{{ portfolio.name|capitalize }}" />
+        <img src="{{ asset('/images/status/' ~ portfolio.Status.slug ~ '.png') }}" class="status" alt="{{ portfolio.Status.name }}" />
+        <h3>{{ portfolio.name|capitalize }}</h3>
+        <div class="details">
+          <p>
+            {{ portfolio.description [0:130]| trim ~ '...' }}
+            <a href="{{ path('portfolio_show', { 'slug':portfolio.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
+          </p>
+        </div> 
+      </a>
+    </div>
+  {% else %} 
+    <em>no items found.</em>
+  {% endfor %}
+  </div>
+{% endblock %}

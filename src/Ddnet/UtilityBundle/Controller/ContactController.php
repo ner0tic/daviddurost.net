@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ddnet\UtilityBundle\Form\Type\ContactType;
 use Ddnet\FoursquareBundle\Foursquare\Foursquare;
 use Ddnet\FoursquareBundle\Entity\Checkin as Checkin;
-use Ddnet\FoursquareBundle\Entity\Venue as fsVenue;
 
 class ContactController extends Controller
 {

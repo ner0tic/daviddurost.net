@@ -6,7 +6,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
  * @Gedmo\Tree(type="nested")
  * @ORM\Table(name="project_category")
  * @ORM\Entity(repositoryClass="Ddnet\PortfolioBundle\Entity\Repository\ProjectCategoryRepository")

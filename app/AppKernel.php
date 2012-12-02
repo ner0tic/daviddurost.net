@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
             new Ddnet\UserBundle\DdnetUserBundle(),
+            new Ddnet\BillingBundle\DdnetBillingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

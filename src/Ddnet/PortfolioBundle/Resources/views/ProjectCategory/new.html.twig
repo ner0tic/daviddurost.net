@@ -1,0 +1,28 @@
+{# src/Ddnet/PortfolioBundle/Resources/view/ProjectCategory/new.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
+  <link href="{{ asset_url }}" rel="stylesheet" />
+  {{ parent() }}
+{% endstylesheets %}
+{% javascripts '@DdnetPortfolioBundle/Resources/public/js/*'  %}
+  {{ parent() }}
+  <script src="{{ asset_url }}" type="text/javascript" />  
+{% endjavascripts %}
+  
+{% block content %}
+  <div id="category-content">
+  <form action="{{ path('category_new') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.parent) }}
+
+    {{ form_rest(form) }}
+
+    <input type="submit" />
+</form>
+  </div>
+{% endblock %}
+  

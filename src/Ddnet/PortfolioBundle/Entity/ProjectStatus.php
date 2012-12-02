@@ -6,8 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="status")
+ * @ORM\Entity(repositoryClass="Ddnet\PortfolioBundle\Entity\Repository\ProjectStatusRepository")     
  */
 class ProjectStatus
 {
@@ -15,7 +15,6 @@ class ProjectStatus
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Entity(repositoryClass="Ddnet\PortfolioBundle\Entity\Repository\ProjectStatusRepository")
      */
     protected $id;
 

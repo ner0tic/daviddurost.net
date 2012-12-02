@@ -1,0 +1,97 @@
+{# src/Ddnet/PortfolioBundle/Resources/View/Project/show.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
+  <link href="{{ asset_url }}" rel="stylesheet" />
+  {{ parent() }}
+{% endstylesheets %}
+
+{% javascripts '@DdnetPortfolioBundle/Resources/public/js/*' %}
+  {{ parent() }}
+  <script src="{{ asset_url
+ }}" type="text/javascript"></script>  
+{% endjavascripts %}
+
+{% block content %}
+    {% block fb %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=196502140431414";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    {% endblock %}
+    <div class="project-wrapper" id="{{ portfolio.slug }}-wrapper">
+    {% block projectdetails %}
+      <div class="sidebar">
+      {% block sidebar %}
+        <div class="sidebar-widget" id="social-links-widget">
+        {% block sociallinks %}
+          <h3>share</h3>
+          <ul class="social-links">
+            <li class="social-link" id="facebook-social-link">
+              <a href="http://www.facebook.com/sharer.php?u={{ path('project_show', { 'slug' : portfolio.slug } ) }}&t={{portfolio.name}}"><img src="{{ asset('/images/icons/retro/facebook.png') }}" alt="share on facebook" /></a>
+           </li>
+            <li class="social-link" id="twitter-social-link">
+              <img src="{{ asset('/images/icons/retro/twitter.png') }}" alt="share on twitter" />
+            </li>
+            <li class="social-link" id="linkedin-social-link">
+              <img src="{{ asset('/images/icons/retro/linkedin.png') }}" alt="share on linkedin" />
+            </li>
+            <li class="social-link" id="google-social-link">
+              <img src="{{ asset('/images/icons/retro/google.png') }}" alt="share on google+" />
+            </li>
+          </ul>
+        {% endblock %}
+        </div>
+        <div id="project-comment-wrapper" class="sidebar-widget">
+        {% block comments %}
+          <h3>comments</h3>
+          <em style="display:none;">this module is down for maintenance.</em>
+          <div class="fb-comments" data-href="{{ path('project_show',{ 'slug' : portfolio.slug } ) }}" data-num-posts="5" data-width="210"></div>
+        {% endblock %}
+        </div>
+        {% if portfolio.githubRepo %}
+        <div id="git-commit-wrapper" class="sidebar-widget">
+        {% block github %}
+          <h3>github commit history</h3>
+          <ul class="git-commits">
+          {% block commits %}
+            {% for k, commit in commits if k < 5 %}
+            <li class="git-commit" >
+              <img src="{{ asset('/images/icons/retro/github_gs.png') }}" height='30px' width="30px" class='git-commit-icon' />
+              <h2><a href="{{ 'https://github.com/' ~ portfolio.githubUser ~ '/' ~ portfolio.githubRepo ~ '/commit/' ~ commit.sha }}">{{ commit.commit.message | truncate(20) }}</a></h2>
+              <span class="git-commit-stats">committed on {{ commit.commit.author.date | date("m/d/Y \\a\\t g:ia") }} {# by <a href="mailto:{{ commit.commit.committer.email }}">{{ commit.commit.committer.name }}</a> #}</span>
+            </li>
+            {% else %}
+            <li class="git-commit">no commits found.</li>
+            {% endfor %}
+          {% endblock %}
+          </ul>
+        {% endblock %}
+        </div>
+        {% endif %}
+      {% endblock %}
+      </div>
+      <div class="content-pane" id="{{ portfolio.slug }}">
+      {% block contentpane %}
+        <div class="img-wrapper">
+        {% block projectimage %}
+          <img src="{{ asset('/images/portfolio/' ~ portfolio.slug ~ '.png') }}" alt="{{ portfolio.name | capitalize }}" class="portfolio-image" />
+        {% endblock %}
+        </div>
+        <h3 class="portfolio-name">{{ portfolio.name | capitalize }}</h3>
+        <div class="portfolio-desc">
+        {% block projectdesc %}
+          {{ portfolio.description | nl2br }}
+          {# if(is_object($repo)) echo '<br />'.link_to(image_tag("/images/banners/github.png",array('alt'=>"See Github repo",'class'=>"portfolio-download-image")),$repo->getUrl()) ?> #}
+        {% endblock %}
+        </div>
+      {% endblock %}
+      </div>
+    {% endblock %}
+    </div>
+  {% endblock %}
+ 

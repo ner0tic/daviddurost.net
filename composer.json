@@ -41,7 +41,9 @@
         "pagerfanta/pagerfanta":                                  "dev-master",
         
         "knplabs/knp-last-tweets-bundle":                         "dev-master",
-        "ner0tic/github-api":                                     "dev-master"
+        
+        "ner0tic/github-api":                                     "dev-master",
+        "ddnet/foursquare-bundle":                                "dev-master"
     },
     "require-dev": {
         "elao/web-profiler-extra-bundle":                         "dev-master"

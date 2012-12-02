@@ -69,10 +69,19 @@ class Project
    * @var Ddnet\BillingBundle\Entity\Client $client The client for the project.
    * 
    * @Gedmo\SortableGroup
-   * @ORM\ManyToOne(targetEntity="User", inversedBy="projects")
+   * @ORM\ManyToOne(targetEntity="Client", inversedBy="projects")
    * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
    */
   protected $client;
+  
+  /**
+   * @var Ddnet\BillingBundle\Entity\Client $client The client for the project.
+   * 
+   * @Gedmo\SortableGroup
+   * @ORM\ManyToOne(targetEntity="User", inversedBy="projects")
+   * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+   */
+  protected $user;
   
     /**
      * @var string $github_repo

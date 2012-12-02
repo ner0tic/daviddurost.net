@@ -1,0 +1,55 @@
+{#  src/DdnetUtilityBundle/Resources/views/Contact/index.html.twig #}
+{% extends '::base.html.twig' %}
+{% stylesheets 
+    '@Ddnet/Resources/public/css/contact.css.php'
+    '@Ddnet/Resources/public/css/foursquare.css.php'
+    '@Ddnet/Resources/public/css/form.css.php' %}
+{% endstylesheets %}
+{% block content %}
+<div>
+  <div class="contact-social-wrapper form-wrapper" id="contact-social-pane">
+  {% block contact_form %}
+    <div class="main-column" id="contact">
+      <h2>{{ 'contact me' | title }}</h2>
+      <form action="{{ path('contact') }}" method="post" {{ form_enctype(form) }} id="contact-form">
+        {{ form_errors(form) }}
+        <div class="slider">
+          {{ form_label(form.name) }}
+          {{ form_widget(form.name) }}
+        </div>
+        <div class="slider">
+          {{ form_label(form.email_address) }}
+          {{ form_widget(form.email_address) }}
+        </div>
+        <div class="slider">
+          {{ form_label(form.url) }}          
+          {{ form_widget(form.url) }}
+        </div>
+        <div class="slider">
+          {{ form_label(form.topic) }}
+          {{ form_widget(form.topic) }}  
+        </div>
+        <div class="slider">
+          {{ form_label(form.message) }}
+          {{ form_widget(form.message) }}
+        </div>
+        <div>
+        {{ form_rest(form) }}
+        <input type="submit" class="submit greenButton" id="contactSubmit" value="go go gadget" />
+        </div>
+      </form>
+      {% include 'DdnetUtilityBundle:Contact:socialbar.html.twig' with { 'page' : page } %}
+    </div>
+  {% endblock %}      
+  </div>
+  <div class="contact-social-wrapper foursquare-wrapper" id="contact-4sq-pane">
+    {% block foursquare %}  
+    {% include 'DdnetUtilityBundle:Contact:4sq.html.twig' with { 'checkin' : checkin, 'venue' : venue, 'map' : map } %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
+{% javascripts %}
+  {{ parent() }}
+  {{ google_map_js(map) }}
+{% endjavascripts %}  

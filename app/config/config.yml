@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
     - { resource: doctrine_extensions.yml }
+    - { resource: foursquare.yml }
 
 framework:
     #esi:             ~
@@ -46,6 +47,11 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        mapping_types:
+            enum: string
+            set: string
+            varbinary: string
+            tinyblob: text
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
@@ -83,7 +89,7 @@ stof_doctrine_extensions:
         default: 
             timestampable: true
             sortable: true
-            sluggableL: true
+            sluggable: true
             
 # FOS
 fos_user:
@@ -116,10 +122,6 @@ jms_security_extra:
 jms_aop:
     cache_dir: %kernel.cache_dir%/jms_aop  
 
-ddnet_foursquare:
-    api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    user_id: XXXXXXX
-    
 ivory_google_map:
     map:
       # map js prefix

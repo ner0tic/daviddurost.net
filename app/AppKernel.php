@@ -25,6 +25,8 @@ class AppKernel extends Kernel
             
             new Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
             new Ddnet\UtilityBundle\DdnetUtilityBundle(),
+            new Ddnet\UserBundle\DdnetUserBundle(),
+            new Ddnet\BillingBundle\DdnetBillingBundle(),
             
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             
@@ -33,13 +35,11 @@ class AppKernel extends Kernel
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
-            new Ddnet\UserBundle\DdnetUserBundle(),
-            new Ddnet\BillingBundle\DdnetBillingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }

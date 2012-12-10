@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
     - { resource: doctrine_extensions.yml }
-    - { resource: foursquare.yml }
+#    - { resource: foursquare.yml }
 
 framework:
     #esi:             ~
@@ -186,7 +186,8 @@ ivory_google_map:
       
 knp_last_tweets:
     fetcher:
-        driver: api      
+        driver: api              
+        
 services:
  twig.extension.text:
      class: Twig_Extensions_Extension_Text

@@ -2,7 +2,7 @@
     "require": {
         "php":                                                    ">=5.3.2",
         "doctrine/doctrine-bundle":                               "dev-master",
-        "symfony/symfony":                                        "2.1.*",
+        "symfony/symfony":                                        "2.1.4",
         "doctrine/dbal":                                          "2.2.2.0",
         "doctrine/orm":                                           ">=2.2.3,<2.4-dev",
         "twig/extensions":                                        "dev-master",
@@ -43,7 +43,7 @@
         "knplabs/knp-last-tweets-bundle":                         "dev-master",
         
         "ner0tic/github-api":                                     "dev-master",
-        "ddnet/foursquare-bundle":                                "dev-master"
+        "ner0tic/foursquare-api":                                "dev-master"
     },
     "require-dev": {
         "elao/web-profiler-extra-bundle":                         "dev-master"

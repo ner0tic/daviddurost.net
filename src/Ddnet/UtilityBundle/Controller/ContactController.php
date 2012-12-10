@@ -4,8 +4,7 @@ namespace Ddnet\UtilityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ddnet\UtilityBundle\Form\Type\ContactType;
-use Ddnet\FoursquareBundle\Foursquare\Foursquare;
-use Ddnet\FoursquareBundle\Entity\Checkin as Checkin;
+use Foursquare\Client as Foursquare;
 
 class ContactController extends Controller
 {
@@ -13,7 +12,9 @@ class ContactController extends Controller
   {
     $page = '';
     $form = $this->createForm(new ContactType());//, $contact);
-    $foursquare = new Foursquare($this->container);
+    
+    $foursquare = new Foursquare();
+    $foursquare->setAuthClientId('421286');
       
     if($request->getMethod() == 'POST')
     {
@@ -25,10 +26,10 @@ class ContactController extends Controller
     }
       
     // get last checkin
-    $checkins = json_decode($foursquare->get('users/'.$this->container->getParameter('foursquare.user_id').'/checkins'), true);
-    $checkins = $checkins['response']['checkins']['items'];
-    $checkin = new Checkin();
-    $checkin->fromArray($checkins[0]);
+    $checkin = $foursquare->api('users')->getRecentCheckin();
+    
+    var_dump($checkin);
+    die('...');
     
     // get venue
     $venue = $checkin->getVenue();

@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Ddnet\PortfolioBundle\Entity\Project;
 use \Github\Client as Github;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Exception\NotValidCurrentPageException;
 
 class ProjectController extends Controller
 {
@@ -14,7 +17,7 @@ class ProjectController extends Controller
       $repo = $this->getDoctrine()->getRepository('DdnetPortfolioBundle:Project');
       $query = $repo->createQueryBuilder('p')->orderBy('p.updated, p.name', 'ASC');
       
-      switch($this->Container->get('request')->get('_route')) 
+      switch($this->get('request')->get('_route')) 
       {
         case 'portfolio-by-category':
           $query->leftJoin('DdnetPortfolioBundle:ProjectCategory c')

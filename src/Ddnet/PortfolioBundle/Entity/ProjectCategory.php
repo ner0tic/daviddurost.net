@@ -4,6 +4,7 @@ namespace Ddnet\PortfolioBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @Gedmo\Tree(type="nested")
@@ -22,14 +23,16 @@ class ProjectCategory
     /**
      * @var string $name
      * 
-     * @ORM\Column(name="name", type="string", length=150)
+     * @ORM\Column(name="name", type="string")
+     * @Assert\MaxLength(150)
+     * @Assert\NotBlank()
      */
     protected $name;
 
     /**
      * @var text $description
      * 
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="description", type="text")
      */
     protected $description;
 

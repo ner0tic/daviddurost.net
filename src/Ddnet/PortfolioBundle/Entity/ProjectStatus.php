@@ -3,7 +3,9 @@
 namespace Ddnet\PortfolioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="status")
@@ -21,14 +23,15 @@ class ProjectStatus
     /**
      * @var string $name
      * 
-     * @ORM\Column(name="name", type="string", length=150)
+     * @ORM\Column(name="name", type="string")
+     * @Assert\MaxLength(150)
      */
     private $name;
 
     /**
      * @var text $description
      * 
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
@@ -65,7 +68,7 @@ class ProjectStatus
 
     public function __construct()
     {
-        $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
     
     public function __toString() {

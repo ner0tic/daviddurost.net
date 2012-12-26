@@ -6,6 +6,7 @@ namespace Ddnet\UserBundle\Entity;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -27,14 +28,48 @@ class User extends BaseUser
     protected $slug;
     
     /**
-     * @ORM\Column(type="string", length=150) 
+     * @var string $first_name
+     * 
+     * @ORM\Column(type="string", name="first_name")
+     * @Assert\MaxLength(150)
+     * @Assert\NotBlank()
      */
     protected $first_name;
     
     /**
-     * @ORM\Column(type="string", length=150) 
+     * @var string $last_name
+     * 
+     * @ORM\Column(type="string", name="last_name")
+     * @Assert\MaxLength(150)
+     * @Assert\NotBlank()
      */
     protected $last_name;
+    
+    /**
+     * @var string $email_address
+     * 
+     * @ORM\Column(type="string", name="email_address")
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true)
+     */
+    protected $email_address;
+    
+    /**
+     * @var string $url
+     * 
+     * @ORM\Column(type="string", name="url")
+     * @Assert\Url()
+     */
+    protected $url;    
+    
+    /**
+     * @var string $twitter
+     * 
+     * @ORM\Column(type="string", name="twitter")
+     * @Assert\MaxLength(100)
+     */
+    protected $twitter;    
     
     /**
      * @var datetime $created
@@ -50,12 +85,11 @@ class User extends BaseUser
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
      */
-    private $updated;    
+    private $updated;
 
     public function __construct()
     {
         parent::__construct();
-        // your own logic
     }
 
     /**
@@ -176,5 +210,71 @@ class User extends BaseUser
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set email_address
+     *
+     * @param string $emailAddress
+     * @return User
+     */
+    public function setEmailAddress($emailAddress)
+    {
+        $this->email_address = $emailAddress;
+        return $this;
+    }
+
+    /**
+     * Get email_address
+     *
+     * @return string 
+     */
+    public function getEmailAddress()
+    {
+        return $this->email_address;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return User
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     * @return User
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
     }
 }

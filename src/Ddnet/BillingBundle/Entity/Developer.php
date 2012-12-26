@@ -3,132 +3,86 @@
 namespace Ddnet\BillingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
-use Ddnet\UserBundle\Entity\User as BaseUser;
 
 /**
- * @ORM\Table(name="client")
- * @ORM\Entity(repositoryClass="Ddnet\BillingBundle\Entity\Repository\ClientRepository")
+ * Ddnet\BillingBundle\Entity\Developer
  */
-class Client extends BaseUser
+class Developer
 {
     /**
-     * @var string $company_name
-     * 
-     * @ORM\Column(name="company_name", type="string")
-     * @Assert\MaxLength(150)
-     * @Assert\NotBlank()
-     */
-    protected $company_name;
-
-    /**
      * @var string $street
-     * 
-     * @ORM\Column(type="string", name="street")
-     * @Assert\MaxLength(150)
      */
-    protected $street;
+    private $street;
 
     /**
      * @var string $suburb
-     * 
-     * @ORM\Column(type="string", name="suburb")
-     * @Assert\MaxLength(150)
      */
-    protected $suburb;
+    private $suburb;
 
     /**
      * @var string $city
-     * 
-     * @ORM\Column(type="string", name="city")
-     * @Assert\MaxLength(150)
      */
-    protected $city;
+    private $city;
 
     /**
      * @var string $zone
-     * 
-     * @ORM\Column(type="string", name="zone")
-     * @Assert\MaxLength(150)
      */
-    protected $zone;
+    private $zone;
 
     /**
      * @var string $country
-     * 
-     * @ORM\Column(type="string", name="country")
-     * @Assert\MaxLength(200)
      */
-    protected $country = "United States";
+    private $country;
 
     /**
      * @var string $postal_code
-     * 
-     * @ORM\Column(type="string", name="postal_code")
-     * @Assert\MaxLength(10)
      */
-    protected $postal_code;
+    private $postal_code;
 
     /**
      * @var string $phone
-     * 
-     * @ORM\Column(type="string", name="phone")
-     * @Assert\MaxLength(16)
      */
-    protected $phone;
+    private $phone;
 
     /**
-     * @var string $fax
-     * 
-     * @ORM\Column(type="string", name="fax")
-     * @Assert\MaxLength(12)
+     * @var string $slug
      */
-    protected $fax;
+    private $slug;
 
-    /**
-     * @Gedmo\Slug(fields={"company_name"}) 
-     * @ORM\Column(unique=true)
-     * @Assert\MaxLength(128)
-     */
-    protected $slug;
-
-    /**
-     * @var type 
-     * 
-     * @ORM\OneToMany(targetEntity="Ddnet\PortfolioBundle\Entity\Project", mappedBy="client")
-     */
-    protected $projects;
-    
     /**
      * @var integer $id
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string $first_name
      */
-    protected $first_name;
+    private $first_name;
 
     /**
      * @var string $last_name
      */
-    protected $last_name;
+    private $last_name;
 
     /**
      * @var string $email_address
      */
-    protected $email_address;
+    private $email_address;
 
     /**
      * @var string $url
      */
-    protected $url;
+    private $url;
 
     /**
      * @var string $twitter
      */
-    protected $twitter;
+    private $twitter;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $projects;
 
     public function __construct()
     {
@@ -136,32 +90,10 @@ class Client extends BaseUser
     }
     
     /**
-     * Set company_name
-     *
-     * @param string $companyName
-     * @return Client
-     */
-    public function setCompanyName($companyName)
-    {
-        $this->company_name = $companyName;
-        return $this;
-    }
-
-    /**
-     * Get company_name
-     *
-     * @return string 
-     */
-    public function getCompanyName()
-    {
-        return $this->company_name;
-    }
-
-    /**
      * Set street
      *
      * @param string $street
-     * @return Client
+     * @return Developer
      */
     public function setStreet($street)
     {
@@ -183,7 +115,7 @@ class Client extends BaseUser
      * Set suburb
      *
      * @param string $suburb
-     * @return Client
+     * @return Developer
      */
     public function setSuburb($suburb)
     {
@@ -205,7 +137,7 @@ class Client extends BaseUser
      * Set city
      *
      * @param string $city
-     * @return Client
+     * @return Developer
      */
     public function setCity($city)
     {
@@ -227,7 +159,7 @@ class Client extends BaseUser
      * Set zone
      *
      * @param string $zone
-     * @return Client
+     * @return Developer
      */
     public function setZone($zone)
     {
@@ -249,7 +181,7 @@ class Client extends BaseUser
      * Set country
      *
      * @param string $country
-     * @return Client
+     * @return Developer
      */
     public function setCountry($country)
     {
@@ -271,7 +203,7 @@ class Client extends BaseUser
      * Set postal_code
      *
      * @param string $postalCode
-     * @return Client
+     * @return Developer
      */
     public function setPostalCode($postalCode)
     {
@@ -293,7 +225,7 @@ class Client extends BaseUser
      * Set phone
      *
      * @param string $phone
-     * @return Client
+     * @return Developer
      */
     public function setPhone($phone)
     {
@@ -312,32 +244,10 @@ class Client extends BaseUser
     }
 
     /**
-     * Set fax
-     *
-     * @param string $fax
-     * @return Client
-     */
-    public function setFax($fax)
-    {
-        $this->fax = $fax;
-        return $this;
-    }
-
-    /**
-     * Get fax
-     *
-     * @return string 
-     */
-    public function getFax()
-    {
-        return $this->fax;
-    }
-
-    /**
      * Set slug
      *
      * @param string $slug
-     * @return Client
+     * @return Developer
      */
     public function setSlug($slug)
     {
@@ -369,7 +279,7 @@ class Client extends BaseUser
      * Set first_name
      *
      * @param string $firstName
-     * @return Client
+     * @return Developer
      */
     public function setFirstName($firstName)
     {
@@ -391,7 +301,7 @@ class Client extends BaseUser
      * Set last_name
      *
      * @param string $lastName
-     * @return Client
+     * @return Developer
      */
     public function setLastName($lastName)
     {
@@ -413,7 +323,7 @@ class Client extends BaseUser
      * Set email_address
      *
      * @param string $emailAddress
-     * @return Client
+     * @return Developer
      */
     public function setEmailAddress($emailAddress)
     {
@@ -435,7 +345,7 @@ class Client extends BaseUser
      * Set url
      *
      * @param string $url
-     * @return Client
+     * @return Developer
      */
     public function setUrl($url)
     {
@@ -457,7 +367,7 @@ class Client extends BaseUser
      * Set twitter
      *
      * @param string $twitter
-     * @return Client
+     * @return Developer
      */
     public function setTwitter($twitter)
     {
@@ -479,7 +389,7 @@ class Client extends BaseUser
      * Add projects
      *
      * @param Ddnet\PortfolioBundle\Entity\Project $projects
-     * @return Client
+     * @return Developer
      */
     public function addProject(\Ddnet\PortfolioBundle\Entity\Project $projects)
     {

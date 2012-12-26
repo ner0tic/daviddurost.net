@@ -22,7 +22,7 @@ class BillingDetail {
   /**
    * @var Ddnet\PortfolioBundle\Entity\Project
    *
-   * @ORM\ManyToOne(targetEntity="Project", inversedBy="billingDetails")
+   * @ORM\ManyToOne(targetEntity="Ddnet\PortfolioBundle\Entity\Project", inversedBy="billingDetails")
    * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
    */
   protected $project_id;
@@ -188,10 +188,10 @@ class BillingDetail {
     /**
      * Set project_id
      *
-     * @param Ddnet\BillingBundle\Entity\Project $projectId
+     * @param Ddnet\PortfolioBundle\Entity\Project $projectId
      * @return BillingDetail
      */
-    public function setProjectId(\Ddnet\BillingBundle\Entity\Project $projectId = null)
+    public function setProjectId(Ddnet\PortfolioBundle\Entity\Project $projectId = null)
     {
         $this->project_id = $projectId;
         return $this;
@@ -200,7 +200,7 @@ class BillingDetail {
     /**
      * Get project_id
      *
-     * @return Ddnet\BillingBundle\Entity\Project 
+     * @return Ddnet\PortfolioBundle\Entity\Project
      */
     public function getProjectId()
     {

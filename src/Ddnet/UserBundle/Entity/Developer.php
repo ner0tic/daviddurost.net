@@ -1,6 +1,6 @@
 <?php
 
-namespace Ddnet\BillingBundle\Entity;
+namespace Ddnet\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -8,21 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Ddnet\UserBundle\Entity\User as BaseUser;
 
 /**
- * @ORM\Table(name="client")
- * @ORM\Entity(repositoryClass="Ddnet\BillingBundle\Entity\Repository\ClientRepository")
+ * @ORM\Table(name="developer")
+ * @ORM\Entity(repositoryClass="Ddnet\UserBundle\Entity\Repository\DeveloperRepository")
  */
-class Client extends BaseUser
+class Developer extends BaseUser
 {
-    /**
-     * @var string $company_name
-     * 
-     * @ORM\Column(name="company_name", type="string")
-     * @Assert\MaxLength(150)
-     * @Assert\NotBlank()
-     */
-    protected $company_name;
-
-    /**
+  /**
      * @var string $street
      * 
      * @ORM\Column(type="string", name="street")
@@ -79,27 +70,24 @@ class Client extends BaseUser
     protected $phone;
 
     /**
-     * @var string $fax
-     * 
-     * @ORM\Column(type="string", name="fax")
-     * @Assert\MaxLength(12)
-     */
-    protected $fax;
-
-    /**
-     * @Gedmo\Slug(fields={"company_name"}) 
+     * @Gedmo\Slug(fields={"first_name, last_name"}) 
      * @ORM\Column(unique=true)
      * @Assert\MaxLength(128)
      */
     protected $slug;
 
     /**
-     * @var type 
+     * @var array
      * 
-     * @ORM\OneToMany(targetEntity="Ddnet\PortfolioBundle\Entity\Project", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="Ddnet\PortfolioBundle\Entity\Project", mappedBy="user")
      */
     protected $projects;
     
+    /**
+     *
+     * @var integer $access_level; 
+     */
+    protected $access_level = 0; // [0-6] 0 - normal user,6 - root admin
     /**
      * @var integer $id
      */
@@ -136,32 +124,10 @@ class Client extends BaseUser
     }
     
     /**
-     * Set company_name
-     *
-     * @param string $companyName
-     * @return Client
-     */
-    public function setCompanyName($companyName)
-    {
-        $this->company_name = $companyName;
-        return $this;
-    }
-
-    /**
-     * Get company_name
-     *
-     * @return string 
-     */
-    public function getCompanyName()
-    {
-        return $this->company_name;
-    }
-
-    /**
      * Set street
      *
      * @param string $street
-     * @return Client
+     * @return Developer
      */
     public function setStreet($street)
     {
@@ -183,7 +149,7 @@ class Client extends BaseUser
      * Set suburb
      *
      * @param string $suburb
-     * @return Client
+     * @return Developer
      */
     public function setSuburb($suburb)
     {
@@ -205,7 +171,7 @@ class Client extends BaseUser
      * Set city
      *
      * @param string $city
-     * @return Client
+     * @return Developer
      */
     public function setCity($city)
     {
@@ -227,7 +193,7 @@ class Client extends BaseUser
      * Set zone
      *
      * @param string $zone
-     * @return Client
+     * @return Developer
      */
     public function setZone($zone)
     {
@@ -249,7 +215,7 @@ class Client extends BaseUser
      * Set country
      *
      * @param string $country
-     * @return Client
+     * @return Developer
      */
     public function setCountry($country)
     {
@@ -271,7 +237,7 @@ class Client extends BaseUser
      * Set postal_code
      *
      * @param string $postalCode
-     * @return Client
+     * @return Developer
      */
     public function setPostalCode($postalCode)
     {
@@ -293,7 +259,7 @@ class Client extends BaseUser
      * Set phone
      *
      * @param string $phone
-     * @return Client
+     * @return Developer
      */
     public function setPhone($phone)
     {
@@ -312,32 +278,10 @@ class Client extends BaseUser
     }
 
     /**
-     * Set fax
-     *
-     * @param string $fax
-     * @return Client
-     */
-    public function setFax($fax)
-    {
-        $this->fax = $fax;
-        return $this;
-    }
-
-    /**
-     * Get fax
-     *
-     * @return string 
-     */
-    public function getFax()
-    {
-        return $this->fax;
-    }
-
-    /**
      * Set slug
      *
      * @param string $slug
-     * @return Client
+     * @return Developer
      */
     public function setSlug($slug)
     {
@@ -369,7 +313,7 @@ class Client extends BaseUser
      * Set first_name
      *
      * @param string $firstName
-     * @return Client
+     * @return Developer
      */
     public function setFirstName($firstName)
     {
@@ -391,7 +335,7 @@ class Client extends BaseUser
      * Set last_name
      *
      * @param string $lastName
-     * @return Client
+     * @return Developer
      */
     public function setLastName($lastName)
     {
@@ -413,7 +357,7 @@ class Client extends BaseUser
      * Set email_address
      *
      * @param string $emailAddress
-     * @return Client
+     * @return Developer
      */
     public function setEmailAddress($emailAddress)
     {
@@ -435,7 +379,7 @@ class Client extends BaseUser
      * Set url
      *
      * @param string $url
-     * @return Client
+     * @return Developer
      */
     public function setUrl($url)
     {
@@ -457,7 +401,7 @@ class Client extends BaseUser
      * Set twitter
      *
      * @param string $twitter
-     * @return Client
+     * @return Developer
      */
     public function setTwitter($twitter)
     {
@@ -479,7 +423,7 @@ class Client extends BaseUser
      * Add projects
      *
      * @param Ddnet\PortfolioBundle\Entity\Project $projects
-     * @return Client
+     * @return Developer
      */
     public function addProject(\Ddnet\PortfolioBundle\Entity\Project $projects)
     {

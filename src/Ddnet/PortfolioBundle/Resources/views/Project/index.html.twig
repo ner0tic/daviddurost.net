@@ -1,12 +1,10 @@
 {# src/Ddnet/PortfolioBundle/Resources/View/Project/index.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
+{% stylesheets 'bundles/ddnetportfolio/css/*' %}
   <link href="{{ asset_url }}" rel="stylesheet" />
-  {{ parent() }}
 {% endstylesheets %}
-{% javascripts '@DdnetPortfolioBundle/Resources/public/*' %}
-  {{ parent() }}
+{% javascripts '@DdnetPortfolioBundle/Resources/public/js/*' %}
   <script src="{{ asset_url }}" type="text/javascript" ></script>  
 {% endjavascripts %}
 

@@ -384,4 +384,26 @@ class ProjectCategory
     {
         return $this->lft;
     }
+
+    /**
+     * Add children
+     *
+     * @param Ddnet\PortfolioBundle\Entity\ProjectCategory $children
+     * @return ProjectCategory
+     */
+    public function addChildren(\Ddnet\PortfolioBundle\Entity\ProjectCategory $children)
+    {
+        $this->children[] = $children;
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param Ddnet\PortfolioBundle\Entity\ProjectCategory $children
+     */
+    public function removeChildren(\Ddnet\PortfolioBundle\Entity\ProjectCategory $children)
+    {
+        $this->children->removeElement($children);
+    }
 }

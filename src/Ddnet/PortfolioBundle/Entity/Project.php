@@ -149,4 +149,366 @@ class Project
      * @ORM\Column(name="position", type="integer")
      */
     protected $position;    
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Project
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param text $description
+     * @return Project
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return text 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set dev_url
+     *
+     * @param string $devUrl
+     * @return Project
+     */
+    public function setDevUrl($devUrl)
+    {
+        $this->dev_url = $devUrl;
+        return $this;
+    }
+
+    /**
+     * Get dev_url
+     *
+     * @return string 
+     */
+    public function getDevUrl()
+    {
+        return $this->dev_url;
+    }
+
+    /**
+     * Set prod_url
+     *
+     * @param string $prodUrl
+     * @return Project
+     */
+    public function setProdUrl($prodUrl)
+    {
+        $this->prod_url = $prodUrl;
+        return $this;
+    }
+
+    /**
+     * Get prod_url
+     *
+     * @return string 
+     */
+    public function getProdUrl()
+    {
+        return $this->prod_url;
+    }
+
+    /**
+     * Set github_repo
+     *
+     * @param string $githubRepo
+     * @return Project
+     */
+    public function setGithubRepo($githubRepo)
+    {
+        $this->github_repo = $githubRepo;
+        return $this;
+    }
+
+    /**
+     * Get github_repo
+     *
+     * @return string 
+     */
+    public function getGithubRepo()
+    {
+        return $this->github_repo;
+    }
+
+    /**
+     * Set github_branch
+     *
+     * @param string $githubBranch
+     * @return Project
+     */
+    public function setGithubBranch($githubBranch)
+    {
+        $this->github_branch = $githubBranch;
+        return $this;
+    }
+
+    /**
+     * Get github_branch
+     *
+     * @return string 
+     */
+    public function getGithubBranch()
+    {
+        return $this->github_branch;
+    }
+
+    /**
+     * Set github_user
+     *
+     * @param string $githubUser
+     * @return Project
+     */
+    public function setGithubUser($githubUser)
+    {
+        $this->github_user = $githubUser;
+        return $this;
+    }
+
+    /**
+     * Get github_user
+     *
+     * @return string 
+     */
+    public function getGithubUser()
+    {
+        return $this->github_user;
+    }
+
+    /**
+     * Set version
+     *
+     * @param string $version
+     * @return Project
+     */
+    public function setVersion($version)
+    {
+        $this->version = $version;
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @return string 
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * Set created
+     *
+     * @param datetime $created
+     * @return Project
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return datetime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param datetime $updated
+     * @return Project
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return datetime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Project
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Project
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set category
+     *
+     * @param Ddnet\PortfolioBundle\Entity\ProjectCategory $category
+     * @return Project
+     */
+    public function setCategory(\Ddnet\PortfolioBundle\Entity\ProjectCategory $category = null)
+    {
+        $this->category = $category;
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return Ddnet\PortfolioBundle\Entity\ProjectCategory 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set status
+     *
+     * @param Ddnet\PortfolioBundle\Entity\ProjectStatus $status
+     * @return Project
+     */
+    public function setStatus(\Ddnet\PortfolioBundle\Entity\ProjectStatus $status = null)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return Ddnet\PortfolioBundle\Entity\ProjectStatus 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set client
+     *
+     * @param Ddnet\BillingBundle\Entity\Client $client
+     * @return Project
+     */
+    public function setClient(\Ddnet\BillingBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return Ddnet\BillingBundle\Entity\Client 
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Ddnet\UserBundle\Entity\User $user
+     * @return Project
+     */
+    public function setUser(\Ddnet\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Ddnet\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

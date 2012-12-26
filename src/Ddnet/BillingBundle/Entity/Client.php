@@ -118,7 +118,7 @@ class Client
      * @ORM\Column(type="string", name="email_address")
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
+     *     checkMX = true)
      */
     protected $email_address;
 
@@ -596,4 +596,36 @@ class Client
       public function __toString() {
         return $this->getName();
       }
+
+    /**
+     * Set user
+     *
+     * @param Ddnet\BillingBundle\Entity\User $user
+     * @return Client
+     */
+    public function setUser(\Ddnet\BillingBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Ddnet\BillingBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Remove projects
+     *
+     * @param Ddnet\PortfolioBundle\Entity\Project $projects
+     */
+    public function removeProject(\Ddnet\PortfolioBundle\Entity\Project $projects)
+    {
+        $this->projects->removeElement($projects);
+    }
 }

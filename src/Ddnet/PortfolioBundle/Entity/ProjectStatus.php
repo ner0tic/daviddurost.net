@@ -216,4 +216,14 @@ class ProjectStatus
     {
         return $this->projects;
     }
+
+    /**
+     * Remove projects
+     *
+     * @param Ddnet\PortfolioBundle\Entity\Project $projects
+     */
+    public function removeProject(\Ddnet\PortfolioBundle\Entity\Project $projects)
+    {
+        $this->projects->removeElement($projects);
+    }
 }

@@ -32,7 +32,7 @@ class User extends BaseUser
      * 
      * @ORM\Column(type="string", name="first_name")
      * @Assert\MaxLength(150)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Please enter your first name.", groups={"Registration", "Profile"})
      */
     protected $first_name;
     
@@ -41,19 +41,9 @@ class User extends BaseUser
      * 
      * @ORM\Column(type="string", name="last_name")
      * @Assert\MaxLength(150)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Please enter your last name.", groups={"Registration", "Profile"})
      */
     protected $last_name;
-    
-    /**
-     * @var string $email_address
-     * 
-     * @ORM\Column(type="string", name="email_address")
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true)
-     */
-    protected $email_address;
     
     /**
      * @var string $url
@@ -66,7 +56,7 @@ class User extends BaseUser
     /**
      * @var string $twitter
      * 
-     * @ORM\Column(type="string", name="twitter")
+     * @ORM\Column(type="string", name="twitter", nullable=true)
      * @Assert\MaxLength(100)
      */
     protected $twitter;    
@@ -210,28 +200,6 @@ class User extends BaseUser
     public function getUpdated()
     {
         return $this->updated;
-    }
-
-    /**
-     * Set email_address
-     *
-     * @param string $emailAddress
-     * @return User
-     */
-    public function setEmailAddress($emailAddress)
-    {
-        $this->email_address = $emailAddress;
-        return $this;
-    }
-
-    /**
-     * Get email_address
-     *
-     * @return string 
-     */
-    public function getEmailAddress()
-    {
-        return $this->email_address;
     }
 
     /**

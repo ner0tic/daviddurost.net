@@ -1,14 +1,12 @@
 {# src/Ddnet/UserBundle/Resources/View/Profile/index.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% stylesheets '@DdnetUserBundle/Resources/public/css/*' %}
+{% block stylesheets %}
 {{ parent() }}  
-<link href="{{ asset_url }}" rel="stylesheet" />  
-{% endstylesheets %}
-{% javascripts '@DdnetUserBundle/Resources/public/js/*' %}
+{% endblock %}
+{% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset_url }}" type="text/javascript" ></script>  
-{% endjavascripts %}
+{% endblock %}
 {% block content %}
 <div>
   <div id="profile-content" class="profile-wrapper">

@@ -30,3 +30,7 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+knp_last_tweets:
+    fetcher:
+        driver: array

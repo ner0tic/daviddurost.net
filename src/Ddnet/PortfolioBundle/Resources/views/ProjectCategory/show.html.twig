@@ -1,28 +1,17 @@
 {# src/Ddnet/PortfolioBundle/Resources/View/ProjectCategory/show.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
+{% block stylesheets %}
   <link href="{{ asset_url }}" rel="stylesheet" />
   {{ parent() }}
-{% endstylesheets %}
+      <link rel="stylesheet" href="{{ path(' @DdnetPortfolioBundle/Resources/public/css/category.css') }}" />
+{% endblock %}
 
-{% javascripts '@DdnetPortfolioBundle/Resources/public/js/*' %}
+{% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset_url
- }}" type="text/javascript"></script>  
-{% endjavascripts %}
+{% endblock %}
 
 {% block content %}
-    {% block fb %}
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=196502140431414";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    {% endblock %}
     <div class="project-wrapper" id="{{ category.slug }}-wrapper">
     {% block categorydetails %}
       <div class="content-pane" id="{{ category.slug }}">

@@ -1,0 +1,22 @@
+{# app/Resources/FOSUserBundle/views/layout.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+<link rel="stylesheet" href="{{ asset('/css/login.css.php') }}" />
+{% endblock %}
+{% block page_class %}signup{% endblock %}
+{% block content %}
+<div class="main-content-wrapper">
+  <div class="content-wrapper">
+    <div>
+    {% for key, message in app.session.getFlashes() %}
+      <div class="{{ key }}">
+        {{ message|trans({}, 'FOSUserBundle') }}
+      </div>
+    {% endfor %}
+    {%block fos_user_content %}{% endblock %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
             new Ddnet\UtilityBundle\DdnetUtilityBundle(),
             new Ddnet\UserBundle\DdnetUserBundle(),
-            new Ddnet\BillingBundle\DdnetBillingBundle(),
             
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             
@@ -35,6 +34,7 @@ class AppKernel extends Kernel
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
+            new Knp\Bundle\ZendCacheBundle\KnpZendCacheBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

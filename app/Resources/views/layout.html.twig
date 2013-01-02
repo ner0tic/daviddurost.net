@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+     Remove this if you use the .htaccess -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <link rel="alternate" type="application/rss+xml" href="/feed/" title="RSS" />
+    <title>{% block title %}david durost{% endblock %}</title>
+    <meta name="description" content="personal portfolio, blog, misc site" />
+    <meta name="author" content="david durost" />
+<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+<!-- CSS : implied media="all" -->
+    {% stylesheets 
+        '@DdnetUtilityBundle/Resources/public/css/reset.css' 
+        '@DdnetUtilityBundle/Resources/public/css/ddnet.css'
+    %}
+      <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+<!-- CSS : custom styles -->
+</head>
+    <body>     
+    {% block body %}
+        <header>
+        {% block header %}
+            <section id="logo">
+            {% block logo %}
+                <h1>
+                    <a href="{{ path('homepage') }}">david<span>durost</span></a>
+                </h1>
+            {% endblock %}
+            </section>
+            <nav>            
+            {% block nav %}
+                <ul id="nav-links">
+                    <li class="nav-link" id="home"><a href="{{ path( 'homepage' ) }}">home</a></li>
+                    <li class="nav-link" id="portfolio"><a href="{{ path( 'portfolio' ) }}">portfolio</a></li>
+                    <li class="nav-link" id="profile"><a href="{{ path( 'homepage' ) }}">home</a></li>
+                    <li class="nav-link" id="contact"><a href="{{ path( 'homepage' ) }}">home</a></li>
+                    <li class="nav-link" id="auth">                
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a href="{{ path('fos_user_security_logout') }}">sign out</a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">sign in</a>
+                    {% endif %}
+                    </li>
+                </ul>
+            {% endblock %}
+            </nav>
+        {% endblock %}
+        </header>
+        <section id="content" class="{% block page_class %}home{% endblock %}">
+        {% block content %} {% endblock %}
+        </section>
+        <footer>
+        {% block footer %}
+            <div class="copyright">
+            {% block copyright %}
+                <a href="{{ path('homepage') }}">&copy; 2012 daviddurost.net</a>
+            {% endblock %}  
+            </div>
+            <hr />
+            {% block sitemap %}
+            <ul class="sitemap-links">
+                <li class="sitemap-link"><a href="{{ path('portfolio') }}">portfolio</a></li>
+                <li class="sitemap-link"><a href="{{ path('profile') }}">profile</a></li>
+                <li class="sitemap-link"><a href="{{ path('contact') }}">contact</a></li>
+                <li class="nav-link" id="auth">li                
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{ path('fos_user_security_logout') }}">sign out</a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_login') }}">sign in</a>
+                {% endif %}
+                </li>
+            </ul>
+            {% endblock %}
+        {% endblock %}
+        </footer>            
+      {% javascripts 
+            '@DdnetUtilityBundle/Resources/public/js/dd.js'            
+      %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+<!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+<![endif]-->
+      {% endjavascripts %}
+    {% endblock %}
+    </body>
+</html>
+                

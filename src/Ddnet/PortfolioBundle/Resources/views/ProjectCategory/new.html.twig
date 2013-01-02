@@ -1,14 +1,14 @@
 {# src/Ddnet/PortfolioBundle/Resources/view/ProjectCategory/new.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
-  <link href="{{ asset_url }}" rel="stylesheet" />
+{% block stylesheets %}
   {{ parent() }}
-{% endstylesheets %}
-{% javascripts '@DdnetPortfolioBundle/Resources/public/js/*'  %}
+    <link rel="stylesheet" href="{{ path(' @DdnetPortfolioBundle/Resources/public/css/category.css') }}" />
+    <link rel="stylesheet" href="{{ path(' @DdnetUtilityBundle/Resources/public/css/form.css') }}" />
+{% endblock %}
+{% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset_url }}" type="text/javascript" />  
-{% endjavascripts %}
+{% endblock %}
   
 {% block content %}
   <div id="category-content">

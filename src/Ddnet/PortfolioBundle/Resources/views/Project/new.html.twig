@@ -1,14 +1,14 @@
 {# src/Ddnet/PortfolioBundle/Resources/view/Project/new.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
-  <link href="{{ asset_url }}" rel="stylesheet" />
+{% block stylesheets %}
   {{ parent() }}
-{% endstylesheets %}
-{% javascripts '@DdnetPortfolioBundle/Resources/public/js/*'  %}
+    <link rel="stylesheet" href="{{ path('@DdnetPortfolioBundle/Resources/public/css/project.css') }}" />
+    <link rel="stylesheet" href="{{ path('@DdnetUtilityBundle/Resources/public/css/form.css') }}" />
+{% endblock %}
+{% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset_url }}" type="text/javascript" />  
-{% endjavascripts %}
+{% endblock %}
   
 {% block content %}
   <div id="portfolio-content">
@@ -19,7 +19,6 @@
     {{ form_row(form.description) }}
     {{ form_row(form.category) }}
     {{ form_row(form.status) }}
-    {{ form_row(form.skills) }}
     {{ form_row(form.dev_url) }}
     {{ form_row(form.prod_url) }}
 

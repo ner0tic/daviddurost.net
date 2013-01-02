@@ -16,7 +16,7 @@ class ContactController extends Controller
     $foursquare = new Foursquare();
     $foursquare->setAuthClientId('421286');
       
-    if($request->getMethod() == 'POST')
+    if($this->getRequest()->getMethod() == 'POST')
     {
       $form->bindRequest($this->getRequest());
       if($form->isValid())

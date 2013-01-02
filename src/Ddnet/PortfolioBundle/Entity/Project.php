@@ -50,6 +50,23 @@ class Project
      * @Assert\Url()
      */
     protected $prod_url;
+    
+    /**
+     *
+     * @var string $thumbnail
+     * 
+     * @ORM\Column(name="thumbnail", type="string")
+     * @Assert\Image()
+     */
+    protected $thumbnail;
+    
+    /**
+     * @var string $photo
+     * 
+     * @ORM\Column(name="photo", type="string")
+     * @Assert\Image()
+     */
+    protected $photo;
 
     /**
      * @var Ddnet\PortfolioBundle\Entity\ProjectCategory $category The project's default category
@@ -70,15 +87,6 @@ class Project
     protected $status;
 
     /**
-     * @var Ddnet\BillingBundle\Entity\Client $client The client for the project.
-     * 
-     * @Gedmo\SortableGroup
-     * @ORM\ManyToOne(targetEntity="Ddnet\BillingBundle\Entity\Client", inversedBy="projects")
-     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
-     */
-    protected $client;
-
-    /**
      * @var Ddnet\UserBundle\Entity\User $user A user to the system.
      * 
      * @Gedmo\SortableGroup
@@ -90,26 +98,26 @@ class Project
     /**
      * @var string $github_repo
      *
-     * @ORM\Column(name="github_repo", type="string")
+     * @ORM\Column(name="github_repo", type="string", nullable=true)
      * @Assert\MaxLength(150)
      */
-    private $github_repo;
+    protected $github_repo;
 
     /**
      * @var string $github_branch
      *
-     * @ORM\Column(name="github_branch", type="string")
+     * @ORM\Column(name="github_branch", type="string", nullable=true)
      * @Assert\MaxLength(100)
      */
-    private $github_branch;
+    protected $github_branch;
 
     /**
      * @var string $github_user
      *
-     * @ORM\Column(name="github_user", type="string")
+     * @ORM\Column(name="github_user", type="string", nullable=true)
      * @Assert\MaxLength(100)
      */
-    private $github_user;
+    protected $github_user;
 
     /**
      * @var string $version
@@ -469,28 +477,6 @@ class Project
     }
 
     /**
-     * Set client
-     *
-     * @param Ddnet\BillingBundle\Entity\Client $client
-     * @return Project
-     */
-    public function setClient(\Ddnet\BillingBundle\Entity\Client $client = null)
-    {
-        $this->client = $client;
-        return $this;
-    }
-
-    /**
-     * Get client
-     *
-     * @return Ddnet\BillingBundle\Entity\Client 
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
      * Set user
      *
      * @param Ddnet\UserBundle\Entity\User $user
@@ -510,5 +496,49 @@ class Project
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set thumbnail
+     *
+     * @param string $thumbnail
+     * @return Project
+     */
+    public function setThumbnail($thumbnail)
+    {
+        $this->thumbnail = $thumbnail;
+        return $this;
+    }
+
+    /**
+     * Get thumbnail
+     *
+     * @return string 
+     */
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return Project
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }

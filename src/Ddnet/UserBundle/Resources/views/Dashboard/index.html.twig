@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetportfolio/css/portfolio.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetuser/css/activities.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetuser/css/photos.css') }}" />
+{% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/ddnetuser/js/activities.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('bundles/ddnetuser/js/photos.js') }}" ></script>
+{% endblock %}
+
+{% block content %}
+  <div id="left-pane">
+  {% block leftpane %}
+    <section id="recent-activities">
+      <h2>{{ 'recent activities' | title }}</h2>
+      <ul id="recent-activities">
+      {% block activities %}
+        {% for activity in activities %}
+        <li class="recent-activity" id="{{ activity.slug }}">
+          <div class="date-box">
+            <span class="day">{{ activity.day }}</span>
+            <span class="month">{{ activity.month }}</span>                      
+          </div>
+          <div class="details-box">
+            <span class="time">{{ activity.time }}</span>
+            <span class="source">{{ activity.source }}</span>
+          </div>
+          <p>
+            {{ portfolio.description [0:130]| trim ~ '...' }} 
+            <a href="{{ path('activity_show', { 'slug' : activity.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
+          </p>
+        </li>
+        {% endfor %}
+      {% endblock %}
+      </ul>
+    </section>
+    <section id="recent-photos">
+    {% block recentphotos %}
+      <h2>{{ 'recent photos' | title }}</h2>  
+      <div id="recent-photo-image-wrapper">
+        <img src="{{ photo.url }}" class="recent-photo" alt="{{ photo.caption }}" />
+      </div>
+      <span class="controls"></span>
+    {% endblock %}
+    </section>
+  {% endblock %}
+  </div>
+  <div id="right-pane">
+  {% block rightpane %}
+    <section id="recent-projects">
+    {% block recentprojects %}
+      <h2>{{ 'recent projects' | title }}</h2>
+      <ul id="projects">
+      {% block projects %}
+        {% for project in projects %}
+              <div class="project" id="{{ project.slug }}">
+                <a href="{{ path('portfolio_show', { 'slug' : project.slug }) }}">
+                  <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ project.slug ~ '.png') }}" alt="{{ project.name | capitalize }}" />
+                  <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ project.status.slug ~ '.png') }}" class="status" alt="{{ project.status.name }}" />
+                  <h3>{{ project.name | capitalize }}</h3>
+                  <div class="details">
+                    <p>
+                      {{ portfolio.description [0:130]| trim ~ '...' }}
+                      <a href="{{ path('portfolio_show', { 'slug':portfolio.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
+                    </p>
+                  </div> 
+                </a>
+              </div>
+        {% else %} 
+            <em>no items found.</em>
+        {% endfor %}
+      {% endblock %}
+      </ul>
+    {% endblock %}
+    </section>
+  {% endblock %}
+  </div>
+{% endblock %}

@@ -1,14 +1,12 @@
 {# src/Ddnet/PortfolioBundle/Resources/View/ProjectStatus/index.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
-  <link href="{{ asset_url }}" rel="stylesheet" />
+{% block stylesheets %}
   {{ parent() }}
-{% endstylesheets %}
-{% javascripts '@DdnetPortfolioBundle/Resources/public/*' %}
+{% endblock %}
+{% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset_url }}" type="text/javascript" ></script>  
-{% endjavascripts %}
+{% endblock %}
 
 {% block content %}
   <div id="status-content">
@@ -16,12 +14,12 @@
     <div class="status-entry">
       <a href="{{ path('status_show', {'slug':status.slug}) }}">
         <img src="{{ asset('/images/status/thumbnails/' ~ status.slug ~ '.png') }}" alt="{{ status.name|capitalize }}" />
-        <img src="{{ asset('/images/status/' ~ status.Status.slug ~ '.png') }}" class="status" alt="{{ status.Status.name }}" />
+        <img src="{{ asset('/images/status/' ~ status.slug ~ '.png') }}" class="status" alt="{{ status.name }}" />
         <h3>{{ status.name|capitalize }}</h3>
         <div class="details">
           <p>
             {{ status.description [0:130]| trim ~ '...' }}
-            <a href="{{ path('status_show', { 'slug':status.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
+            <a href="{{ path('status_show', { 'slug' : status.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
           </p>
         </div> 
       </a>

@@ -1,14 +1,12 @@
 {# src/Ddnet/PortfolioBundle/Resources/view/ProjectStatus/new.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% stylesheets '@DdnetPortfolioBundle/Resources/public/css/*' %}
-  <link href="{{ asset_url }}" rel="stylesheet" />
+{% block stylesheets %}
   {{ parent() }}
-{% endstylesheets %}
-{% javascripts '@DdnetPortfolioBundle/Resources/public/js/*'  %}
+{% endblock %}
+{% block javascripts %}
   {{ parent() }}
-  <script src="{{ asset_url }}" type="text/javascript" />  
-{% endjavascripts %}
+{% endblock %}
   
 {% block content %}
   <div id="status-content">

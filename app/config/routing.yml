@@ -1,6 +1,6 @@
 homepage:
     pattern: /
-    defaults: { _controller: DdnetPortfolioBundle:Project:index }
+    defaults: { _controller: DdnetUserBundle:Dashboard:index }
 portfolio:
     pattern:  /portfolio
     defaults: { _controller: DdnetPortfolioBundle:Project:index }
@@ -45,14 +45,14 @@ portfolio_by_status:
 categories:
     pattern: /categories
     defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:index }
+category_new:
+    pattern: /categories/new
+    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:new }
 category_show:
     pattern: /categories/{slug}
     defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:show }
     requirements:
         slug: "[\w-]+"  
-category_new:
-    pattern: /categories/new
-    defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:new }
 category_edit:
     pattern: /categories/{slug}/edit
     defaults: { _controller: DdnetPortfolioBundle:ProjectCategory:edit }
@@ -97,14 +97,14 @@ tag_remove_confirmed:
 status:
     pattern: /status
     defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:index }
+status_new:
+    pattern: /status/new
+    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:new }
 status_show:
     pattern: /status/{slug}
     defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:show }
     requirements:
         slug: "[\w-]+"  
-status_new:
-    pattern: /status/new
-    defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:new }
 status_edit:
     pattern: /status/{slug}/edit
     defaults: { _controller: DdnetPortfolioBundle:ProjectStatus:edit }

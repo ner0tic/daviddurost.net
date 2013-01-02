@@ -1,4 +1,18 @@
 {
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "knplabs/knp-zend-cache-bundle",
+                "version": "dev-master",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/ner0tic/KnpZendCacheBundle.git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
     "require": {
         "php":                                                    ">=5.3.2",
         
@@ -8,14 +22,14 @@
         
         "symfony/symfony":                                        "2.1.3",
         
-        "twig/extensions":                                        "dev-master",
+        "twig/extensions":                                        "*",
 
         "symfony/assetic-bundle":                                 "2.1.0",
         "kriswallsmith/assetic":                                  "1.1.x-dev",
         
         "sensio/generator-bundle":                                "2.1.*",
         "symfony/translation":                                    "*",
-        "symfony/framework-bundle":                               "2.1.*",
+        "symfony/framework-bundle":                               "2.1.3",
         "sensio/distribution-bundle":                             "v2.1.1",
         
         "jms/aop-bundle":                                         "1.0.0.0",
@@ -33,7 +47,7 @@
         "gedmo/doctrine-extensions":                              "2.3.x-dev",
         "stof/doctrine-extensions-bundle":                        "dev-master",
 
-        "friendsofsymfony/user-bundle":                           "dev-master",
+        "friendsofsymfony/user-bundle":                           "1.3.1",
 
         "kriswallsmith/buzz":                                     "dev-master",
 
@@ -43,12 +57,14 @@
         "white-october/pagerfanta-bundle":                        "dev-master",
         "pagerfanta/pagerfanta":                                  "dev-master",
         
-        "knplabs/knp-last-tweets-bundle":                         "dev-master",
+        "knplabs/knp-last-tweets-bundle":                         "*",
+        "knplabs/knp-zend-cache-bundle":                          "*",
         
         "ner0tic/github-api":                                     "dev-master",
         "ner0tic/foursquare-api":                                 "dev-master",
         "ner0tic/php-api-core":                                   "*",
-        "ner0tic/php-minteye-api":                                "*"
+        "ner0tic/php-minteye-api":                                "*",
+        "ner0tic/php-instagram-api":                              "*"
     },
     "require-dev": {
         "elao/web-profiler-extra-bundle":                         "dev-master"

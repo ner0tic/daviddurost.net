@@ -170,22 +170,22 @@ ivory_google_map:
 ################################################################################
 ## KnP
 ################################################################################
-knp_zend_cache:
-    templates:
-        knp_last_tweets:
-            frontend:
-                name: Core
-                options:
-                    lifetime: 300
-                    automatic_serialization: true
-            backend:
-                name: File
-                options:
-                    cache_dir: %kernel.root_dir%/cache/%kernel.environment%
+#knp_zend_cache:
+#    templates:
+#        knp_last_tweets:
+#            frontend:
+#                name: Core
+#                options:
+#                    lifetime: 300
+#                    automatic_serialization: true
+#            backend:
+#                name: File
+#                options:
+#                    cache_dir: %kernel.root_dir%/cache/%kernel.environment%
 
-knp_last_tweets:
-    fetcher:
-        driver: zend_cache
-        options:
-            cache_name: knp_last_tweets
-            method: api // or oauth        
+#knp_last_tweets:
+#    fetcher:
+#        driver: zend_cache
+#        options:
+#            cache_name: knp_last_tweets
+#            method: api // or oauth        

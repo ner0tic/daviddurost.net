@@ -27,10 +27,6 @@ monolog:
 
 assetic:
     use_controller: true
-
-#swiftmailer:
-#    delivery_address: me@example.com
-
-knp_last_tweets:
-    fetcher:
-        driver: array
+    
+jms_debugging:
+    auto_help: true

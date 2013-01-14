@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $project_pager->setMaxPerPage( $this->getRequest()->get( 'p_pgMax', 4 ) );
         $project_pager->setCurrentPage( $this->getRequest()->get( 'p_pg', 1 ) );
       
-        $projects = $pager->getCurrentPageResults();
+        $projects = $project_pager->getCurrentPageResults();
       
         // Recent Activities
         /**
@@ -39,51 +39,55 @@ class DashboardController extends Controller
          */
         $activities = array(
             0 => array(
-                name => 'test activity 1',
-                source => 'twitter',
-                date    =>  '2013-01-03 06:00:00',
-                message =>  'blah blah blah blah blah blah blah blah blah blah',
-                slug    =>  'twitter-test-activity-1',
-                url     =>  'http://www.test.com'
+                'name' => 'test activity 1',
+                'source' => 'twitter',
+                'date'    =>  '2013-01-03 06:00:00',
+                'message' =>  'blah blah blah blah blah blah blah blah blah blah',
+                'slug'    =>  'twitter-test-activity-1',
+                'url'     =>  'http://www.test.com'
             ),
             1 => array(
-                name => 'test activity 2',
-                source => 'twitter',
-                date    =>  '2013-01-02 18:31:00',
-                message =>  'blah blah blah blah blah blah blah blah blah blah',
-                slug    =>  'twitter-test-activity-2',
-                url     =>  'http://www.test.com'
+                'name' => 'test activity 2',
+                'source' => 'twitter',
+                'date'    =>  '2013-01-02 18:31:00',
+                'message' =>  'blah blah blah blah blah blah blah blah blah blah',
+                'slug'    =>  'twitter-test-activity-2',
+                'url'     =>  'http://www.test.com'
             ),
             2 => array(
-                name => 'test activity 3',
-                source => 'twitter',
-                date    =>  '2013-01-01 00:00:12',
-                message =>  'blah blah blah blah blah blah blah blah blah blah',
-                slug    =>  'twitter-test-activity-3',
-                url     =>  'http://www.test.com'
+                'name' => 'test activity 3',
+                'source' => 'twitter',
+                'date'    =>  '2013-01-01 00:00:12',
+                'message' =>  'blah blah blah blah blah blah blah blah blah blah',
+                'slug'    =>  'twitter-test-activity-3',
+                'url'     =>  'http://www.test.com'
             )
         );
-        
+        /**
+         * @todo fix all of this! curl errors...
+         */
         // Recent Photo
+        $photo = null;
         /**
          * @todo file a cleaner way to load the configs (upstream issue)
          */
-        $yaml = new Parser();
-        $configs['ig'] = $yaml->parse( file_get_contents( __DIR__ . '../../../../app/config/instagram.yml' ) );
+//        $yaml = new Parser();
+//        $configs['ig'] = $yaml->parse( file_get_contents( __DIR__ . '/../../../../app/config/instagram.yml' ) );
         
-        $ig = new Instagram();
-        $ig->setAuthClientId( $configs[ 'ig' ][ 'client_id' ] );
-        
-        $photo = $ig->api('users')->getRecentMedia(null, array(
-            'limit'   =>  1
-        ) );
-               
+//        $ig = new Instagram();
+//        $ig->setAuthClientId( $configs[ 'ig' ][ 'client_id' ] );
+//        
+//        var_dump($ig->api('users')->getRecentMedia(null, array(
+//            'limit'   =>  1
+//        ) ));
+//        die('...');
+//        
         return $this->render( 'DdnetUserBundle:Dashboard:index.html.twig', array(
             'projects'      =>  $results,
             'proj_pager'    =>  $project_pager,
             'activities'    =>  $activities,
             'act_pager'     =>  $activity_pager,
             'photo'         =>  $photo
-        ) );
+        ) );                  
     }
 }

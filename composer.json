@@ -9,7 +9,8 @@
                     "type": "git",
                     "url": "https://github.com/ner0tic/KnpZendCacheBundle.git",
                     "reference": "master"
-                }
+                },
+                "target-dir": "Knp/Bundle/ZendCacheBundle"
             }
         }
     ],
@@ -56,10 +57,7 @@
         
         "white-october/pagerfanta-bundle":                        "dev-master",
         "pagerfanta/pagerfanta":                                  "dev-master",
-        
-        "knplabs/knp-last-tweets-bundle":                         "*",
-        "knplabs/knp-zend-cache-bundle":                          "*",
-        
+              
         "ner0tic/github-api":                                     "dev-master",
         "ner0tic/foursquare-api":                                 "dev-master",
         "ner0tic/php-api-core":                                   "*",
@@ -67,12 +65,15 @@
         "ner0tic/php-instagram-api":                              "*"
     },
     "require-dev": {
-        "elao/web-profiler-extra-bundle":                         "dev-master"
+        "elao/web-profiler-extra-bundle":                         "dev-master",
+        "jms/debugging-bundle":                                   "dev-master"
     },
     "autoload": {
         "psr-0": {
             "Acme": "src/",
-            "Ddnet": "src/"
+            "Ddnet": "src/",
+            "Zend" : "vendor/",
+            "Knp\\Bundle\\ZendCacheBundle": "vendor/knplabs/knp-zend-cache-bundle/"
         }
     },
     "minimum-stability": "dev"

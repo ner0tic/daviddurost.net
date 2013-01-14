@@ -1,0 +1,6 @@
+[submodule "vendor/Zend/Cache"]
+	path = vendor/Zend/Cache
+	url = http://github.com/KnpLabs/zend-cache.git
+[submodule "vendor/Zend/Filter"]
+	path = vendor/Zend/Filter
+	url = http://github.com/KnpLabs/zend-filter.git

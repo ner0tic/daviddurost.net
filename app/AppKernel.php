@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\DebuggingBundle\JMSDebuggingBundle($this),
             
             new Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
             new Ddnet\UtilityBundle\DdnetUtilityBundle(),
@@ -33,8 +34,7 @@ class AppKernel extends Kernel
             
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             
-            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
-            new Knp\Bundle\ZendCacheBundle\KnpZendCacheBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -50,5 +50,15 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+    }
+    
+    protected function getContainerBaseClass()
+    {
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) 
+        {
+            return '\JMS\DebuggingBundle\DependencyInjection\TraceableContainer';
+        }
+
+        return parent::getContainerBaseClass();
     }
 }

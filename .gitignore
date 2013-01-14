@@ -20,3 +20,4 @@ composer.lock
 *~
 nbproject/*
 /app/config/foursquare.yml
+/app/config/instagram.yml

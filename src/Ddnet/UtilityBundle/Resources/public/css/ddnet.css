@@ -15,7 +15,7 @@ h3 { font-size : 18px; color : #2B2B2B; font-weight : normal; line-height: 20pt;
 @font-face { font-family: Social; src: url('/bundles/ddnetutility/css/Social-Logos.ttf'); }
 @font-face { font-family: Picto; src: url('/bundles/ddnetutility/css/modernpics.otf'); }
 body { background: #fefffe; /*url(/images/body-bg.png) repeat-x fixed center top;*/ font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; }
-#container { min-width: 920px; margin-right: auto; margin-left: auto; }
+#content { min-width: 920px !important; margin: 0 auto; }
 /************************************************
 **                Header                       **
 ************************************************/
@@ -30,6 +30,7 @@ nav ul#nav-links li.nav-link { margin-left: 2px; display: inline-block; }
 nav ul#nav-links li.nav-link a { display: block; opacity: 0.5; -webkit-transition: opacity .5s linear; }
 nav ul#nav-links li.nav-link a:hover { opacity: 1; -webkit-transition: opacity .5s linear; color: #914f53; }
 nav ul#nav-links li.nav-link.active a { border-bottom: 2px solid #914f53; }
+
 /************************************************
 **                Content                      **
 ************************************************/
@@ -47,30 +48,3 @@ footer ul.sitemap-links li { color: #2B2B2B; display: inline; }
 footer p { width: 300px; float: left; text-indent: -9999px; display: none; }
 footer hr { border: 0; color: #914f53; height: 1px; background-color: #914f53; width: 575px; margin: 0 auto; margin-top: 15px; margin-bottom: -10px;}
 hr.small { width: 238px !important; }
-/*************************************************
-**              DEBUG                           **
-*************************************************/
-.debug { border: 2px solid red; }
-.debug_y { border 2px solid yellow; }
-.debug_b { border 2px solid blue; }
-.margin-top-10 { margin-top: 10px; }
-/************************************************
-**              Buttons                        **
-************************************************/
-/***************Green***************************/
-.greenButton { background: #A7E300; background: -webkit-gradient(linear, left top, left bottom, from(#A7E300), to(#99D100)); background: -moz-linear-gradient(top,  #A7E300,  #99D100); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#A7E300', endColorstr='#99D100'); border: 1px solid #87b800; color: #fff; cursor: pointer; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: bold; height: 30px; line-height: 30px; padding: 0 10px; text-align: center; text-shadow: rgba(0,0,0,.1) 0 -1px 0; text-transform: uppercase; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
-.greenButton:hover { background: #b2eb14; background: -webkit-gradient(linear, left top, left bottom, from(#b2eb14), to(#a4da14)); background: -moz-linear-gradient(top,  #b2eb14,  #a4da14); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b2eb14', endColorstr='#a4da14'); }
-.greenButton:active { background: #99D100; background: -webkit-gradient(linear, left top, left bottom, from(#99D100), to(#A7E300)); background: -moz-linear-gradient(top,  #99D100,  #A7E300); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#99D100', endColorstr='#A7E300');}
-a.greenButton, .greenButton a { color: #fff; display: block; text-decoration: none; }
-input.greenButton {line-height: normal !important;}
-@-moz-document url-prefix() { input.greenButton {padding-bottom: 2px;} }
-/***************Grey****************************/
-.greyButton { background: #e6e6e8; background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f9), to(#e6e6e8)); background: -moz-linear-gradient(top,  #f8f8f9,  #e6e6e8); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f8f8f9', endColorstr='#e6e6e8'); border: 1px solid #ccc; color: #999; cursor: pointer; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: bold; height: 30px; line-height: 30px; padding: 0 10px; text-align: center; text-shadow: rgba(255,255,255,1) 0 1px 0; text-transform: uppercase; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
-.greyButton:hover { background: #fcfcfc; background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#f3f2f3)); background: -moz-linear-gradient(top,  #fcfcfc,  #f3f2f3); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f3f2f3'); }
-.greyButton:active { background: #f3f2f3; background: -webkit-gradient(linear, left top, left bottom, from(#f3f2f3), to(#fcfcfc)); background: -moz-linear-gradient(top,  #f3f2f3,  #fcfcfc); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3f2f3', endColorstr='#fcfcfc'); }
-a.greyButton, .greyButton a { color: #999; display: block; text-decoration: none; }
-/***************Orange**************************/
-.orangeButton { background: #A7E300; background: -webkit-gradient(linear, left top, left bottom, from(#ff9900), to(#ff6200)); background: -moz-linear-gradient(top,  #ff9900,  #ff6200); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9900', endColorstr='#ff6200'); border: 1px solid #e55800; color: #fff; cursor: pointer; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: bold; height: 30px; line-height: 30px; padding: 0 10px; text-align: center; text-shadow: rgba(0,0,0,.1) 0 -1px 0; text-transform: uppercase; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
-.orangeButton:hover { background: #ffad32; background: -webkit-gradient(linear, left top, left bottom, from(#ffad32), to(#ff8132)); background: -moz-linear-gradient(top,  #ffad32,  #ff8132); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffad32', endColorstr='#ff8132'); }
-.orangeButton:active { background: #ff8132; background: -webkit-gradient(linear, left top, left bottom, from(#ff8132), to(#ffad32)); background: -moz-linear-gradient(top,  #ff8132,  #ffad32); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff8132', endColorstr='#ffad32'); }
-a.orangeButton, .orangeButton a { color: #fff; display: block; text-decoration: none; }

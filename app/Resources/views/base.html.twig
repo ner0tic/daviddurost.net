@@ -19,13 +19,14 @@
 <!--  Mobile viewport optimized: j.mp/bplateviewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">        
 <!-- CSS : implied media="all" -->
+    {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
     {% stylesheets 
         '@DdnetUtilityBundle/Resources/public/css/reset.css' 
         '@DdnetUtilityBundle/Resources/public/css/ddnet.css'
     %}
-      <link rel="stylesheet" href="{{ asset_url }}" />
+      <link rel="stylesheet" href="{{ asset_url }}" />      
     {% endstylesheets %}
 <!-- CSS : custom styles -->
 </head>
@@ -59,7 +60,7 @@
             </nav>
         {% endblock %}
         </header>
-        <section id="content" class="{% block page_class %}home{% endblock %}">
+        <section id="content" class="{% block page_class %}home{% endblock %} container-fluid">
         {% block content %} {% endblock %}
         </section>
         <footer>
@@ -87,15 +88,16 @@
             {% endblock %}
         {% endblock %}
         </footer>            
-      {% javascripts 
+        {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
+        {% javascripts 
             '@DdnetUtilityBundle/Resources/public/js/dd.js'            
-      %}
+        %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
 <!--[if lt IE 7 ]>
     <script src="/bundles/ddutilityundle/js/libs/dd_belatedpng.js"></script>
     <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
-<![endif]-->
-      {% endjavascripts %}
+<![endif]-->        
+        {% endjavascripts %}
     {% endblock %}
     </body>
 </html>

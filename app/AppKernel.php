@@ -21,8 +21,7 @@ class AppKernel extends Kernel
             
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
-            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new JMS\DebuggingBundle\JMSDebuggingBundle($this),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),            
             
             new Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
             new Ddnet\UtilityBundle\DdnetUtilityBundle(),
@@ -34,7 +33,7 @@ class AppKernel extends Kernel
             
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             
-
+            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -42,8 +41,9 @@ class AppKernel extends Kernel
             $bundles[] = new Elao\WebProfilerExtraBundle\WebProfilerExtraBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
         }
-
+        
         return $bundles;
     }
 

@@ -13,70 +13,83 @@
 {% endblock %}
 
 {% block content %}
-  <div id="left-pane">
-  {% block leftpane %}
-    <section id="recent-activities">
-      <h2>{{ 'recent activities' | title }}</h2>
-      <ul id="recent-activities">
-      {% block activities %}
-        {% for activity in activities %}
-        <li class="recent-activity" id="{{ activity.slug }}">
-          <div class="date-box">
-            <span class="day">{{ activity.day }}</span>
-            <span class="month">{{ activity.month }}</span>                      
-          </div>
-          <div class="details-box">
-            <span class="time">{{ activity.time }}</span>
-            <span class="source">{{ activity.source }}</span>
-          </div>
-          <p>
-            {{ portfolio.description [0:130]| trim ~ '...' }} 
-            <a href="{{ path('activity_show', { 'slug' : activity.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
-          </p>
-        </li>
-        {% endfor %}
-      {% endblock %}
-      </ul>
-    </section>
-    <section id="recent-photos">
-    {% block recentphotos %}
-      <h2>{{ 'recent photos' | title }}</h2>  
-      <div id="recent-photo-image-wrapper">
-        <img src="{{ photo.url }}" class="recent-photo" alt="{{ photo.caption }}" />
-      </div>
-      <span class="controls"></span>
-    {% endblock %}
-    </section>
-  {% endblock %}
-  </div>
-  <div id="right-pane">
-  {% block rightpane %}
-    <section id="recent-projects">
-    {% block recentprojects %}
-      <h2>{{ 'recent projects' | title }}</h2>
-      <ul id="projects">
-      {% block projects %}
-        {% for project in projects %}
-              <div class="project" id="{{ project.slug }}">
-                <a href="{{ path('portfolio_show', { 'slug' : project.slug }) }}">
-                  <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ project.slug ~ '.png') }}" alt="{{ project.name | capitalize }}" />
-                  <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ project.status.slug ~ '.png') }}" class="status" alt="{{ project.status.name }}" />
-                  <h3>{{ project.name | capitalize }}</h3>
-                  <div class="details">
-                    <p>
-                      {{ portfolio.description [0:130]| trim ~ '...' }}
-                      <a href="{{ path('portfolio_show', { 'slug':portfolio.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
-                    </p>
-                  </div> 
-                </a>
-              </div>
-        {% else %} 
-            <em>no items found.</em>
-        {% endfor %}
-      {% endblock %}
-      </ul>
-    {% endblock %}
-    </section>
-  {% endblock %}
-  </div>
+    <div class="row-fluid" id="content-container">
+        <div class="span5" id="left-pane">
+        {% block leftpane %}
+            <div id="recent-activities-container">
+            {% block recentactivities %}
+                <h2>{{ 'recent activities' | title }}</h2>
+                <ul id="recent-activities">
+                {% block activities %}
+                    {% for activity in activities %}
+                    <li class="recent-activity" id="{{ activity.slug }}">
+                        <div class="row-fluid">
+                            <div class="span4 date-box-container">
+                                <div class="date-box">
+                                    <span class="activity-day">{{ activity.date | date( "d" ) }}</span>
+                                    <span class="activity-month">{{ activity.date | date( "m" ) }}</span>
+                                </div>
+                                <div class="details-box">
+                                    <span class="activity-time">{{ activity.date | date( "g:ia" ) }}</span>
+                                    <span class="activity-source">{{ activity.source }}</span>
+                                </div>
+                            </div>
+                            <div class="span8 activity-msg">
+                                {{ activity.message [0:130]| trim ~ '...' }} 
+{#                                <a href="{{ path('activity_show', { 'slug' : activity.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a> #}                            
+                            </div>                               
+                        </div>
+                    </li>
+                    {% endfor %}
+                {% endblock %}
+                </ul>    
+            {% endblock %}
+            </div>
+            <div class="span12" id="recent-photos">
+            {% block recentphotos %}
+                <h2>{{ 'recent photos' | title }}</h2>  
+                <div id="recent-photo-image-wrapper">
+                    {% if photo != null %}
+                    <img src="{{ photo.url }}" class="recent-photo" alt="{{ photo.caption }}" />
+                    {% else %}
+                    <em>No photos currently available.</em>
+                    {% endif %}
+                </div>
+                <span class="controls"></span>
+            {% endblock %}
+            </div>
+        {% endblock %}
+        </div>
+        <div class="span7" id="right-pane">
+        {% block rightpane %}
+            <div id="recent-projects">
+            {% block recentprojects %}
+                {% for i, project in projects %}        
+                    {% if i is even %}
+                    <div class="row-fluid">
+                    {% endif %}
+                        <div class="project span6" id="{{ project.slug }}">
+                            <a href="{{ path('portfolio_show', { 'slug' : project.slug }) }}">
+                                <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ project.slug ~ '.png') }}" alt="{{ project.name | capitalize }}" />
+                                <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ project.status.slug ~ '.png') }}" class="status" alt="{{ project.status.name }}" />
+                                <h3>{{ project.name | capitalize }}</h3>
+                                <div class="details">
+                                    <p>
+                                        {{ project.description [0:130]| trim ~ '...' }}
+                                        <a href="{{ path('portfolio_show', { 'slug':project.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
+                                    </p>
+                                </div> 
+                            </a>
+                        </div>
+                    {% if i is odd %}
+                    </div>
+                    {% endif %}
+                {% else %} 
+                    <div class="span12"><em>no items found.</em></div>
+                {% endfor %}
+            {% endblock %}
+            </div> 
+        {% endblock %}
+        </div>
+    </div>
 {% endblock %}

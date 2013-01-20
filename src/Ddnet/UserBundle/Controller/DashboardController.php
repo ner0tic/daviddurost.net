@@ -17,14 +17,17 @@ class DashboardController extends Controller
     {
         // Recent Projects
         $repo = $this->getDoctrine()->getRepository( 'DdnetPortfolioBundle:Project' );
-        $query = $repo->createQueryBuilder( 'p' )->orderBy( 'p.updated, p.name', 'ASC' );
+        //$query = $repo->createQueryBuilder( 'p' )->orderBy( 'p.updated, p.name', 'ASC' );
 
+        var_dump($repo->findAllOrderedByUpdated());
+        die('...');
+        
         $project_pager = new Pagerfanta( new DoctrineORMAdapter( $query ) );
         $project_pager->setMaxPerPage( $this->getRequest()->get( 'p_pgMax', 4 ) );
         $project_pager->setCurrentPage( $this->getRequest()->get( 'p_pg', 1 ) );
       
         $projects = $project_pager->getCurrentPageResults();
-      
+        
         // Recent Activities
         /**
          * @todo this will pull from variable sources
@@ -63,6 +66,7 @@ class DashboardController extends Controller
                 'url'     =>  'http://www.test.com'
             )
         );
+        $activity_pager = null;
         /**
          * @todo fix all of this! curl errors...
          */
@@ -83,7 +87,7 @@ class DashboardController extends Controller
 //        die('...');
 //        
         return $this->render( 'DdnetUserBundle:Dashboard:index.html.twig', array(
-            'projects'      =>  $results,
+            'projects'      =>  $projects,
             'proj_pager'    =>  $project_pager,
             'activities'    =>  $activities,
             'act_pager'     =>  $activity_pager,

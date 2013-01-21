@@ -32,8 +32,15 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             
             new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
             
-            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle()
+            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
+            
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Nekland\FeedBundle\NeklandFeedBundle(),
+            
+            
+            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

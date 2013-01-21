@@ -169,10 +169,50 @@ ivory_google_map:
         api_key: ~
         locale: en
       adapter: "Geocoder\HttpAdapter\BuzzHttpAdapter"    
-      
+
+################################################################################
+## Vich Uploader
+################################################################################
+vich_uploader:
+    db_driver: orm 
+    mappings:
+        project_thumbnail:
+            uri_prefix: /images/portfolio/thumbnails
+            upload_destination: %kernel.root_dir%/../web/bundles/ddnetportfolio/images/thumbnails
+        project_image:
+            uri_prefix: /images/portfolio
+            upload_destination: %kernel.root_dir%/../web/bundles/ddnetportfolio/images
+
+################################################################################
+## FeedBundle
+################################################################################
+nekland_feed:
+    feeds:
+        twitter:
+            class:  Ddnet\FeedBundle\Entity\Twitter
+            title:  'my tweets'
+            description: 'my tweets'
+            url:  http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=ner0tic
+            language: 'en'
+        facebook:
+            class:  Ddnet\FeedBundle\Entity\Facebook
+            title:  'my facebook posts'
+            description: 'my facebook posts'
+            url:  http://facebook.com/feeds/status.php?id=
+            language: 'en'
+            
 ################################################################################
 ## KnP
 ################################################################################
+knp_gaufrette:
+    adapters:
+        portfolio_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/bundles/ddnetportfolio/images/portfolio
+
+    filesystems:
+        portfolio_image_fs:
+            adapter:    portfolio_adapter
 #knp_zend_cache:
 #    templates:
 #        knp_last_tweets:

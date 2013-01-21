@@ -1,13 +1,21 @@
 <?php
 namespace Ddnet\PortfolioBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM,
+    Doctrine\Common\Collections\ArrayCollection,
+        
+    Symfony\Component\HttpFoundation\File\UploadedFile,
+    Symfony\Component\Validator\Constraints as Assert,
+        
+    Gedmo\Mapping\Annotation as Gedmo,
+    Vich\UploaderBund;e\Mapping\Annotation as Vich,
+
+    Imagine;
 
 /**
  * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="Ddnet\PortfolioBundle\Entity\Repository\ProjectRepository")
+ * @Vich\Uploadable
  */
 class Project
 {
@@ -21,7 +29,10 @@ class Project
     /**
      * @var string $name The name of the project
      *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(
+     *      name="name", 
+     *      type="string"
+     * )
      * @Assert\MaxLength(150)
      * @Assert\NotBlank()
      */
@@ -30,7 +41,10 @@ class Project
     /**
      * @var string $description The project's description
      * 
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(
+     *      name="description", 
+     *      type="text"
+     * )
      * 
      */
     protected $description;
@@ -38,7 +52,10 @@ class Project
     /**
      * @var string $dev_url The url to the dev files
      * 
-     * @ORM\Column(name="dev_url", type="string") 
+     * @ORM\Column(
+     *      name="dev_url", 
+     *      type="string"
+     * ) 
      * @Assert\Url()
     */
     protected $dev_url;
@@ -46,7 +63,10 @@ class Project
     /**
      * @var string $prod_url The url to the prod files
      * 
-     * @ORM\Column(name="prod_url", type="string")
+     * @ORM\Column(
+     *      name="prod_url", 
+     *      type="string"
+     * )
      * @Assert\Url()
      */
     protected $prod_url;
@@ -55,18 +75,56 @@ class Project
      *
      * @var string $thumbnail
      * 
-     * @ORM\Column(name="thumbnail", type="string")
-     * @Assert\Image()
+     * @Assert\File(
+     *      maxSize="4M", 
+     *      mimeTypes={"images/png", "image/jpeg", "image/gif"}
+     * )
+     * @Vich\UploadableField(
+     *      mapping="project_thumbnail",
+     *      fileNameProperty="image"
+     * )
      */
-    protected $thumbnail;
+    protected $thumbnailFile;
     
+    /**
+     *
+     * @var string $thumbnail
+     * 
+     * @ORM\Column(
+     *      name="thumbnail",
+     *      type="string",
+     *      length=255,
+     *      nullable=true
+     * )
+     */
+    private $thumbnail;
+    
+    /**
+     * @var string $imageFile
+     * 
+     * @Assert\File(
+     *      maxSize="4M",
+     *      mimeTypes={"images/png", "images/png", "image/gif"}
+     * )
+     * @Vich\UploadableField(
+     *      mapping="project_image",
+     *      fileNameProperty="image"
+     * )
+     */
+    protected $imageFile;
+            
     /**
      * @var string $photo
      * 
-     * @ORM\Column(name="photo", type="string")
+     * @ORM\Column(
+     *      name="imageo", 
+     *      type="string",
+     *      length=255,
+     *      nullable=true
+     * )
      * @Assert\Image()
      */
-    protected $photo;
+    private $image;
 
     /**
      * @var Ddnet\PortfolioBundle\Entity\ProjectCategory $category The project's default category
@@ -75,7 +133,7 @@ class Project
      * @ORM\ManyToOne(targetEntity="ProjectCategory", inversedBy="projects")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    protected $category;
+    protected $category; 
 
     /**
      * @var Ddnet\PortfolioBundle\Entity\ProjectStatus $status The project's status
@@ -519,26 +577,115 @@ class Project
     {
         return $this->thumbnail;
     }
+    
+    /**
+     * Remove thumbnail image file
+     * 
+     * @return boolean
+     */
+    public function removeThumbnail()
+    {
+        if( $this->getImagePath() && \file_exists( $this->getImagePath() ) )
+        {
+            unlink( $this->getImagePath() );
+            
+            return true;            
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Set thumbnailFile
+     * 
+     * @param File $thumbnailFile
+     * @return \Ddnet\PortfolioBundle\Entity\Project
+     */
+    public function setThumbnailFile( $thumbnailFile )
+    {
+        if( null == $thumbnailFile )
+        {
+            return;
+        }
+        
+        $this->thumbnailFile = $thumbnailFile;
+        
+        return $this;
+    }
+    
+    /**
+     * Get thumbnailFile
+     * 
+     * @return File
+     */
+    public function getThumbnailFile()
+    {
+        return $this->thumbnailFile;
+    }
 
     /**
-     * Set photo
+     * Set image
      *
-     * @param string $photo
+     * @param string $image
      * @return Project
      */
-    public function setPhoto($photo)
+    public function setImage( $image )
     {
-        $this->photo = $photo;
+        $this->image = $image;
         return $this;
     }
 
     /**
-     * Get photo
+     * Get image
      *
      * @return string 
      */
-    public function getPhoto()
+    public function getImage()
     {
-        return $this->photo;
+        return $this->image;
+    }
+    
+    /**
+     * Remove image file
+     * 
+     * @return boolean
+     */
+    public function removeImage()
+    {
+        if( $this->getImagePath() && \File_exists( $this->getImagePAth() ) )
+        {
+            unlink( $this->getImagePath() );
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Set imageFile
+     * 
+     * @param type $imageFile
+     * 
+     * @return Project
+     */
+    public function setImageFile( $imageFile )
+    {
+        if( null == $imageFile )
+        {
+            return $this;
+        }
+        
+        $this->imageFile = $imageFile;
+    }
+    
+    /**
+     * Get imageFile
+     * 
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }

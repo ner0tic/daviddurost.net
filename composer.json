@@ -62,7 +62,14 @@
         "ner0tic/foursquare-api":                                 "dev-master",
         "ner0tic/php-api-core":                                   "*",
         "ner0tic/php-minteye-api":                                "*",
-        "ner0tic/php-instagram-api":                              "*"
+        "ner0tic/php-instagram-api":                              "*",
+        
+        "nekland/feed-bundle":                                    "*",
+        
+        "vich/uploader-bundle":                                   "dev-master",
+        "knplabs/knp-gaufrette-bundle":                           "dev-master",
+        
+        "avalanche123/imagine-bundle":                            "dev-master"
     },
     "require-dev": {
         "elao/web-profiler-extra-bundle":                         "dev-master",

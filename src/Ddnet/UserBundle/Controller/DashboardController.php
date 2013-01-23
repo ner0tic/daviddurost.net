@@ -17,11 +17,8 @@ class DashboardController extends Controller
     {
         // Recent Projects
         $repo = $this->getDoctrine()->getRepository( 'DdnetPortfolioBundle:Project' );
-        //$query = $repo->createQueryBuilder( 'p' )->orderBy( 'p.updated, p.name', 'ASC' );
+        $query = $repo->createQueryBuilder( 'p' )->orderBy( 'p.updated, p.name', 'ASC' );
 
-        var_dump($repo->findAllOrderedByUpdated());
-        die('...');
-        
         $project_pager = new Pagerfanta( new DoctrineORMAdapter( $query ) );
         $project_pager->setMaxPerPage( $this->getRequest()->get( 'p_pgMax', 4 ) );
         $project_pager->setCurrentPage( $this->getRequest()->get( 'p_pg', 1 ) );
@@ -40,33 +37,7 @@ class DashboardController extends Controller
          * message - return the post (tweet, etc)
          * url - return url to the post's source feed
          */
-        $activities = array(
-            0 => array(
-                'name' => 'test activity 1',
-                'source' => 'twitter',
-                'date'    =>  '2013-01-03 06:00:00',
-                'message' =>  'blah blah blah blah blah blah blah blah blah blah',
-                'slug'    =>  'twitter-test-activity-1',
-                'url'     =>  'http://www.test.com'
-            ),
-            1 => array(
-                'name' => 'test activity 2',
-                'source' => 'twitter',
-                'date'    =>  '2013-01-02 18:31:00',
-                'message' =>  'blah blah blah blah blah blah blah blah blah blah',
-                'slug'    =>  'twitter-test-activity-2',
-                'url'     =>  'http://www.test.com'
-            ),
-            2 => array(
-                'name' => 'test activity 3',
-                'source' => 'twitter',
-                'date'    =>  '2013-01-01 00:00:12',
-                'message' =>  'blah blah blah blah blah blah blah blah blah blah',
-                'slug'    =>  'twitter-test-activity-3',
-                'url'     =>  'http://www.test.com'
-            )
-        );
-        $activity_pager = null;
+        $recent_activities = null;
         /**
          * @todo fix all of this! curl errors...
          */
@@ -89,8 +60,6 @@ class DashboardController extends Controller
         return $this->render( 'DdnetUserBundle:Dashboard:index.html.twig', array(
             'projects'      =>  $projects,
             'proj_pager'    =>  $project_pager,
-            'activities'    =>  $activities,
-            'act_pager'     =>  $activity_pager,
             'photo'         =>  $photo
         ) );                  
     }

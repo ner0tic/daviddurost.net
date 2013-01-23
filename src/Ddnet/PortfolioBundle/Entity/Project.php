@@ -8,9 +8,7 @@ use Doctrine\ORM\Mapping as ORM,
     Symfony\Component\Validator\Constraints as Assert,
         
     Gedmo\Mapping\Annotation as Gedmo,
-    Vich\UploaderBund;e\Mapping\Annotation as Vich,
-
-    Imagine;
+    Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Table(name="project")
@@ -50,27 +48,16 @@ class Project
     protected $description;
 
     /**
-     * @var string $dev_url The url to the dev files
+     * @var string $url 
      * 
      * @ORM\Column(
-     *      name="dev_url", 
+     *      name="url", 
      *      type="string"
      * ) 
      * @Assert\Url()
     */
-    protected $dev_url;
+    protected $url;
 
-    /**
-     * @var string $prod_url The url to the prod files
-     * 
-     * @ORM\Column(
-     *      name="prod_url", 
-     *      type="string"
-     * )
-     * @Assert\Url()
-     */
-    protected $prod_url;
-    
     /**
      *
      * @var string $thumbnail
@@ -96,6 +83,7 @@ class Project
      *      length=255,
      *      nullable=true
      * )
+     * @Assert\Image()
      */
     private $thumbnail;
     
@@ -114,10 +102,10 @@ class Project
     protected $imageFile;
             
     /**
-     * @var string $photo
+     * @var string $image
      * 
      * @ORM\Column(
-     *      name="imageo", 
+     *      name="image", 
      *      type="string",
      *      length=255,
      *      nullable=true
@@ -276,9 +264,9 @@ class Project
      * @param string $devUrl
      * @return Project
      */
-    public function setDevUrl($devUrl)
+    public function setUrl($url)
     {
-        $this->dev_url = $devUrl;
+        $this->url = $url;
         return $this;
     }
 
@@ -287,31 +275,9 @@ class Project
      *
      * @return string 
      */
-    public function getDevUrl()
+    public function getUrl()
     {
-        return $this->dev_url;
-    }
-
-    /**
-     * Set prod_url
-     *
-     * @param string $prodUrl
-     * @return Project
-     */
-    public function setProdUrl($prodUrl)
-    {
-        $this->prod_url = $prodUrl;
-        return $this;
-    }
-
-    /**
-     * Get prod_url
-     *
-     * @return string 
-     */
-    public function getProdUrl()
-    {
-        return $this->prod_url;
+        return $this->url;
     }
 
     /**

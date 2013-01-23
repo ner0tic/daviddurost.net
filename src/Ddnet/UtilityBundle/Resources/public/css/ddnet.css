@@ -19,13 +19,13 @@ body { background: #fefffe; /*url(/images/body-bg.png) repeat-x fixed center top
 /************************************************
 **                Header                       **
 ************************************************/
-header { height: 140px; padding-top: 15px; }
+header { height: 100px; }
 
-section#logo h1 a { width:240px; height: 100px; margin-top: 34px; margin-left: 41px; padding-right: 0; float: left; color: #914f53; font-family: verdana, arial; font-size: 24pt; font-weight: bold; letter-spacing: -3px; text-align: left; /*text-indent: -9999px; background: url(/images/logo.png) no-repeat top left;*/ text-shadow: #e5e5e5 1px 1px 1px;}
+section#logo h1 a { width:240px; height: 60px; float: left; margin-top: 44px; padding-left: 41px; padding-right: 0; color: #914f53; font-family: verdana, arial; font-size: 24pt; font-weight: bold; letter-spacing: -3px; text-align: left; /*text-indent: -9999px; background: url(/images/logo.png) no-repeat top left;*/ text-shadow: #e5e5e5 1px 1px 1px;}
 section#logo h1 a span { color: #808775; }
 section#logo h1 > span { height: 20px; float: left; margin-left: -14px; margin-top: 10px; padding-top: 40px; padding-left: 0px; color: #808775 !-important; font-weight: normal; letter-spacing: -1px; font-size: 18pt; font-style: italic; font-family: Alexa; text-shadow: #e5e5e5 1px 1px 1px;}
 
-nav ul#nav-links { min-width: 225px; margin-top: 60px; margin-right: 10px; float: right; font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #808775; text-shadow: #000 1px 1px 1px; }
+nav ul#nav-links { min-width: 225px; padding-top: 60px; margin-right: 10px; float: right; font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #808775; text-shadow: #000 1px 1px 1px; }
 nav ul#nav-links li.nav-link { margin-left: 2px; display: inline-block; }
 nav ul#nav-links li.nav-link a { display: block; opacity: 0.5; -webkit-transition: opacity .5s linear; }
 nav ul#nav-links li.nav-link a:hover { opacity: 1; -webkit-transition: opacity .5s linear; color: #914f53; }
@@ -34,6 +34,7 @@ nav ul#nav-links li.nav-link.active a { border-bottom: 2px solid #914f53; }
 /************************************************
 **                Content                      **
 ************************************************/
+section#content { float: left; }
 h2 { color: #914f53; font-weight: bold; font-size: 2em !important; font-variant: small-caps; font-family: Alexa, arial; }
 h2 span { position: relative; top: -16px; display: block; text-align: right; width: 50%; font-size: 0.7em !important; color: #efefef;}
 h2 span img { height: 0.7 em; }

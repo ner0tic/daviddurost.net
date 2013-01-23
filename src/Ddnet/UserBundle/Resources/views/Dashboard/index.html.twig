@@ -19,14 +19,15 @@
             <div id="recent-activities-container">
             {% block recentactivities %}
                 <h2>{{ 'recent activities' | title }}</h2>
+                {% render "KnpLastTweetsBundle:Twitter:lastTweets" with { 'username' : 'ner0tic', 'limit': 3 } %}
+{# commented out until new feed bundle is ready to be deployed
                 <ul id="recent-activities">
                 {% block activities %}
                     {% for activity in activities %}
                     <li class="recent-activity" id="{{ activity.slug }}">
                         <div class="row-fluid">
                             <div class="span4 date-box-container">
-                                <div class="date-box">
-                                    <span class="activity-day">{{ activity.date | date( "d" ) }}</span>
+                                <div class="date-box">                                    <span class="activity-day">{{ activity.date | date( "d" ) }}</span>
                                     <span class="activity-month">{{ activity.date | date( "m" ) }}</span>
                                 </div>
                                 <div class="details-box">
@@ -36,15 +37,17 @@
                             </div>
                             <div class="span8 activity-msg">
                                 {{ activity.message [0:130]| trim ~ '...' }} 
-{#                                <a href="{{ path('activity_show', { 'slug' : activity.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a> #}                            
+{#                                <a href="{{ path('activity_show', { 'slug' : activity.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a> # }                            
                             </div>                               
                         </div>
                     </li>
                     {% endfor %}
                 {% endblock %}
+
                 </ul>    
+ #}
             {% endblock %}
-            </div>
+           </div>
             <div class="span12" id="recent-photos">
             {% block recentphotos %}
                 <h2>{{ 'recent photos' | title }}</h2>  
@@ -64,6 +67,7 @@
         {% block rightpane %}
             <div id="recent-projects">
             {% block recentprojects %}
+                <h2>{{ 'recently updated' | title }}</h2>
                 {% for i, project in projects %}        
                     {% if i is even %}
                     <div class="row-fluid">

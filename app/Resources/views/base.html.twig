@@ -22,12 +22,10 @@
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">        
 <!-- CSS : implied media="all" -->
     {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
-    {% stylesheets 
-        '@DdnetUtilityBundle/Resources/public/css/reset.css' 
-        '@DdnetUtilityBundle/Resources/public/css/ddnet.css'
-    %}
-      <link rel="stylesheet" href="{{ asset_url }}" />      
-    {% endstylesheets %}
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetutility/css/reset.css') }}" /> 
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetutility/css/ddnet.css') }}" />
+    {% endblock %}
 <!-- CSS : custom styles -->
 </head>
     <body>     

@@ -16,16 +16,10 @@
     {% block categorydetails %}
       <div class="content-pane" id="{{ category.slug }}">
       {% block contentpane %}
-        <div class="img-wrapper">
-        {% block categoryimage %}
-          <img src="{{ asset('/images/category/' ~ category.slug ~ '.png') }}" alt="{{ category.name | capitalize }}" class="category-image" />
-        {% endblock %}
-        </div>
         <h3 class="category-name">{{ category.name | capitalize }}</h3>
         <div class="category-desc">
         {% block categorydesc %}
           {{ category.description | nl2br }}
-          {# if(is_object($repo)) echo '<br />'.link_to(image_tag("/images/banners/github.png",array('alt'=>"See Github repo",'class'=>"category-download-image")),$repo->getUrl()) ?> #}
         {% endblock %}
         </div>
       {% endblock %}

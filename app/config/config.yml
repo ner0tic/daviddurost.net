@@ -175,6 +175,8 @@ ivory_google_map:
 ################################################################################
 vich_uploader:
     db_driver: orm 
+    twig: true
+    gaufrette: true
     mappings:
         project_thumbnail:
             uri_prefix: /images/portfolio/thumbnails
@@ -183,24 +185,6 @@ vich_uploader:
             uri_prefix: /images/portfolio
             upload_destination: %kernel.root_dir%/../web/bundles/ddnetportfolio/images
 
-################################################################################
-## FeedBundle
-################################################################################
-nekland_feed:
-    feeds:
-        twitter:
-            class:  Ddnet\FeedBundle\Entity\Twitter
-            title:  'my tweets'
-            description: 'my tweets'
-            url:  http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=ner0tic
-            language: 'en'
-        facebook:
-            class:  Ddnet\FeedBundle\Entity\Facebook
-            title:  'my facebook posts'
-            description: 'my facebook posts'
-            url:  http://facebook.com/feeds/status.php?id=
-            language: 'en'
-            
 ################################################################################
 ## KnP
 ################################################################################

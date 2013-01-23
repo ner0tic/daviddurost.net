@@ -37,16 +37,8 @@ class ProjectCategoryController extends Controller
         $query = $em->createQuery( $q )->setParameter( 'slug', $slug );
         $result = $query->getSingleResult();
 
-        $gh = new Github();
-        $commits = $gh->api( 'repo' )
-                ->commits()
-                ->all( $result->getGithubUser(), $result->getGithubRepo(), array(
-                        'sha' => $result->getGithubBranch()
-        ) );
-
         return $this->render( 'DdnetPortfolioBundle:ProjectCategory:show.html.twig', array(
-            'portfolio' =>  $result, 
-            'commits' => $commits 
+            'category' =>  $result
         ) );
     }
     

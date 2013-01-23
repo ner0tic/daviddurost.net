@@ -15,8 +15,7 @@
   {% for category in results %}
     <div class="category-entry">
       <a href="{{ path('category_show', {'slug':category.slug}) }}">
-        <img src="{{ asset('/images/category/thumbnails/' ~ category.slug ~ '.png') }}" alt="{{ category.name|capitalize }}" />
-        <h3>{{ category.name|capitalize }}</h3>
+        <h3>{{ category.name| title }}</h3>
         <div class="details">
           <p>
             {{ category.description [0:130]| trim ~ '...' }}

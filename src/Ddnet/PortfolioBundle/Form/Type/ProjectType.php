@@ -11,12 +11,7 @@ class ProjectType extends AbstractType
     {
         $builder->add( 'name' );
         $builder->add( 'description' );
-        $builder->add( 'dev_url', 'text', array(
-            'label'     =>  'Development Server URL'
-        ) );
-        $builder->add( 'prod_url', 'text', array(
-            'label'     =>  'Production Server URL'
-        ) );
+        $builder->add( 'url', 'url' );
         $builder->add( 'category' );
         $builder->add( 'status' );
         $builder->add( 'github_repo', 'text', array(
@@ -31,12 +26,8 @@ class ProjectType extends AbstractType
         
         $builder->add( 'version' );
         $builder->add( 'user' );
-        $builder->add( 'thumbnail', 'file', array(
-            'label'     =>  'Project Thumbnail'
-        ) );
-        $builder->add( 'photo', 'file', array(
-            'label'     =>  'Project Image'
-        ) );
+        $builder->add( 'thumbnail' );
+        $builder->add( 'image' );
     }
   
     public function getName() {

@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             
@@ -37,7 +38,7 @@ class AppKernel extends Kernel
             new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
             
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new Nekland\FeedBundle\NeklandFeedBundle(),
+            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle()
             
             
             

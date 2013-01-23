@@ -1,19 +1,19 @@
 /*****************portfolio*********************/
-#content .portfolio { width: 1020px; float: left; clear: both; }
-.portfolio-entry { width: 280px; height: 320px; margin-right: 15px; margin-left: 15px; margin-bottom: 20px; padding: 15px 10px; position: relative; float: left; display: inline-block; background: url(/images/drop-shadow.png) no-repeat 0 5px; }
-.portfolio-entry div.details { opacity: 0; }
-.portfolio-entry:hover div.details { opacity: 1; -webkit-transition: opacity .5s linear; }
-.portfolio-entry a { text-decoration: none; }
+#content .portfolio { clear: both; }
+.project { min-width: 275px; min-height: 252px; margin-right: 15px; margin-left: 15px; margin-bottom: 20px; padding: 15px 10px; position: relative; float: left; display: inline-block; background: url(/bundles/ddnetutility/images/drop-shadow.png) no-repeat 0 5px; }
+.project div.details { opacity: 0; }
+.project:hover div.details { opacity: 1; -webkit-transition: opacity .5s linear; }
+.project a { text-decoration: none; }
 a.more-info { display: block; }
-.portfolio-entry h3 { padding-top: 15px; padding-left: 10px; padding-bottom: 8px; float: left; color: #555; font-weight: bold; font-size: 10px; text-shadow: #fff 1px 1px 1px; text-transform: uppercase; letter-spacing: 2px; }
-.portfolio-entry h2 { width: 100%; text-align: right; margin-top: -5px; z-index: 10; color: #efefef; opacity: 0.5; font-size: x-small; }
+.project h3 { padding-top: 15px; padding-left: 10px; padding-bottom: 8px; float: left; color: #555; font-weight: bold; font-size: 10px; text-shadow: #fff 1px 1px 1px; text-transform: uppercase; letter-spacing: 2px; }
+.project h2 { width: 100%; text-align: right; margin-top: -5px; z-index: 10; color: #efefef; opacity: 0.5; font-size: x-small; }
 .status-active { color: #914f53 !important; }
 .status-paused { color: #ad9943 !important; }
 .status-completed { color: #00bf5f !important; }
-.portfolio-entry p { padding-left: 10px; padding-right: 10px; padding-top: 0; clear: both; color: <?php echo $offBlack ?>; font: 11px/18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; text-shadow: #fff 1px 1px 1px; }
+.project p { padding-left: 10px; padding-right: 10px; padding-top: 0; clear: both; color: <?php echo $offBlack ?>; font: 11px/18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; text-shadow: #fff 1px 1px 1px; }
 a.status { height: 22px; width: 26px; padding: 0; display: none; position: absolute; top: 203px; left: 260px; text-shadow: #fff 1px 1px 1px; text-transform: uppercase; letter-spacing: 2px; color: #999999; font-weight: bold; font-size: 8px; text-indent: -99999px; }
-.shadow { height: 215px; position: absolute; top: -16px; left: -18px; bottom: -20; right: -20px; z-index: -5; background: url(/images/drop-shadow.png) no-repeat; }
-img.status { z-index: 101; position: absolute; top: 10px; right: 2px; }
+.shadow { height: 215px; position: absolute; top: -16px; left: -18px; bottom: -20; right: -20px; z-index: -5; background: url(/bundles/ddnetutility/images/drop-shadow.png) no-repeat; }
+img.status { z-index: 101; position: relative top: -171px; left: 192px; }
 
 #filters-wrapper { min-width: 290px;  position: absolute; top: 92px; right: 10px; max-width: 315px; }
 #filters-wrapper ul { margin-top: 10px; min-width: 290px; }
@@ -27,12 +27,12 @@ li.filter a { display: block; opacity: 0.5; -webkit-transition: opacity .5s line
 li.filter a:hover { opacity: 1; -webkit-transition: opacity .5s linear; color: #914f53; }
 li.filter.active a { opacity: 1; color: #914f53; }
 li.filter-label { font-family: Alexa !important; font-style: italic; font-weight: normal !important; text-transform: none; font-size: 12px !important;  }
-.msg-box { position: relative; margin: 0 auto; width: 422px; height: 49px; background: transparent url('/images/msg-box/info-msg-no-projects-found.png') no-repeat center center; }
-#loading { background: url('/images/icons/loader.gif') no-repeat center center; position: relative; margin: 0 auto; height: 16px; width: 16px; }
+.msg-box { position: relative; margin: 0 auto; width: 422px; height: 49px; background: transparent url('/bundles/ddnetutility/images/msg-box/info-msg-no-projects-found.png') no-repeat center center; }
+#loading { background: url('/bundles/ddnetutility/images/icons/loader.gif') no-repeat center center; position: relative; margin: 0 auto; height: 16px; width: 16px; }
 
-div.form-comment input[type=text] { background: transparent url('/images/forms/comment/input-bg.png') no-repeat center center; width: 290px; border: 0; height: 28px; margin-top: 2px; padding-left: 2px;}
-div.form-comment textarea { background: transparent url('/images/forms/comment/text-area.png') repeat center center; width: 290px; border: 0; }
-input.submit { background: transparent url('/images/forms/comment/submit-btn.png') no-repeat center center; width: 123px; height: 42px; border: 0;}
+div.form-comment input[type=text] { background: transparent url('/bundles/ddnetutility/images/forms/comment/input-bg.png') no-repeat center center; width: 290px; border: 0; height: 28px; margin-top: 2px; padding-left: 2px;}
+div.form-comment textarea { background: transparent url('/bundles/ddnetutility/images/forms/comment/text-area.png') repeat center center; width: 290px; border: 0; }
+input.submit { background: transparent url('/bundles/ddnetutility/images/forms/comment/submit-btn.png') no-repeat center center; width: 123px; height: 42px; border: 0;}
 
 td.misc-cell { width: 310px; }
 td.details-cell { vertical-align: top; }

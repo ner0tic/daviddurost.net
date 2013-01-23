@@ -22,7 +22,7 @@ class User extends BaseUser
     protected $id;
     
     /**
-     * @Gedmo\Slug(fields={"first_name", "last_name"}) 
+     * @Gedmo\Slug(fields={"username"}) 
      * @ORM\Column(length=128, unique=true)
      */
     protected $slug;

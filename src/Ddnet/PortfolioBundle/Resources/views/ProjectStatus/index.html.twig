@@ -13,8 +13,6 @@
   {% for status in results %}
     <div class="status-entry">
       <a href="{{ path('status_show', {'slug':status.slug}) }}">
-        <img src="{{ asset('/images/status/thumbnails/' ~ status.slug ~ '.png') }}" alt="{{ status.name|capitalize }}" />
-        <img src="{{ asset('/images/status/' ~ status.slug ~ '.png') }}" class="status" alt="{{ status.name }}" />
         <h3>{{ status.name|capitalize }}</h3>
         <div class="details">
           <p>

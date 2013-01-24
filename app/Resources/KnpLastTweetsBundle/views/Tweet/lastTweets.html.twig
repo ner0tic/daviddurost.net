@@ -2,19 +2,16 @@
 <ul id="recent-activities">
 {% block activities %}
 {% for tweet in tweets %}
-    <li class="recent-activity" id="{{ tweet.id }}">
+    <li class="recent-activity {% if loop.index0 % 2 %}even{% else %}odd{% endif %}" id="{{ tweet.id }}">
         <div class="row-fluid">
             <div class="span4 date-box-container">
-                <div class="date-box">
-                    <span class="activity-day">{{ tweet.createdAt | date( "d" ) }}</span>
-                    <span class="activity-month">{{ tweet.createdAt | date( "m" ) }}</span>
+                <div class="date-box btn-group btn-group-vertical">
+                    <button class="btn btn-mini activity-day">{{ tweet.createdAt | date( "d" ) }}</button>
+                    <button class="btn btn-mini activity-month btn-info">{{ tweet.createdAt | date( "M" ) }}</button>
+                    <button class="btn btn-mini activity-time">{{ tweet.createdAt | date( "g:ia" ) }}</button>
                 </div>
-                <div class="time-box">
-                    <span class="activity-time">{{ tweet.createdAt | date( "g:i" ) }}</span>
-                    <span class="actitity-time">{{ tweet.createdAt | date( "a" ) }}</span>
-                </div>
-                <span class="activity-source">{{ 'twitter' }}</span>
-            </div>
+                <div class="activity-source">{{ 'twitter' }}</div>
+            </div>           
             <div class="span8 activity-msg">
         {#{{ tweet.text [0:130]| trim ~ '...' }}#}
         {{ tweet.text | knp_tweet_urlize }}

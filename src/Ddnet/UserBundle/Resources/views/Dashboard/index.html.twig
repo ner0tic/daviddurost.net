@@ -14,7 +14,7 @@
 
 {% block content %}
     <div class="row-fluid" id="content-container">
-        <div class="span5" id="left-pane">
+        <div class="span4" id="left-pane">
         {% block leftpane %}
             <div id="recent-activities-container">
             {% block recentactivities %}
@@ -63,7 +63,7 @@
             </div>
         {% endblock %}
         </div>
-        <div class="span7" id="right-pane">
+        <div class="span8" id="right-pane">
         {% block rightpane %}
             <div id="recent-projects">
             {% block recentprojects %}
@@ -72,18 +72,20 @@
                     {% if i is even %}
                     <div class="row-fluid">
                     {% endif %}
-                        <div class="project span6" id="{{ project.slug }}">
-                            <a href="{{ path('portfolio_show', { 'slug' : project.slug }) }}">
-                                <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ project.slug ~ '.png') }}" alt="{{ project.name | capitalize }}" />
-                                <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ project.status.slug ~ '.png') }}" class="status" alt="{{ project.status.name }}" />
-                                <h3>{{ project.name | capitalize }}</h3>
-                                <div class="details">
-                                    <p>
-                                        {{ project.description [0:130]| trim ~ '...' }}
-                                        <a href="{{ path('portfolio_show', { 'slug':project.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
-                                    </p>
-                                </div> 
-                            </a>
+                        <div class="project-container span6">
+                            <div class="project" id="{{ project.slug }}">
+                                <a href="{{ path('portfolio_show', { 'slug' : project.slug }) }}">
+                                    <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ project.slug ~ '.png') }}" class="thumbnail project-thumbnail" alt="{{ project.name | capitalize }}" />                                
+                                    <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ project.status.slug ~ '.png') }}" class="status" alt="{{ project.status.name }}" />
+                                    <h3>{{ project.name | capitalize }}</h3>
+                                    <div class="details">
+                                        <p>
+                                            {{ project.description [0:60]| trim ~ '...' }}
+                                            <a href="{{ path('portfolio_show', { 'slug':project.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
+                                        </p>
+                                    </div> 
+                                </a>
+                            </div>
                         </div>
                     {% if i is odd %}
                     </div>

@@ -1,6 +1,6 @@
 /*****************portfolio*********************/
 #content .portfolio { clear: both; max-width: 100%; min-width: 920px;  }
-.project { height: 300px; width: 300px; margin-bottom: 10px; position: relative; display: inline-block; }
+.project { width: 265px; position: relative; }
 .project div.details { opacity: 0; }
 .project:hover div.details { opacity: 1; -webkit-transition: opacity .5s linear; }
 .project a { text-decoration: none; }
@@ -14,7 +14,7 @@ a.more-info { display: block; }
 a.status { height: 22px; width: 26px; padding: 0; display: none; position: absolute; top: 203px; left: 260px; text-shadow: #fff 1px 1px 1px; text-transform: uppercase; letter-spacing: 2px; color: #999999; font-weight: bold; font-size: 8px; text-indent: -99999px; }
 .shadow { height: 215px; position: absolute; top: -16px; left: -18px; bottom: -20; right: -20px; z-index: -5; background: url(/bundles/ddnetutility/images/drop-shadow.png) no-repeat; }
 img.project-thumbnail { z-index: 100; }
-img.status { z-index: 101; position: absolute; display: inline; top: -6px; right: -8px; }
+img.status { z-index: 101; position: absolute; display: inline; top: -6px; right: -18px; }
 
 #filters-wrapper { min-width: 290px;  position: absolute; top: 92px; right: 10px; max-width: 315px; }
 #filters-wrapper ul { margin-top: 10px; min-width: 290px; }
@@ -46,6 +46,15 @@ div#left-pane { float: left; }
 
 div#right-pane { max-width: 650px; float: right; }
 
-li.project-container { display: inline !important; float: left; margin: 0 15px; }
+.project-container { float: left; margin: 0 15px; }
+@media screen and (max-width: 924px) {
+  .project-container:nth-child(2n+1) { clear: left; }
+}
+@media screen and (min-width: 925px) and (max-width: 1219px) {
+  .project-container:nth-child(3n+1) { clear: left; }
+}
+@media screen and (min-width: 1220px) {
+  .project-container:nth-child(4n+1) { clear: left; }
+}
 
 .content-container { margin: 0 auto; }

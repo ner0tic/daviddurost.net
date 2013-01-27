@@ -1,0 +1,28 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetportfolio/css/project.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetportfolio/css/github.css') }}" />
+{% endblock %}
+
+{% block content %}
+    <div class="project-wrapper" id="{{ portfolio.slug }}-wrapper">
+    {% block projectdetails %}
+      <div class="content-pane" id="{{ portfolio.slug }}">
+      {% block contentpane %}
+        <div class="img-wrapper">
+        {% block projectimage %}
+          <img src="{{ asset('bundles/ddnetportfolio/images/portfolio/' ~ portfolio.slug ~ '.png') }}" alt="{{ portfolio.name | capitalize }}" class="portfolio-image" />
+        {% endblock %}
+        </div>
+        <h3 class="portfolio-name">{{ portfolio.name | capitalize }}</h3>
+        <div class="portfolio-desc">
+        {% block projectdesc %}
+          {{ portfolio.description | nl2br }}
+          {# if(is_object($repo)) echo '<br />'.link_to(image_tag("/images/banners/github.png",array('alt'=>"See Github repo",'class'=>"portfolio-download-image")),$repo->getUrl()) ?> #}
+        {% endblock %}
+        </div>
+      {% endblock %}
+      </div>
+    {% endblock %}
+    </div>
+  {% endblock %}
+ 

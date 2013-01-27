@@ -15,7 +15,7 @@ h3 { font-size : 18px; color : #2B2B2B; font-weight : normal; line-height: 20pt;
 @font-face { font-family: Social; src: url('/bundles/ddnetutility/css/Social-Logos.ttf'); }
 @font-face { font-family: Picto; src: url('/bundles/ddnetutility/css/modernpics.otf'); }
 body { background: #fefffe; /*url(/images/body-bg.png) repeat-x fixed center top;*/ font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; }
-#content { min-width: 920px !important; margin: 0 auto; }
+#content { margin: 0 auto; }
 /************************************************
 **                Header                       **
 ************************************************/
@@ -25,7 +25,7 @@ section#logo h1 a { width:240px; height: 60px; float: left; margin-top: 44px; pa
 section#logo h1 a span { color: #808775; }
 section#logo h1 > span { height: 20px; float: left; margin-left: -14px; margin-top: 10px; padding-top: 40px; padding-left: 0px; color: #808775 !important; font-weight: normal; letter-spacing: -1px; font-size: 18pt; font-style: italic; font-family: Alexa; text-shadow: #e5e5e5 1px 1px 1px;}
 
-nav ul#nav-links { min-width: 225px; padding-top: 60px; margin-right: 10px; float: right; font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #808775; text-shadow: #000 1px 1px 1px; }
+nav ul#nav-links { min-width: 225px; padding-top: 60px; margin-right: 41px; float: right; font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #808775; text-shadow: #000 1px 1px 1px; }
 nav ul#nav-links li.nav-link { margin-left: 2px; display: inline-block; }
 nav ul#nav-links li.nav-link a { display: block; opacity: 0.5; -webkit-transition: opacity .5s linear; }
 nav ul#nav-links li.nav-link a:hover { opacity: 1; -webkit-transition: opacity .5s linear; color: #914f53; }
@@ -34,7 +34,6 @@ nav ul#nav-links li.nav-link.active a { border-bottom: 2px solid #914f53; }
 /************************************************
 **                Content                      **
 ************************************************/
-section#content { float: left; }
 h2 { color: #914f53; font-weight: bold; font-size: 2em !important; font-variant: small-caps; font-family: Alexa, arial; }
 h2 span { position: relative; top: -16px; display: block; text-align: right; width: 50%; font-size: 0.7em !important; color: #efefef;}
 h2 span img { height: 0.7 em; }

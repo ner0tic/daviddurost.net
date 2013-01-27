@@ -36,11 +36,9 @@ class ProjectController extends Controller
         $pager->setMaxPerPage( $this->getRequest()->get( 'pageMax', 8 ) );
         $pager->setCurrentPage( $this->getRequest()->get( 'page', 1 ) );
       
-        $results = $pager->getCurrentPageResults();
-      
         return $this->render( 'DdnetPortfolioBundle:Project:index.html.twig', array(
-            'results' =>  $results, 
-            'pager'   =>  $pager
+            'projects'  =>  $pager->getCurrentPageResults(), 
+            'pager'     =>  $pager
         ) );
     }
     
@@ -63,6 +61,26 @@ class ProjectController extends Controller
             'commits'   =>  $commits
         ) );
     }
+    
+    public function modalAction($slug)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $q = "SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.slug = :slug";
+        $query = $em->createQuery( $q )->setParameter( 'slug', $slug );
+        $result = $query->getSingleResult();
+
+        $gh = new Github();
+        $commits = $gh->api( 'repo' )
+                ->commits()
+                ->all( $result->getGithubUser(), $result->getGithubRepo(), array(
+                    'sha' => $result->getGithubBranch()
+        ) );
+
+        return $this->render( 'DdnetPortfolioBundle:Project:modal.html.twig', array(
+            'portfolio' =>  $result, 
+            'commits'   =>  $commits
+        ) );
+    }    
     
     public function newAction( Request $request )
     {
@@ -98,5 +116,18 @@ class ProjectController extends Controller
     public function uploadAction() 
     {
         
+    }
+    
+    public function editAction( $slug )
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $q = "SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.slug = :slug";
+        $query = $em->createQuery( $q )->setParameter( 'slug', $slug );
+        $result = $query->getSingleResult();
+
+        return $this->render( 'DdnetPortfolioBundle:Project:new.html.twig', array(
+            'portfolio' =>  $result, 
+            'commits'   =>  $commits
+        ) );
     }
 }

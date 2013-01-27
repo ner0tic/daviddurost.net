@@ -4,28 +4,56 @@
   {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/ddnetportfolio/css/portfolio.css') }}" />
 {% endblock %}
+
 {% block javascripts %}
   {{ parent() }}
 {% endblock %}
 
+{% block page_class %}portfolio{% endblock %}
+    
 {% block content %}
-  <div id="portfolio-content">
-  {% for portfolio in results %}
-    <div class="portfolio-entry">
-      <a href="{{ path('portfolio_show', {'slug':portfolio.slug}) }}">
-        <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ portfolio.slug ~ '.png') }}" alt="{{ portfolio.name|capitalize }}" />
-        <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ portfolio.Status.slug ~ '.png') }}" class="status" alt="{{ portfolio.Status.name }}" />
-        <h3>{{ portfolio.name|capitalize }}</h3>
-        <div class="details">
-          <p>
-            {{ portfolio.description [0:130]| trim ~ '...' }}
-            <a href="{{ path('portfolio_show', { 'slug':portfolio.slug }) }}" class='more-info'>more info&nbsp;&raquo;</a>
-          </p>
-        </div> 
-      </a>
+    <div class="row-fluid" id="content-container">
+        <div class="span12">
+            <div id="portfolio">
+                <h2>{{ 'portfolio' | title }}</h2>
+                <ul id="projects">
+                {% for i, project in projects %}
+                    <li class="project-container">
+                        <div class="project" id="{{ project.slug }}">
+                            <a data-target="#project-show-modal" href="{{ path('portfolio_modal', { 'slug' : project.slug }) }}" data-toggle="modal">
+                                <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ project.slug ~ '.png') }}" class="thumbnail project-thumbnail" alt="{{ project.name | capitalize }}" />                                
+                                <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ project.status.slug ~ '.png') }}" class="status" alt="{{ project.status.name }}" />
+                                <h3>{{ project.name | capitalize }}</h3>
+                                <div class="details">
+                                    <p>
+                                        {{ project.description [0:130]| trim ~ '...' }}
+                                        <a data-target="#project-show-modal" href="{{ path('portfolio_modal', { 'slug' : project.slug }) }}" role="button" data-toggle="modal" class="more-info">more info&nbsp;&raquo;</a>
+                                    </p>
+                                </div> 
+                            </a>
+                        </div>
+                    </li>
+                    {% else %} 
+                    <li>
+                        <em>no items found.</em>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-  {% else %} 
-    <em>no items found.</em>
-  {% endfor %}
-  </div>
+    {% block modals %}
+    <div class="modal hide fade" id="project-show-modal" tabindex="-1" role="dialog" aria-labelledby="project-name-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>   
+            <h3 id="project-name-label">&nbsp;</h3>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer hidden">
+            <ul id="social-links">
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    {% endblock %}
 {% endblock %}

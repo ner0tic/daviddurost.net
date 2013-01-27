@@ -1,5 +1,5 @@
 /*****************portfolio*********************/
-#content .portfolio { clear: both; }
+#content .portfolio { clear: both; max-width: 100%; min-width: 920px;  }
 .project { min-width: 270px; max-width: 300px; min-height: 252px;  margin-bottom: 10px; position: relative; float: left; display: inline-block; }
 .project div.details { opacity: 0; }
 .project:hover div.details { opacity: 1; -webkit-transition: opacity .5s linear; }
@@ -42,4 +42,10 @@ td.details-cell { vertical-align: top; }
 
 li#portfolio-link a { border-bottom: 2px solid #914f53; }
 
-div#left-pane { }
+div#left-pane { float: left; }
+
+div#right-pane { max-width: 650px; float: right; }
+
+li.project-container { display: inline !important; float: left; margin: 0 15px; }
+
+.content-container { margin: 0 auto; }

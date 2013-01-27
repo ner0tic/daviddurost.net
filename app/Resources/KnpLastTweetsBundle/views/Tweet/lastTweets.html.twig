@@ -13,8 +13,8 @@
                 <div class="activity-source">{{ 'twitter' }}</div>
             </div>           
             <div class="span8 activity-msg">
-        {#{{ tweet.text [0:130]| trim ~ '...' }}#}
-        {{ tweet.text | knp_tweet_urlize }}
+       {# {{ tweet.text [0:130]| trim ~ '...' }} #}
+        {{ tweet.text  [0:130]| trim ~ '...' }}
             </div>                               
         </div>
     </li>

@@ -70,7 +70,7 @@ class LoadProjectData extends AbstractFixture implements OrderedFixtureInterface
                ->setDescription( 'A api walker wrapper for REST style api\'s' )
                ->setUrl( 'http://daviddurost.net/portfolio/php-api')
                ->setCategory( $this->getReference( 'category-wd-s2' ) )
-               ->setStatus( $this->getReference( 'status-complete' ) );
+               ->setStatus( $this->getReference( 'status-completed' ) );
         $this->addReference( 'php-api', $phpapi );
         $manager->persist( $phpapi );        
         

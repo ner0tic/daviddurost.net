@@ -7,6 +7,11 @@ portfolio:
 portfolio_new:
     pattern: /project/new
     defaults: { _controller: DdnetPortfolioBundle:Project:new }
+portfolio_modal:
+    pattern:  /portfolio/{slug}/modal
+    defaults: { _controller: DdnetPortfolioBundle:Project:modal }
+    requirements:
+        slug:   "[\w-]+"
 portfolio_show:
     pattern:  /portfolio/{slug}
     defaults: { _controller: DdnetPortfolioBundle:Project:show }

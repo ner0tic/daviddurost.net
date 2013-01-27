@@ -3,8 +3,8 @@
 
 {% block stylesheets %}
   {{ parent() }}
-    <link rel="stylesheet" href="{{ path('@DdnetPortfolioBundle/Resources/public/css/project.css') }}" />
-    <link rel="stylesheet" href="{{ path('@DdnetPortfolioBundle/Resources/public/css/github.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetportfolio/css/project.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetportfolio/css/github.css') }}" />
 {% endblock %}
 
 {% block javascripts %}

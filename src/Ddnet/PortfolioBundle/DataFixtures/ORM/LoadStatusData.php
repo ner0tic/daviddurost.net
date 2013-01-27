@@ -35,11 +35,11 @@ class LoadStatusData extends AbstractFixture implements OrderedFixtureInterface
         ////////////////////////////////////////////////////////////////////////
         // Complete Status
         ////////////////////////////////////////////////////////////////////////
-        $complete   =   new ProjectStatus();
-        $complete->setName( 'complete' )
+        $completed   =   new ProjectStatus();
+        $completed->setName( 'completed' )
                  ->setDescription( 'Completed projects.' );
-        $manager->persist( $complete );
-        $this->addReference( 'status-complete', $complete );
+        $manager->persist( $completed );
+        $this->addReference( 'status-completed', $completed );
         
         ////////////////////////////////////////////////////////////////////////
         // On Going Status

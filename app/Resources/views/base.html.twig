@@ -44,8 +44,8 @@
                 <ul id="nav-links">
                     <li class="nav-link" id="home"><a href="{{ path( 'homepage' ) }}">home</a></li>
                     <li class="nav-link" id="portfolio"><a href="{{ path( 'portfolio' ) }}">portfolio</a></li>
-                    <li class="nav-link" id="profile"><a href="{{ path( 'homepage' ) }}">home</a></li>
-                    <li class="nav-link" id="contact"><a href="{{ path( 'homepage' ) }}">home</a></li>
+                    <li class="nav-link" id="profile"><a href="{{ path( 'profile' ) }}">profile</a></li>
+                    <li class="nav-link" id="contact"><a href="{{ path( 'contact' ) }}">contact</a></li>
                     <li class="nav-link" id="auth">                
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <a href="{{ path('fos_user_security_logout') }}">sign out</a>

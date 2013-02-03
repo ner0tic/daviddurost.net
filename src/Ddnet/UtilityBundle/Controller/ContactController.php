@@ -3,7 +3,6 @@
 namespace Ddnet\UtilityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
-    Ddnet\FoursquareBundle\Foursquare,
     Ddnet\FoursquareBundle\Entity\User,
         
     Ddnet\UtilityBundle\Form\Type\ContactType;      
@@ -15,7 +14,8 @@ class ContactController extends Controller
         $page = '';
         $form = $this->createForm( new ContactType() );//, $contact );
 
-        $foursquare = new Foursquare();
+        //$foursquare = new Foursquare();
+        $foursquare = $this->get( 'foursquare' );
         
         $user = new User();
         $user->fromArray(

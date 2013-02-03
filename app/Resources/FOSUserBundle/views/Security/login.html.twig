@@ -1,0 +1,36 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div class="alert alert-error">
+        <button type="cutton" class="close" data-dismiss="alert">&times;</button>
+        <strong>{{ error|trans({}, 'FOSUserBundle') }}</strong>
+    </div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post" class=form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <div class="controls">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <div class="controls">
+                <input type="password" id="password" name="_password" required="required" placeholder="Password" />
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                </label>
+            </div>   
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <button class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" />{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+    </fieldset>
+</form>
+{% endblock fos_user_content %}

@@ -2,21 +2,32 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-  {{ parent() }}
-<link rel="stylesheet" href="{{ asset('/css/login.css.php') }}" />
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetuser/css/login.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetuitilty/css/form.css') }}" />
 {% endblock %}
-{% block page_class %}signup{% endblock %}
+{% block page_class %}signin{% endblock %}
 {% block content %}
-<div class="main-content-wrapper">
-  <div class="content-wrapper">
-    <div>
-    {% for key, message in app.session.getFlashes() %}
-      <div class="{{ key }}">
-        {{ message|trans({}, 'FOSUserBundle') }}
-      </div>
-    {% endfor %}
-    {%block fos_user_content %}{% endblock %}
+<div class="row-fluid" id="content-container">
+    <div class="span6" id="left-pane">
+    {% block leftpane %}
+        <div id="form-container">
+        {% block form_container %}
+            <h2>{% block form_title %}{{ 'sign in' | title }}{% endblock %}</h2>
+            {% for key, message in app.session.getFlashes() %}
+            <div class="{{ key }}">
+                {{ message|trans({}, 'FOSUserBundle') }}
+            </div>
+            {% endfor %}
+            {%block fos_user_content %}{% endblock %}
+        {% endblock %}
+        </div>
+    {% endblock %}
     </div>
-  </div>
+    <div class="span6" id="right-pane">
+    {% block right_pane %}
+        
+    {% endblock %}
+    </div>
 </div>
 {% endblock %}

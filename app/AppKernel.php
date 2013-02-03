@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
             new Ddnet\UtilityBundle\DdnetUtilityBundle(),
             new Ddnet\UserBundle\DdnetUserBundle(),
+            new Ddnet\FoursquareBundle\DdnetFoursquareBundle(),
             
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             

@@ -59,9 +59,7 @@
         
         "braincrafted/bootstrap-bundle":                            "dev-master",
               
-        "ner0tic/github-api":                                       "dev-master",
-        "ner0tic/foursquare-api":                                   "dev-master",
-        "ner0tic/php-api-core":                                     "*",
+        "ddnet/foursquare-bundle":                                  "*",
         
         "vich/uploader-bundle":                                     "dev-master",
         

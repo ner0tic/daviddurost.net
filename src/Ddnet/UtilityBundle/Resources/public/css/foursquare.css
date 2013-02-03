@@ -1,0 +1,11 @@
+#contact-foursquare-caontiner { position: relative; float: right; top: -501px; }
+
+div.gmap { height: 300px; width: 400px; }
+div.checkin-container {}
+.recent-checkin {}
+.recent-checkin a { }
+.recent-checkin span { font-size: x-small; }
+div.checkin-details {}
+.checkin-details h3 {}
+.checkin-details span {}
+.checkin-details span a { display: inline; }

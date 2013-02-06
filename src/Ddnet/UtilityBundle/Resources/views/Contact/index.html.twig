@@ -2,50 +2,52 @@
 
 {% block stylesheets %}
   {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/ddnetuitilty/css/contact.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/ddnetuitilty/css/foursquare.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/ddnetuitilty/css/form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/ddnetutility/css/contact.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/ddnetutility/css/foursquare.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/ddnetutility/css/form.css') }}" />
 {% endblock %}
     
 {% block page_class %}contact{% endblock %}    
     
 {% block content %}
 <div class="row-fluid" id="content-container">
-    <div class="span6" id="left-pane">
+    <div class="span7" id="left-pane">
     {% block leftpane %}
         <div id="contact-form-container">
         {% block contact_form_content %}
             <h2>{{ 'contact me' | title }}</h2>
             <form action="{{ path( 'contact' ) }}" method="post" {{ form_enctype( form ) }} id="contact-form">
-            {% block contact_form %}
-                {{ form_errors(form) }}
-                <div class="control-group slider">
-                    {{ form_label( form.name ) }}
-                    {{ form_widget( form.name ) }}
-                </div>
-                <div class="control-group slider">
-                    {{ form_label( form.email_address ) }}
-                    {{ form_widget( form.email_address ) }}
-                </div>
-                <div class="control-group slider">
-                    {{ form_label( form.url ) }}
-                    {{ form_widget( form.url ) }}
-                </div>
-                <div class="control-group slider">
-                    {{ form_label( form.subject ) }}
-                    {{ form_widget( form.subject ) }}
-                </div>
-                <div class="control-group slider">
-                    {{ form_label( form.message ) }}
-                    {{ form_widget( form.message ) }}
-                </div>        
-                <div class="control-group">
-                    {{ form_rest(form) }}
-                </div>
-                <div class="control-group">
-                    <button type="submit" class="btn">{{ 'submit' | title }}</button>
-                </div>
-            {% endblock %}
+                <fieldset>
+                {% block contact_form %}
+                    {{ form_errors(form) }}
+                    <div class="control-group slider">
+                        {{ form_label( form.name ) }}
+                        {{ form_widget( form.name ) }}
+                    </div>
+                    <div class="control-group slider">
+                        {{ form_label( form.email_address ) }}
+                        {{ form_widget( form.email_address ) }}
+                    </div>
+                    <div class="control-group slider">
+                        {{ form_label( form.url ) }}
+                        {{ form_widget( form.url ) }}
+                    </div>
+                    <div class="control-group slider">
+                        {{ form_label( form.topic ) }}
+                        {{ form_widget( form.topic ) }}
+                    </div>
+                    <div class="control-group slider">
+                        {{ form_label( form.message ) }}
+                        {{ form_widget( form.message ) }}
+                    </div>        
+                    <div class="control-group">
+                        {{ form_rest(form) }}
+                    </div>
+                    <div class="control-group">
+                        <button type="submit" class="btn">{{ 'submit' | title }}</button>
+                    </div>
+                {% endblock %}
+                </fieldset>
             </form>
         {% endblock %}
         </div>
@@ -53,19 +55,19 @@
         {% block sociallinks %}
             <h2>{{ 'social links' | title }}</h2>
             <ul class="social-links">
-                <li class="social-link" id="facebook"><a href="http://www.facebook.com/david.durost"><img src="/images/icons/retro/facebook.png" /></a></li>
-                <li class="social-link" id="twitter"><a href="http://www.twitter.com/ner0tic"><img src="/images/icons/retro/twitter.png" /></a></li>
-                <li class="social-link" id="linkedin"><a href="http://www.linkedin.com/pub/dave-durost/9/261/67"><img src="/images/icons/retro/linkedin.png" /></a></li>
-                <li class="social-link" id="google"><a href="https://plus.google.com/u/0/100549759103761916978"><img src="/images/icons/retro/google.png" /></a></li>
+                <li class="social-link" id="facebook"><a href="http://www.facebook.com/david.durost"><img src="{{ asset('/bundles/ddnetutility/images/icons/retro/facebook.png' ) }}" /></a></li>
+                <li class="social-link" id="twitter"><a href="http://www.twitter.com/ner0tic"><img src="{{ asset('/bundles/ddnetutility/images/icons/retro/twitter.png' ) }}" /></a></li>
+                <li class="social-link" id="linkedin"><a href="http://www.linkedin.com/pub/dave-durost/9/261/67"><img src="{{ asset('/bundles/ddnetutility/images/icons/retro/linkedin.png' ) }}" /></a></li>
+                <li class="social-link" id="google"><a href="https://plus.google.com/u/0/100549759103761916978"><img src="{{ asset('/bundles/ddnetutility/images/icons/retro/google.png' ) }}" /></a></li>
             </ul>
         {% endblock %}
         </div>
     {% endblock %}      
     </div>            
-    <div class="span6" id="right-pane">
+    <div class="span5" id="right-pane">
     {% block rightpane %}  
         <div class="contact-foursquare-container">
-        {% block foursquare_content %}
+        {% block foursquare_content %}                
             <h2>
                 {{ 'where is david?' | title }}
                 <span>
@@ -75,18 +77,20 @@
                 </span>
             </h2>
             <div class="gmap">
-            {% block gmap %}
+{#                
+            {% block gmap %}                    
                 {{ google_map_container( map ) }}
             {% endblock %}
             </div>
             <div class="recent-checkin">
-                <a href="https://foursquare.com/ner0tic" />{{ venue.name }}</a>&nbsp;{#-&nbsp;{{ venue.primaryCategory }}#}<br />
+                <a href="https://foursquare.com/ner0tic" />{{ venue.name }}</a>&nbsp;-&nbsp;{{ venue.primaryCategory }}<br />
                 <span>{{ venue.location.address }}, {{ venue.location.city }}, {{ venue.location.zone }}, {{ venue.location.country }}</span>
                 <div class="checkin-details">
                     <h3>Last Checked In At:</h3>
                     <span>{{ checkin.createdAt | date("m d, Y @ h:ma") }}</span>
                 </div>
-            </div>
+#}
+            </div>            
         {% endblock %}  
         </div>
     {% endblock %}

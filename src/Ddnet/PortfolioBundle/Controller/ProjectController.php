@@ -42,7 +42,7 @@ class ProjectController extends Controller
         ) );
     }
     
-    public function showAction($slug)
+    public function showAction( $slug )
     {
         $em = $this->getDoctrine()->getEntityManager();
         $q = "SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.slug = :slug";
@@ -62,23 +62,15 @@ class ProjectController extends Controller
         ) );
     }
     
-    public function modalAction($slug)
+    public function modalAction( $slug )
     {
         $em = $this->getDoctrine()->getEntityManager();
         $q = "SELECT p FROM DdnetPortfolioBundle:Project p WHERE p.slug = :slug";
         $query = $em->createQuery( $q )->setParameter( 'slug', $slug );
         $result = $query->getSingleResult();
 
-        $gh = new Github();
-        $commits = $gh->api( 'repo' )
-                ->commits()
-                ->all( $result->getGithubUser(), $result->getGithubRepo(), array(
-                    'sha' => $result->getGithubBranch()
-        ) );
-
         return $this->render( 'DdnetPortfolioBundle:Project:modal.html.twig', array(
-            'portfolio' =>  $result, 
-            'commits'   =>  $commits
+            'portfolio' =>  $result
         ) );
     }    
     

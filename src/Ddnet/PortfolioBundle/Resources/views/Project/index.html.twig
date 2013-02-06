@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block javascripts %}
-  {{ parent() }}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset( 'bundles/ddnetportfolio/js/portfolio.js' ) }}"></script>
 {% endblock %}
 
 {% block page_class %}portfolio{% endblock %}
@@ -20,14 +21,14 @@
                 {% for i, project in projects %}
                     <li class="project-container">
                         <div class="project" id="{{ project.slug }}">
-                            <a data-target="#project-show-modal" href="{{ path('portfolio_modal', { 'slug' : project.slug }) }}" data-toggle="modal">
+                            <a data-target="#project-show-modal" data-remote="{{ path('portfolio_modal', { 'slug' : project.slug }) }}">
                                 <img src=" {{ asset('bundles/ddnetportfolio/images/thumbnails/' ~ project.slug ~ '.png') }}" class="thumbnail project-thumbnail" alt="{{ project.name | capitalize }}" />                                
                                 <img src="{{ asset('bundles/ddnetportfolio/images/status/' ~ project.status.slug ~ '.png') }}" class="status" alt="{{ project.status.name }}" />
                                 <h3>{{ project.name | capitalize }}</h3>
                                 <div class="details">
                                     <p>
                                         {{ project.description [0:130]| trim ~ '...' }}
-                                        <a data-target="#project-show-modal" href="{{ path('portfolio_modal', { 'slug' : project.slug }) }}" role="button" data-toggle="modal" class="more-info">more info&nbsp;&raquo;</a>
+                                        <a data-target="#project-show-modal" data-remote="{{ path('portfolio_modal', { 'slug' : project.slug }) }}" role="button" class="more-info">more info&nbsp;&raquo;</a>
                                     </p>
                                 </div> 
                             </a>

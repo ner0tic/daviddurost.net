@@ -16,8 +16,12 @@
         <h3 class="portfolio-name">{{ portfolio.name | capitalize }}</h3>
         <div class="portfolio-desc">
         {% block projectdesc %}
-          {{ portfolio.description | nl2br }}
-          {# if(is_object($repo)) echo '<br />'.link_to(image_tag("/images/banners/github.png",array('alt'=>"See Github repo",'class'=>"portfolio-download-image")),$repo->getUrl()) ?> #}
+            {{ portfolio.description | nl2br }}
+            {% if portfolio.githubRepo %}
+                <a href="https://www.github.com/{{ portfolio.githubUser }}/{{ portfolio.githubRepo }}" class="portfolio-download-image">
+                    <img src="{{ asset( 'bundles/ddnetportfolio/images/banners/github.png' ) }}" alt="{{ 'check it out on github' }}" class="portfolio-download-image" />
+                </a>
+            {% endif %}        
         {% endblock %}
         </div>
       {% endblock %}

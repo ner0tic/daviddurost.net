@@ -3,4 +3,6 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }        
-            
+    foursquare:
+        class: Ner0tic\FoursquareBundle\Foursquare
+        arguments: ['@service_container']

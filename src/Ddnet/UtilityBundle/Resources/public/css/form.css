@@ -24,18 +24,19 @@
 .radio-input < label {
     display: block;
 }
-/***************************************************************
-    contact form
-***************************************************************/
-div.contact-social-wrapper.form-wrapper { min-height: 500px; border-right: 2px dashed #cfcfcf; }
-div.main-column#contact { top: -64px; position: relative; float: right; }
-form { /*background: #c2b9a0; border-top: 1px solid #cccccc;*/ display: block; margin: 0 auto; padding: 20px; width: 450px; overflow: hidden; }
-#contact h2 { color: #914f53; font-weight: bold; font-size: 2em !important; font-variant: small-caps; font-family: Alexa, arial; max-width: 490px; margin: 0 auto;  } 
-#contact-form div:last-child { margin: 0 auto; text-align: center; }
-#contact-form input[type=submit] { margin: 0 auto; }
 
+#form-container { max-width: 300px;  }
+#form-container fieldset,
+#contact-form-container fieldset {
 
-.no-label { display: none; }
-form p { position:relative; padding: 10px; }
-
-label { margin: 6px 0 0 8px; font-family: Alexa; font-variant: small-caps; font-size: 1.16667em; }
+padding: 19px 29px 29px;
+margin: 0 auto 20px;
+background-color: #fff;
+border: 1px solid #e5e5e5;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}

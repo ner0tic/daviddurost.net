@@ -38,8 +38,7 @@
         <div id="project-comment-wrapper" class="sidebar-widget">
         {% block comments %}
           <h3>comments</h3>
-          <em style="display:none;">this module is down for maintenance.</em>
-          <div class="fb-comments" data-href="{{ path('portfolio_show',{ 'slug' : portfolio.slug } ) }}" data-num-posts="5" data-width="210"></div>
+          <em>this module is down for maintenance.</em>
         {% endblock %}
         </div>
         {% if portfolio.githubRepo %}

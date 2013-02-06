@@ -3,7 +3,7 @@
 namespace Ddnet\UtilityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
-    Ddnet\FoursquareBundle\Entity\User,
+    Ner0tic\FoursquareBundle\Entity\User,
         
     Ddnet\UtilityBundle\Form\Type\ContactType;      
 
@@ -13,7 +13,7 @@ class ContactController extends Controller
     {
         $page = '';
         $form = $this->createForm( new ContactType() );//, $contact );
-
+/*
         //$foursquare = new Foursquare();
         $foursquare = $this->get( 'foursquare' );
         
@@ -21,7 +21,7 @@ class ContactController extends Controller
         $user->fromArray(
                 json_decode( $foursquare->get( 'users/421286' )
         ) );
-        
+*/        
         if( $this->getRequest()->getMethod() == 'POST' )
         {
             $form->bindRequest( $this->getRequest() );
@@ -32,7 +32,7 @@ class ContactController extends Controller
                 );
             }
         }
-
+/*
         // get last checkin
         $checkin = $user->getCheckins();
         $checkin = $checkin[0];
@@ -64,15 +64,15 @@ class ContactController extends Controller
                 true
         );
         $map->addMarker( $marker );
-
+*/
         return $this->render( 
                 'DdnetUtilityBundle:Contact:index.html.twig', 
                 array(
                     'page'      => $page, 
                     'form'      => $form->createView(), 
-                    'checkin'   => $checkin, 
-                    'venue'     => $venue, 
-                    'map'       => $map
+//                    'checkin'   => $checkin, 
+//                    'venue'     => $venue, 
+//                    'map'       => $map
         ) );
     }
 }

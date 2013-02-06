@@ -23,6 +23,7 @@
 <!-- CSS : implied media="all" -->
     {% include 'BraincraftedBootstrapBundle::_stylesheets.html.twig' %}
     {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/ddnetutility/css/bootstrap-modal.css') }}" /> 
     <link rel="stylesheet" href="{{ asset('bundles/ddnetutility/css/reset.css') }}" /> 
     <link rel="stylesheet" href="{{ asset('bundles/ddnetutility/css/ddnet.css') }}" />
     {% endblock %}
@@ -65,7 +66,7 @@
         {% block footer %}
             <div class="copyright">
             {% block copyright %}
-                <a href="{{ path('homepage') }}">&copy; 2012 daviddurost.net</a>
+                <a href="{{ path('homepage') }}">&copy; 2013 daviddurost.net</a>
             {% endblock %}  
             </div>
             <hr />
@@ -88,6 +89,8 @@
         </footer>            
         {% include 'BraincraftedBootstrapBundle::_javascripts.html.twig' %}
         {% javascripts 
+            '@DdnetUtilityBundle/Resources/public/js/bootstrap-modalmanager.js'
+            '@DdnetUtilityBundle/Resources/public/js/bootstrap-modal.js'
             '@DdnetUtilityBundle/Resources/public/js/dd.js'            
         %}
         <script type="text/javascript" src="{{ asset_url }}"></script>

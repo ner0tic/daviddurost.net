@@ -40,8 +40,10 @@ class AppKernel extends Kernel
             new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
             
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle()
-            
+            new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Millwright\MenuBundle\MillwrightMenuBundle(),
+            new Millwright\ConfigurationBundle\MillwrightConfigurationBundle(),
             
             
         );

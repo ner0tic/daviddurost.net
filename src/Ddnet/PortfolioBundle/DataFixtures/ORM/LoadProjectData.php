@@ -74,6 +74,54 @@ class LoadProjectData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference( 'php-api', $phpapi );
         $manager->persist( $phpapi );        
         
+        ////////////////////////////////////////////////////////////////////////
+        // php-foursquare-api
+        ////////////////////////////////////////////////////////////////////////
+        $fsapi         =   new Project();
+        $fsapi->setName( 'php-foursquare-api' )
+              ->setDescription( 'A lightweight api library for symfony 2.1' )
+              ->setUrl( 'http://daviddurost.net/portfolio/php-foursquare-api' )
+              ->setCategory( $this->getReference( 'category-wd-s2' ) )
+              ->setStatus( $this->getReference( 'status-completed' ) );
+        $this->addReference( 'php-foursquare-api', $fsapi );
+        $manager->persist( $fsapi );
+        
+        ////////////////////////////////////////////////////////////////////////
+        // php-minteye-api
+        ////////////////////////////////////////////////////////////////////////
+        $meapi         =   new Project();
+        $meapi->setName( 'php-minteye-api' )
+              ->setDescription( 'A lightweight api library for symfony 2.1' )
+              ->setUrl( 'http://daviddurost.net/portfolio/php-minteye-api' )
+              ->setCategory( $this->getReference( 'category-wd-s2' ) )
+              ->setStatus( $this->getReference( 'status-planning' ) );
+        $this->addReference( 'php-minteye-api', $meapi );
+        $manager->persist( $meapi );
+        
+        ////////////////////////////////////////////////////////////////////////
+        // php-instagram-api
+        ////////////////////////////////////////////////////////////////////////
+        $igramapi         =   new Project();
+        $igramapi->setName( 'php-instagram-api' )
+              ->setDescription( 'A lightweight api library for symfony 2.1' )
+              ->setUrl( 'http://daviddurost.net/portfolio/php-instagram-api' )
+              ->setCategory( $this->getReference( 'category-wd-s2' ) )
+              ->setStatus( $this->getReference( 'status-planning' ) );
+        $this->addReference( 'php-instagram-api', $igramapi );
+        $manager->persist( $igramapi );
+        
+        ////////////////////////////////////////////////////////////////////////
+        // php-twitter-api
+        ////////////////////////////////////////////////////////////////////////
+        $twapi         =   new Project();
+        $twapi->setName( 'php-twitter-api' )
+              ->setDescription( 'A lightweight api library for symfony 2.1' )
+              ->setUrl( 'http://daviddurost.net/portfolio/php-twitter-api' )
+              ->setCategory( $this->getReference( 'category-wd-s2' ) )
+              ->setStatus( $this->getReference( 'status-planning' ) );
+        $this->addReference( 'php-twitter-api', $twapi );
+        $manager->persist( $twapi );
+        
         $manager->flush();
     }
     

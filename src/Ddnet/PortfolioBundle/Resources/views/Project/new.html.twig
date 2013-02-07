@@ -3,29 +3,68 @@
 
 {% block stylesheets %}
   {{ parent() }}
-    <link rel="stylesheet" href="{{ path('@DdnetPortfolioBundle/Resources/public/css/project.css') }}" />
-    <link rel="stylesheet" href="{{ path('@DdnetUtilityBundle/Resources/public/css/form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/ddnetportfolio/css/project.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/bundles/ddnetutility/css/form.css') }}" />
 {% endblock %}
 {% block javascripts %}
   {{ parent() }}
 {% endblock %}
   
 {% block content %}
-  <div id="portfolio-content">
-  <form action="{{ path('portfolio_new') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_errors(form) }}
-
-    {{ form_row(form.name) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.category) }}
-    {{ form_row(form.status) }}
-    {{ form_row(form.dev_url) }}
-    {{ form_row(form.prod_url) }}
-
-    {{ form_rest(form) }}
-
-    <input type="submit" />
-</form>
-  </div>
+    <div id="portfolio-container">
+        <h2>{{ 'add a project' | title }}</h2>
+        <form action="{{ path('portfolio_new') }}" method="post" {{ form_enctype(form) }}>
+            <fieldset>
+            {% block project_form %}
+                {{ form_errors(form) }}
+                <div class="row-fluid">
+                    <div id="left-pane">                                                        
+                        <div class="control-group slider">
+                            {{ form_row(form.name) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row(form.description) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row(form.category) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row(form.status) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row(form.url) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row( form.version ) }}
+                        </div>
+                    </div>
+                    <div id="right-pane">
+                        <div class="control-group slider">
+                            {{ form_row( form.thumbnail ) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row( form.image ) }}          
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row( form.github_user ) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row( form.github_repo ) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_row( form.github_branch ) }}
+                        </div>
+                        <div class="control-group slider">
+                            {{ form_rest(form) }}
+                        </div>
+                        <div class="control-group slider">
+                            <button class="btn btn-primary btn-block" name="submit">{{ 'add' | title }}</button>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            </fieldset>
+        </form>        
+    </div>
 {% endblock %}
   

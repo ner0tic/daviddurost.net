@@ -3,13 +3,13 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/bundles/ddnetutility/css/form.css') }}" />
     <link rel="stylesheet" href="{{ asset('/bundles/ddnetuser/css/login.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/bundles/ddnetuitilty/css/form.css') }}" />
 {% endblock %}
 {% block page_class %}signin{% endblock %}
 {% block content %}
 <div class="row-fluid" id="content-container">
-    <div class="span6" id="left-pane">
+    <div class="span5" id="left-pane">
     {% block leftpane %}
         <div id="form-container">
         {% block form_container %}
@@ -24,9 +24,23 @@
         </div>
     {% endblock %}
     </div>
-    <div class="span6" id="right-pane">
+    <div class="span7" id="right-pane">
     {% block right_pane %}
-        
+        <div id="connect-container">
+        {% block connect_container %}
+            <h2>{{ 'connect' | title }}</h2>
+            <fieldset>
+                <ul>
+                    <li>facebook</li>
+                    <li>twitter</li>
+                    <li>google+</li>
+                    <li>foursquare</li>
+                    <li>github</li>
+                    <li>oauth2</li>
+                </ul>
+            </fieldset>
+        {% endblock %}
+        </div>
     {% endblock %}
     </div>
 </div>

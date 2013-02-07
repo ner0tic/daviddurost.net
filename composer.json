@@ -12,7 +12,50 @@
                 },
                 "target-dir": "Knp/Bundle/ZendCacheBundle"
             }
-        }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "zerkalica/millwright-menu-bundle",
+                "version": "dev-master",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/ner0tic/MillwrightMenuBundle.git",
+                    "reference": "master"
+                },
+                "require": {
+                    "knplabs/knp-menu-bundle": "dev-master",
+                    "zerkalica/millwright-configuration-bundle": "dev-master"
+                },
+                "target-dir": "Millwright/MenuBundle"
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "zerkalica/millwright-util",
+                "version": "dev-master",
+                "source": {
+                    "type": "git",
+                    "url": "git://github.com/zerkalica/MillwrightUtil.git",
+                    "reference": "master"
+                },
+                "target-dir": "Millwright/Util"
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "zerkalica/millwright-configuration-bundle",
+                "version": "dev-master",
+                "source": {
+                    "type": "git",
+                    "url": "git://github.com/zerkalica/ConfigurationBundle.git",
+                    "reference": "master"
+                },
+                "target-dir": "Millwright/ConfigurationBundle"
+            }
+        }   
     ],
     "require": {
         "php":                                                      ">=5.3.2",
@@ -67,7 +110,12 @@
         "vich/uploader-bundle":                                     "dev-master",
         
         "knplabs/knp-gaufrette-bundle":                             "dev-master",
-        "knplabs/knp-last-tweets-bundle":                           "*"
+        "knplabs/knp-last-tweets-bundle":                           "*",
+        "knplabs/knp-menu":                                       "2.0.x-dev",
+        "knplabs/knp-menu-bundle":                                "dev-master",
+        "zerkalica/millwright-util":                              "dev-master",
+        "zerkalica/millwright-configuration-bundle":              "dev-master",
+        "zerkalica/millwright-menu-bundle":                       "dev-master"
     },
     "require-dev": {
         "elao/web-profiler-extra-bundle":                           "dev-master",
@@ -78,7 +126,10 @@
             "Acme": "src/",
             "Ddnet": "src/",
             "Zend" : "vendor/",
-            "Knp\\Bundle\\ZendCacheBundle": "vendor/knplabs/knp-zend-cache-bundle/"
+            "Knp\\Bundle\\ZendCacheBundle": "vendor/knplabs/knp-zend-cache-bundle/",
+            "Millwright\\MenuBundle": "vendor/zerkalica/millwright-menu-bundle/",
+            "Millwright\\ConfigurationBundle": "vendor/zerkalica/millwright-configuration-bundle/",
+            "Millwright\\Util": "vendor/zerkalica/millwright-util/"
         }
     },
     "minimum-stability": "dev"

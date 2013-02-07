@@ -89,10 +89,10 @@ class ProjectController extends Controller
               $em->persist( $project );
               
               $thumbnail_dir = __DIR__ . '../Resources/public/images/user-files/thumbnails/';
-              $thumbnail = $form['thumbnail']->getData()->move( $thumbnail_dir, $thumbnail );
+              $thumbnail = $form->get('thumbnail')->getData()->move( $thumbnail_dir, $thumbnail );
               
               $photo_dir = __DIR__ . '../Resources/public/images/user-files/projects/';
-              $photo = $form['photo']->getData()->move( $photo_dir, $photo );
+              $photo = $form->get('photo')->getData()->move( $photo_dir, $photo );
               
               $em->flush(); 
 

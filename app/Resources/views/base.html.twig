@@ -42,9 +42,17 @@
             </section>
             <nav>            
             {% block nav %}
-                <ul id="nav-links">
+{#                <ul id="nav-links">
                     <li class="nav-link" id="home"><a href="{{ path( 'homepage' ) }}">home</a></li>
-                    <li class="nav-link" id="portfolio"><a href="{{ path( 'portfolio' ) }}">portfolio</a></li>
+                    <li class="nav-link" id="portfolio">
+                        <a href="{{ path( 'portfolio' ) }}">portfolio</a>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item" id="add-project">
+                                <a href="path( 'project_new' )"
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-link" id="profile"><a href="{{ path( 'profile' ) }}">profile</a></li>
                     <li class="nav-link" id="contact"><a href="{{ path( 'contact' ) }}">contact</a></li>
                     <li class="nav-link" id="auth">                
@@ -55,6 +63,8 @@
                     {% endif %}
                     </li>
                 </ul>
+#}
+                {{ millwright_menu_render('main') }}
             {% endblock %}
             </nav>
         {% endblock %}

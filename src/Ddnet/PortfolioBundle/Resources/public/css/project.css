@@ -1,3 +1,7 @@
+#portfolio-container { max-width: 920px; margin: 0 auto;}
+div#left-pane { float: left; }
+div#right-pane { float: right; }
+
 .project-wrapper {max-width: 1200px; margin: 0px auto;}
 div.sidebar {float: left; width: 210px; height: 100%;}
 .sidebar-widget { border-top: 1px solid #CFCFCFoffWhite; margin-top: 8px;}

@@ -42,10 +42,6 @@ td.details-cell { vertical-align: top; }
 
 li#portfolio-link a { border-bottom: 2px solid #914f53; }
 
-div#left-pane { float: left; }
-
-div#right-pane { max-width: 650px; float: right; }
-
 .project-container { float: left; margin: 0 15px; }
 @media screen and (max-width: 924px) {
   .project-container:nth-child(2n+1) { clear: left; }
@@ -58,3 +54,4 @@ div#right-pane { max-width: 650px; float: right; }
 }
 
 .content-container { margin: 0 auto; }
+div#right-pane { float: right; max-width: 800px; }

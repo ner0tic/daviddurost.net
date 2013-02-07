@@ -27,7 +27,9 @@
 
 #form-container { max-width: 300px;  }
 #form-container fieldset,
-#contact-form-container fieldset {
+#contact-form-container fieldset,
+#connect-container fieldset,
+#portfolio-container fieldset {
 
 padding: 19px 29px 29px;
 margin: 0 auto 20px;

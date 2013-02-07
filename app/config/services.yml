@@ -6,3 +6,19 @@ services:
     foursquare:
         class: Ner0tic\FoursquareBundle\Foursquare
         arguments: ['@service_container']
+################################################################################
+## KnP Menu ####################################################################
+################################################################################
+    ddnet_menu.menu_builder:
+        class: Ddnet\UtilityBundle\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    ddnet_menu.menu.main:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: ddnet_menu.menu_builder
+        factory_method: createMainMenu
+        arguments: [ "@request", "@service_container" ]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
+           

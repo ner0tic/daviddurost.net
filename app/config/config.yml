@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: doctrine_extensions.yml }
     - { resource: services.yml }
+    - { resource: menu.yml }
 
 framework:
     #esi:             ~
@@ -197,6 +198,11 @@ knp_gaufrette:
     filesystems:
         portfolio_image_fs:
             adapter:    portfolio_adapter
+knp_menu:
+    twig: 
+        template: MillwrightMenuBundle:Default:knp_menu.html.twig
+    templating: false 
+    default_renderer: twig        
 #knp_zend_cache:
 #    templates:
 #        knp_last_tweets:

@@ -29,8 +29,13 @@
     {% endblock %}
 <!-- CSS : custom styles -->
 </head>
-    <body>     
+<body id="{% block page_id %}home{% endblock %}">     
     {% block body %}
+        {% block fb_sdk %}
+{#
+            {{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }} 
+#}
+        {% endblock %}
         <header>
         {% block header %}
             <section id="logo">
@@ -42,15 +47,26 @@
             </section>
             <nav>            
             {% block nav %}
-{#                <ul id="nav-links">
+                <ul id="nav-links">
                     <li class="nav-link" id="home"><a href="{{ path( 'homepage' ) }}">home</a></li>
                     <li class="nav-link" id="portfolio">
                         <a href="{{ path( 'portfolio' ) }}">portfolio</a>
-                        {% if is_granted("ROLE_ADMIN") %}
                         <ul class="sub-menu">
-                            <li class="sub-menu-item" id="add-project">
-                                <a href="path( 'project_new' )"
+                        {% block submenu %}
+                            <li class="sub-menu-item nav-link" id="by-status">
+                                <a href="#" tabindex="-1">by status</a>
+                                {% block status_sub_menu %}{% endblock %}
                             </li>
+                            <li class="sub-menu-item nav-link" id="by-category">
+                                <a href="#" tabindex="-1">by category</a>
+                                {% block category_sub_menu %}{% endblock %}                                
+                            </li>
+                            {% if is_granted("ROLE_ADMIN") %}
+                            <li class="sub-menu-item" id="add-project">
+                                <a href="{{ path( 'portfolio_new' ) }}"
+                            </li>
+                            {% endif %}
+                        {% endblock %}
                         </ul>
                     </li>
                     <li class="nav-link" id="profile"><a href="{{ path( 'profile' ) }}">profile</a></li>
@@ -63,8 +79,6 @@
                     {% endif %}
                     </li>
                 </ul>
-#}
-                {{ millwright_menu_render('main') }}
             {% endblock %}
             </nav>
         {% endblock %}

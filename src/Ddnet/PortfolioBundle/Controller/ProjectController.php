@@ -35,10 +35,27 @@ class ProjectController extends Controller
         $pager = new Pagerfanta( new DoctrineORMAdapter( $query ) );
         $pager->setMaxPerPage( $this->getRequest()->get( 'pageMax', 8 ) );
         $pager->setCurrentPage( $this->getRequest()->get( 'page', 1 ) );
+        
+        $repo = $this->getDoctrine()
+                         ->getRepository( 'DdnetPortfolioBundle:ProjectStatus' );
+        $query = $repo->createQueryBuilder( 's' )
+                      ->orderBy( 's.name', 'ASC' )
+                      ->getQuery();
+        $statuses = $query->getResult();
+        
+        $repo = $this->getDoctrine()
+                     ->getRepository( 'DdnetPortfolioBundle:ProjectCategory' );
+        $query = $repo->createQueryBuilder( 'c' )
+                      ->orderBy( 'c.name', 'ASC' )
+                      ->getQuery();
+        $categories = $query->getResult();
+        
       
         return $this->render( 'DdnetPortfolioBundle:Project:index.html.twig', array(
-            'projects'  =>  $pager->getCurrentPageResults(), 
-            'pager'     =>  $pager
+            'projects'      =>  $pager->getCurrentPageResults(), 
+            'pager'         =>  $pager,
+            'statuses'      =>  $statuses,
+            'categories'    =>  $categories
         ) );
     }
     

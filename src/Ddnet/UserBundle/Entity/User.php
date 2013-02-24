@@ -3,10 +3,10 @@
 
 namespace Ddnet\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use FOS\UserBundle\Entity\User as BaseUser,
+    Gedmo\Mapping\Annotation as Gedmo,
+    Doctrine\ORM\Mapping as ORM,
+    Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -48,18 +48,17 @@ class User extends BaseUser
     /**
      * @var string $url
      * 
-     * @ORM\Column(type="string", name="url")
+     * @ORM\Column(type="string", name="url", nullable=true)
      * @Assert\Url()
      */
     protected $url;    
     
     /**
-     * @var string $twitter
-     * 
-     * @ORM\Column(type="string", name="twitter", nullable=true)
-     * @Assert\MaxLength(100)
+     *
+     * @var string
+     * @ORM\Column( type="string", nullable=true)
      */
-    protected $twitter;    
+    protected $facebookID;    
     
     /**
      * @var datetime $created
@@ -156,6 +155,67 @@ class User extends BaseUser
     public function getLastName()
     {
         return $this->last_name;
+    }
+    
+    /**
+     * @param string $facebookID
+     * @return void
+     */
+    public function setFacebookID( $facebookID = null )
+    {
+        $this->facebookID = $facebookID;
+        
+        if( $this->username == "" )
+        {
+            $this->setUsername( $facebookID );
+        }
+        $this->salt = '';
+    }
+    
+    /**
+     * @return string
+     */
+    public function getFacbookID() 
+    {
+        return $this->facebookID;
+    }
+    
+    /**
+     * @param Array
+     */
+    public function setFBData( $fbdata )
+    {
+        if( isset( $fbdata[ 'id' ] ) ) 
+        {
+            $this->setFacebookID( $fbdata[ 'id' ] );
+            $this->addRole( 'ROLE_USER' );
+        }
+        
+        if( isset( $fbdata[ 'first_name' ] ) )
+        {
+            $this->setFirstName( $fbdata[ 'first_name' ] );
+        }
+        
+        if( isset( $fbdata[ 'last_name' ] ) )
+        {
+            $this->setLastName( $fbdata[ 'last_name' ] );
+        }
+        
+        if( isset( $fbdata[ 'email'] ) )
+        {
+            $this->setEmail( $fbdata[ 'email' ] );
+            $this->setUpdated( $fbdata[ 'email' ] );
+        }
+    }    
+    
+    public function serialize() {
+        return serialize( array( $this->facebookID, parent::serialize() ) );
+    }
+    
+    public function unserialize( $data )
+    {
+        list( $this->facebookID, $parentData) = unserialize( $data );
+        parent::unserialize( $parentData );
     }
 
     /**

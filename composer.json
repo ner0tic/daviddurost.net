@@ -102,10 +102,9 @@
         
         "braincrafted/bootstrap-bundle":                            "dev-master",
               
-        "ner0tic/foursquare-bundle":                                  "*",
-        
         "ner0tic/php-api-core":                                     "*",
         "ner0tic/github-api":                                       "*",
+        "ner0tic/foursquare-api":                                "*",        
         
         "vich/uploader-bundle":                                     "dev-master",
         
@@ -113,6 +112,7 @@
         "knplabs/knp-last-tweets-bundle":                           "*",
         "knplabs/knp-menu":                                       "2.0.x-dev",
         "knplabs/knp-menu-bundle":                                "dev-master",
+        
         "zerkalica/millwright-util":                              "dev-master",
         "zerkalica/millwright-configuration-bundle":              "dev-master",
         "zerkalica/millwright-menu-bundle":                       "dev-master"

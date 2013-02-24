@@ -2,14 +2,11 @@
 
 namespace Ddnet\UserBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Exception\NotValidCurrentPageException;
-use Instagram\Client as Instagram;
-use Symfony\Component\Yaml\Parser;
-
+use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    Symfony\Component\HttpFoundation\Request,
+    Pagerfanta\Pagerfanta,
+    Pagerfanta\Adapter\DoctrineORMAdapter,
+    Pagerfanta\Exception\NotValidCurrentPageException;
 
 class DashboardController extends Controller 
 {
@@ -39,24 +36,12 @@ class DashboardController extends Controller
          */
         $recent_activities = null;
         /**
-         * @todo fix all of this! curl errors...
+         * @todo figure out how to make the instagram calls with an auth token
+         *       without having to have the viewer authorize the session.
          */
         // Recent Photo
         $photo = null;
-        /**
-         * @todo file a cleaner way to load the configs (upstream issue)
-         */
-//        $yaml = new Parser();
-//        $configs['ig'] = $yaml->parse( file_get_contents( __DIR__ . '/../../../../app/config/instagram.yml' ) );
         
-//        $ig = new Instagram();
-//        $ig->setAuthClientId( $configs[ 'ig' ][ 'client_id' ] );
-//        
-//        var_dump($ig->api('users')->getRecentMedia(null, array(
-//            'limit'   =>  1
-//        ) ));
-//        die('...');
-//        
         return $this->render( 'DdnetUserBundle:Dashboard:index.html.twig', array(
             'projects'      =>  $projects,
             'proj_pager'    =>  $project_pager,

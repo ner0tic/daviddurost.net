@@ -5,68 +5,54 @@ millwright_menu:
             rendererOptions:
                 template: MillwrightMenuBundle:Default:knp_menu.html.twig
     items: #menu items
-        homepage: #menu name, user for route name, if it not set in opts
-            translateDomain: 'MillwrightMenuBundle'
-            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        home: #menu name, user for route name, if it not set in opts
+            route: 'homepage'
             attributes:
                 class: nav-link
         portfolio:
-            translateDomain: 'MillwrightMenuBundle'
-            roles: IS_AUTHENTICATED_ANONYMOUSLY
-            attributes:
-                class: nav-link
-        'by status':
-              route: 'status'
-              translateDomain: 'MillwrightMenuBundle'
-              roles: IS_AUTHENTICATED_ANONYMOUSLY
-              attributes:
-                class: nav-link
-        'by category':
-              route: 'categories'
-              translateDomain: 'MillwrightMenuBundle'
-              roles: IS_AUTHENTICATED_ANONYMOUSLY      
-              attributes:
-                class: nav-link
-        'add a project':
-              route: 'portfolio_new'
-              translateDomain: 'MillwrightMenuBundle'
-              roles: ROLE_USER
-              attributes:
-                class: nav-link
-        profile:          
-            translateDomain: 'MillwrightMenuBundle'
-            roles: IS_AUTHENTICATED_ANONYMOUSLY
             attributes:
                 class: nav-link
         contact:
+            label: 'contact'
             route: 'contact'
-            translateDomain: 'MillwrightMenuBundle'
-            roles: IS_AUTHENTICATED_ANONYMOUSLY
+            attributes:
+                class: nav-link
+        'by status':
+            route: 'status'
+            attributes:
+                class: nav-link
+        'by category':
+            route: 'categories'
+            attributes:
+                class: nav-link
+        'add a project':
+            route: 'portfolio_new'
+            roles: ROLE_ADMIN
+            attributes:
+                class: nav-link
+        profile:          
             attributes:
                 class: nav-link
         signout:
             route: 'fos_user_security_logout'
-            translateDomain: 'MillwrightMenuBundle'
             roles: ROLE_USER
             attributes:
                 class: nav-link
         signin:
             route: 'fos_user_security_login'
-            translateDomain: 'MillwrightMenuBundle'
-            roles: IS_AUTHENTICATED_ANONYMOUSLY          
             attributes:
                 class: nav-link
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
     tree:
         main:
             type: navigation # menu type id
             children:
-                homepage: ~
+                home: ~
                 portfolio: 
                     children:
                           'by status': ~
                           'by category': ~
                           'add a project': ~
-                profile: ~
                 contact: ~
-                signin: ~
-                signout: ~
+                profile: ~
+                

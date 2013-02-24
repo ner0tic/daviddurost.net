@@ -26,10 +26,8 @@ class AppKernel extends Kernel
             
             new Ddnet\PortfolioBundle\DdnetPortfolioBundle(),
             new Ddnet\UtilityBundle\DdnetUtilityBundle(),
-            new Ddnet\UserBundle\DdnetUserBundle(),
-            
-            new Ner0tic\FoursquareBundle\Ner0ticFoursquareBundle(),                        
-            
+            new Ddnet\UserBundle\DdnetUserBundle(),   
+                        
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             
             new FOS\UserBundle\FOSUserBundle(),
@@ -41,11 +39,7 @@ class AppKernel extends Kernel
             
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Knp\Bundle\LastTweetsBundle\KnpLastTweetsBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new Millwright\MenuBundle\MillwrightMenuBundle(),
-            new Millwright\ConfigurationBundle\MillwrightConfigurationBundle(),
-            
-            
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),          
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -166,3 +166,7 @@ contact:
     pattern: /contact
     defaults: { _controller: DdnetUtilityBundle:Contact:index }
     requirements: { _method: GET }
+_security_check:
+    pattern: /loginFacebook
+_security_logout:
+    pattern: /logout

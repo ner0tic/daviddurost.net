@@ -3,7 +3,6 @@ imports:
     - { resource: security.yml }
     - { resource: doctrine_extensions.yml }
     - { resource: services.yml }
-    - { resource: menu.yml }
 
 framework:
     #esi:             ~
@@ -113,6 +112,12 @@ fos_user:
     registration:
         form:
             type: ddnet_user_registration
+#fos_facebook:
+#  alias:  facebook
+#  app_id: 196502140431414
+#  secret: dcddbade2b112f8d39b3045644dad5fd
+#  cookie: true
+#  permissions: [email, user_birthday, user_location]            
 ################################################################################    
 ## JMS
 ################################################################################

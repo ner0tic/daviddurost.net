@@ -1,3 +1,5 @@
-ddnet_foursquare:
-    api_key: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    user_id: XXXXXX
+# client_id is your api key - REQUIRED 
+client_id: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# user_id is a specific user if needed - OPTIONAL
+user_id: XXXXXX

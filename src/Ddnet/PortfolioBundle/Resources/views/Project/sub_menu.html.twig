@@ -1,0 +1,10 @@
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+    {% for item in items %}
+        <li>
+            {{ item.name | title }}
+{#
+            <a href="{{ path( 'portfolio_by_' ~ name, { name : item.slug } ) }} "> {{ item.name | title }}</a>
+#}
+        </li> 
+    {% endfor %}
+</ul>

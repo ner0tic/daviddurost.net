@@ -3,9 +3,9 @@
 namespace Ddnet\UtilityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
-    Ner0tic\FoursquareBundle\Entity\User,
-        
-    Ddnet\UtilityBundle\Form\Type\ContactType;      
+    Ddnet\UtilityBundle\Form\Type\ContactType,
+    Foursquare\Api\FoursquareApi as Foursquare,
+    Symfony\Component\Yaml\Parser;      
 
 class ContactController extends Controller
 {
@@ -13,15 +13,14 @@ class ContactController extends Controller
     {
         $page = '';
         $form = $this->createForm( new ContactType() );//, $contact );
-/*
-        //$foursquare = new Foursquare();
-        $foursquare = $this->get( 'foursquare' );
+
+        $yaml = new Parser();
+        $configs[ '4s' ] = $yaml->parse( file_get_contents( __DIR__ . '/../../../../app/config/foursquare.yml' ) );
         
-        $user = new User();
-        $user->fromArray(
-                json_decode( $foursquare->get( 'users/421286' )
-        ) );
-*/        
+        $foursquare = new Foursquare();
+        $foursquare->setAuthClientId( $configs[ '4s' ][ 'client_id' ] );
+        $foursquare->authenticate( $configs[ '4s' ][ 'client_id' ], $configs[ '4s' ][ 'client_secret' ] );
+        
         if( $this->getRequest()->getMethod() == 'POST' )
         {
             $form->bindRequest( $this->getRequest() );
@@ -32,11 +31,17 @@ class ContactController extends Controller
                 );
             }
         }
-/*
+        var_dump( $foursquare->api( 'venues')->search( array( 
+            'near'      =>  'Portland, ME'
+        ) ) );
+        
         // get last checkin
-        $checkin = $user->getCheckins();
-        $checkin = $checkin[0];
+        $checkin = $foursquare->api( 'users' )
+                              ->getRecentCheckin( $configs[ '4s' ][ 'user_id' ] );
 
+                      
+                      die ('---');
+        
         // get venue
         $venue = $checkin->getVenue();
 
@@ -64,15 +69,15 @@ class ContactController extends Controller
                 true
         );
         $map->addMarker( $marker );
-*/
+
         return $this->render( 
                 'DdnetUtilityBundle:Contact:index.html.twig', 
                 array(
                     'page'      => $page, 
                     'form'      => $form->createView(), 
-//                    'checkin'   => $checkin, 
-//                    'venue'     => $venue, 
-//                    'map'       => $map
+                    'checkin'   => $checkin, 
+                    'venue'     => $venue, 
+                    'map'       => $map
         ) );
     }
 }
